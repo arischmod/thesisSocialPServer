@@ -1,0 +1,62 @@
+% Εκτύπωση σε χαρτί A4, μία σελίδα ανά φύλλο, με ξεχωριστή σελίδα για τον τίτλο,
+% σε γραμματοσειρά 12pt και format άρθρου.
+\documentclass[a4paper,oneside,titlepage,12pt]{article}
+
+% Προσοχή στο [cm-default], χωρίς αυτό μπορεί να μην λειτουργούν τα
+% μαθηματικά σύμβολα σε ορισμένες εγκαταστάσεις του xelatex!
+\usepackage[cm-default]{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Ελληνικό Hyphenation, αφαιρέστε το αν δεν έχετε εγκατεστημένο το xgreek.
+\usepackage{xgreek}
+
+% Γραμματοσειρά
+\setmainfont[Mapping=tex-text]{DejaVu Sans}
+
+% Χρήσιμο πακέτο για εισαγωγή εικόνων jpg/png ή άλλων εγγράφων pdf.
+\usepackage{graphicx}
+
+% Macro που δίνει το μέγιστο επιτρεπτό μέγεθος σε μια εικόνα,
+% χωρίς να παραβιάζει τα όρια του LaTeX.
+\makeatletter
+\def\maxwidth{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+% Ενεργοποιήστε την ακόλουθη γραμμή αν δεν θέλετε στοίχιση στις νέες παραγράφους.
+%\parindent=0in
+
+
+\title{Μελέτη Βιβλιογραφίας}
+\author{pServer}
+\date{} %default: no date
+
+\begin{document}
+
+\maketitle
+
+\section{Bibliografies}
+\subsection{\cite{Journal}}
+
+LALALALALALALALΛΑΛΑΛΑΛΑΛΑΛΑΛΑΛΑΛΑΛΑΛ
+\cite{Reference1}
+\cite{Journal}
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\section{Bibliography}
+
+\bibliographystyle{abbrv} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+
+\bibliography{bibl} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+\end{document}

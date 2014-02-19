@@ -1,0 +1,162 @@
+\begin{thebibliography}{10}
+
+\bibitem{vazirgiannis2005halkidi}
+Μαρία~Χαλκίδη Μιχάλης~Βαζιργιάννης.
+\newblock {\em Εξόρυξη Γνώσης από Βάσεις
+  Δεδομένων και τον Παγκόσμιο Ιστό}.
+\newblock ΤΥΠΩΘΗΤΩ - Γιώργος Δαρδάνος, 2005.
+
+\bibitem{sensors}
+{\lt{Hagen Höpfner}}.
+\newblock \lt{Smartphone Hardware Sensors}.
+\newblock [\lt Online; \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{bin2012classification}
+\lt Mohd Fikri~Azli \lt~bin Abdullah, Ali Fahmi~Perwira Negara, Md~Shohel
+  Sayeed, Deok-Jai Choi, and Kalaiarasi~Sonai Muthu.
+\newblock \lt classification algorithms in human activity recognition using
+  smartphones.
+\newblock {\em \lt Proceedings of World Academy of Science, Engineering and
+  Technology}, 68, 2012.
+
+\bibitem{Burnette:2005}
+Ed~\lt Burnette.
+\newblock {\em \lt Eclipse IDE Pocket Guide}.
+\newblock \lt O'Reilly Media, Inc., 2005.
+
+\bibitem{Cinar:2012}
+Onur \lt Cinar.
+\newblock {\em \lt Android Apps with Eclipse}.
+\newblock \lt Apress, \lt Berkely, CA, USA, \lt 1st edition, 2012.
+
+\bibitem{taintdroid}
+\lt~William \lt Enck, Peter Gilbert, Byung-Gon Chun, Landon~P. Cox, Jaeyeon
+  Jung, Patrick McDaniel, and Anmol~N. Sheth.
+\newblock \lt taintdroid: an information-flow tracking system for realtime
+  privacy monitoring on smartphones.
+\newblock In {\em \lt Proceedings of the 9th USENIX conference on Operating
+  systems design and implementation}, \lt OSDI'10, pages 1--6, \lt Berkeley,
+  CA, USA, 2010. \lt USENIX Association.
+
+\bibitem{Giannotti:2010}
+Fosca \lt Giannotti, Mirco Nanni, Dino Pedreschi, Fabio Pinelli, Chiara Renso,
+  Salvatore Rinzivillo, and Roberto Trasarti.
+\newblock \lt mobility data mining: discovering movement patterns from
+  trajectory data.
+\newblock In {\em \lt Proceedings of the Second International Workshop on
+  Computational Transportation Science}, \lt IWCTS '10, pages 7--10. \lt ACM,
+  2010.
+
+\bibitem{giannotti2008mobility}
+\lt~Gianni \lt Giannotti, Fosca Giannotti, and Dino Pedreschi.
+\newblock {\em \lt Mobility, data mining and privacy: Geographic knowledge
+  discovery}.
+\newblock \lt Springer, 2008.
+
+\bibitem{Giudici:2009}
+Paolo \lt Giudici and Silvia Figini.
+\newblock {\em \lt Applied Data Mining for Business and Industry}.
+\newblock \lt Wiley Publishing, \lt 2nd edition, 2009.
+
+\bibitem{Lee:2007}
+Jae-Gil \lt Lee, Jiawei Han, and Kyu-Young Whang.
+\newblock \lt trajectory clustering: a partition-and-group framework.
+\newblock In {\em \lt Proceedings of the 2007 ACM SIGMOD international
+  conference on Management of data}, \lt SIGMOD '07, pages 593--604. \lt ACM,
+  2007.
+
+\bibitem{Lee:2011}
+Wei-Meng \lt Lee.
+\newblock {\em \lt Beginning Android Application Development}.
+\newblock \lt Wrox Press Ltd., \lt Birmingham, UK, UK, \lt 1st edition, 2011.
+
+\bibitem{Liao:2007}
+Lin \lt Liao, Dieter Fox, and Henry Kautz.
+\newblock \lt extracting places and activities from gps traces using
+  hierarchical conditional random fields.
+\newblock {\em \lt Int. J. Rob. Res.}, 26:119--134, 2007.
+
+\bibitem{marketos2009mobility}
+Gerasimos \lt Marketos and Y~Theodoridis.
+\newblock \lt mobility data warehousing and mining.
+\newblock {\em \lt Proceedings of VLDB PhD Workshop}, 2009.
+
+\bibitem{SteinbauerKK13}
+\lt Matthias~Steinbauer, Ismail Khalil, and Gabriele Kotsis.
+\newblock \lt reality mining at the convergence of cloud computing and mobile
+  computing.
+\newblock {\em \lt ERCIM News}, 2013.
+
+\bibitem{geovisualization}
+\lt Mei-po Kwan, Jiyeong Lee, In~Michael, F.~Goodchild, and Donald~G. Janelle.
+\newblock \lt geovisualization of human activity patterns using 3d gis: A
+  time-geographic approach.
+\newblock In {\em \lt Spatially Integrated Social Science}, pages 48--66. \lt
+  University Press, 2004.
+
+\bibitem{Pittie:2003}
+Sweta \lt Pittie, Hillol Kargupta, and Byung-Hoon Park.
+\newblock \lt dependency detection in mobimine: a systems perspective.
+\newblock {\em \lt Inf. Sci. Inf. Comput. Sci.}, 155(3-4):227--243, 2003.
+
+\bibitem{SungFR12}
+Cynthia \lt Sung, Dan Feldman, and Daniela Rus.
+\newblock \lt trajectory clustering for motion prediction.
+\newblock In {\em IROS}, pages 1547--1552. IEEE, 2012.
+
+\bibitem{mobmining2010talia}
+Domenico \lt Talia and Paolo Trunfio.
+\newblock {\em \lt Mobile Data Mining on Small Devices through Web Services},
+  pages 264--276.
+\newblock \lt John Wiley \& Sons, Inc., 2010.
+
+\bibitem{android_versions}
+\lt{Developers Android}.
+\newblock {\lt{Android Platform Versions Dashboard}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{accelerometer}
+\lt{{W}ikipedia{,} The Free Encyclopedia}.
+\newblock {\lt{Accelerometer}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{android}
+\lt{{W}ikipedia{,} The Free Encyclopedia}.
+\newblock {\lt{Android(operating system)}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{gps_wiki}
+\lt{{W}ikipedia{,} The Free Encyclopedia}.
+\newblock {\lt{Global Positioning System}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{gps_dev}
+\lt{{W}ikipedia{,} The Free Encyclopedia}.
+\newblock {\lt{GPS navigation device}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{magnetometer}
+\lt{{W}ikipedia{,} The Free Encyclopedia}.
+\newblock {\lt{Magnetometer}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{smartphone}
+\lt{{W}ikipedia{,} The Free Encyclopedia}.
+\newblock {\lt{Smartphone}}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\bibitem{wekawithjava}
+{\lt{The University of Waikato}}.
+\newblock \lt{Use WEKA in your Java code}.
+\newblock [\lt Online· \gt τελευταία προσπέλαση
+  11-Αυγούστου-2013].
+
+\end{thebibliography}

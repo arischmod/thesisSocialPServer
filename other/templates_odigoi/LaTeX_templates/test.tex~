@@ -1,0 +1,79 @@
+% Εκτύπωση σε χαρτί A4, μία σελίδα ανά φύλλο, με ξεχωριστή σελίδα για τον τίτλο,
+% σε γραμματοσειρά 12pt και format άρθρου.
+\documentclass[a4paper,oneside,titlepage,12pt]{article}
+
+% Προσοχή στο [cm-default], χωρίς αυτό μπορεί να μην λειτουργούν τα
+% μαθηματικά σύμβολα σε ορισμένες εγκαταστάσεις του xelatex!
+\usepackage[cm-default]{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Ελληνικό Hyphenation, αφαιρέστε το αν δεν έχετε εγκατεστημένο το xgreek.
+\usepackage{xgreek}
+
+% Γραμματοσειρά
+\setmainfont[Mapping=tex-text]{DejaVu Sans}
+
+% Χρήσιμο πακέτο για εισαγωγή εικόνων jpg/png ή άλλων εγγράφων pdf.
+\usepackage{graphicx}
+
+% Macro που δίνει το μέγιστο επιτρεπτό μέγεθος σε μια εικόνα,
+% χωρίς να παραβιάζει τα όρια του LaTeX.
+\makeatletter
+\def\maxwidth{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+% Ενεργοποιήστε την ακόλουθη γραμμή αν δεν θέλετε στοίχιση στις νέες παραγράφους.
+%\parindent=0in
+
+
+\title{Τίτλος}
+\author{Ονοματεπώνυμο}
+\date{} %default: no date
+
+\begin{document}
+
+\maketitle
+
+\section{Πρόβλημα 1}
+\subsection{Ερώτημα 1}
+
+Text
+
+%[!hbp] είναι οδηγία τοποθέτησης του figure που είναι ένας πίνακας.
+\begin{figure} [!hbp]
+\centering
+% 3 στήλες που αριστερά, δεξιά και ανάμεσα στο κάθε στοιχείο έχουν κάθετη γραμμή.
+\begin{tabular}{|c|c|c|}
+% Πάνω οριζόντια γραμμή
+\hline
+1 & 2 & 3\\
+\hline
+% bold 5
+4 & \bf 5 & 6\\
+\hline
+7 & 8 & 9\\
+\hline
+\end{tabular}
+\caption{Πληροφορίες με αυτόματη αρίθμηση}
+\end{figure}
+
+\begin{figure} [!hbp]
+\centering
+% Εξασφαλίζουμε το μέγιστο μέγεθος για την εικόνα, χωρίς να χαλάμε τις
+% αναλογίες της. Το `solution.pdf` πρέπει να βρίσκεται στο ίδιο directory
+% με το αρχείο μας.
+\includegraphics[width=\maxwidth]{solution.pdf}
+\end{figure}
+
+\begin{displaymath}
+\sum_{n = 0}^\infty {e^x}
+\end{displaymath}
+
+\end{document}

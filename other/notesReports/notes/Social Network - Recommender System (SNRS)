@@ -1,0 +1,51 @@
+@inproceedings{Symeonidis:2011:PRR:2043932.2043947,
+ author = {Symeonidis, Panagiotis and Tiakas, Eleftherios and Manolopoulos, Yannis},
+ title = {Product recommendation and rating prediction based on multi-modal social networks},
+ booktitle = {Proceedings of the fifth ACM conference on Recommender systems},
+ series = {RecSys '11},
+ year = {2011},
+ isbn = {978-1-4503-0683-6},
+ location = {Chicago, Illinois, USA},
+ pages = {61--68},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/2043932.2043947},
+ doi = {10.1145/2043932.2043947},
+ acmid = {2043947},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {recommender systems, social networks},
+} 
+
+@inproceedings{Bellogin:2010:SHR:1869446.1869447,
+ author = {Bellog\'{\i}n, Alejandro and Cantador, Iv\'{a}n and Castells, Pablo},
+ title = {A study of heterogeneity in recommendations for a social music service},
+ booktitle = {Proceedings of the 1st International Workshop on Information Heterogeneity and Fusion in Recommender Systems},
+ series = {HetRec '10},
+ year = {2010},
+ isbn = {978-1-4503-0407-8},
+ location = {Barcelona, Spain},
+ pages = {1--8},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1869446.1869447},
+ doi = {10.1145/1869446.1869447},
+ acmid = {1869447},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {collaborative tagging, folksonomy, implicit ratings, information heterogeneity, recommender systems, social contacts, web 2.0},
+} 
+
+@incollection{
+year={2012},
+isbn={978-1-4471-4047-4},
+booktitle={Computational Social Networks},
+editor={Abraham, Ajith and Hassanien, Aboul-Ella},
+doi={10.1007/978-1-4471-4048-1_18},
+title={Social Networks and Recommender Systems: A World of Current and Future Synergies},
+url={http://dx.doi.org/10.1007/978-1-4471-4048-1_18},
+publisher={Springer London},
+author={Falahi, KannaAl and Mavridis, Nikolaos and Atif, Yacine},
+pages={445-465},
+language={English}
+}
+
+

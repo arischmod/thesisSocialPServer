@@ -1,0 +1,1625 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.10)  31 AUG 2013 11:10
+entering extended mode
+**BSthesis.tex
+(C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+(C:\MiKTex\tex\latex\base\report.cls
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+(C:\MiKTex\tex\latex\base\size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (C:\MiKTex\tex\generic\babel\babel.sty
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\MiKTex\tex\latex\00miktex\bblopts.cfg
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+(C:\MiKTex\tex\generic\babel\english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+ (C:\MiKTex\tex\generic\babel\babel.def
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+) (C:\MiKTex\tex\generic\babel\greek.ldf
+Language: greek 2005/03/30 v1.3l Greek support from the babel system
+
+Loading the definitions for the Greek font encoding
+(C:\MiKTex\tex\latex\greek-fontenc\lgrenc.def
+File: lgrenc.def 2013/07/16 v0.9 LGR Greek font encoding definitions
+
+(C:\MiKTex\tex\latex\greek-fontenc\greek-fontenc.def
+File: greek-fontenc.def 2013/07/18 v0.9.1 Common Greek font encoding definition
+s
+))))
+(C:\MiKTex\tex\latex\base\inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+ (C:\MiKTex\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+(C:\MiKTex\tex\latex\ucs\ucs.sty
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+ (C:\MiKTex\tex\latex\ucs\uni-global.def
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count89
+\uc@combtoks=\toks16
+\uc@combtoksb=\toks17
+\uc@temptokena=\toks18
+)
+(C:\MiKTex\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\MiKTex\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(C:\MiKTex\tex\latex\graphics\graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\MiKTex\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(C:\MiKTex\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(C:\MiKTex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(C:\MiKTex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(C:\MiKTex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count90
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(C:\MiKTex\tex\latex\algorithms\algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(C:\MiKTex\tex\latex\float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count91
+\float@exts=\toks20
+\float@box=\box26
+\@float@everytoks=\toks21
+\@floatcapt=\box27
+) (C:\MiKTex\tex\latex\base\ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks22
+\c@algorithm=\count92
+)
+(C:\MiKTex\tex\latex\tools\indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(C:\MiKTex\tex\latex\ltxmisc\url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(C:\MiKTex\tex\latex\algorithms\algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count93
+\c@ALC@line=\count94
+\c@ALC@rem=\count95
+\c@ALC@depth=\count96
+\ALC@tlm=\skip43
+\algorithmicindent=\skip44
+)
+(C:\MiKTex\tex\latex\listings\listings.sty
+\lst@mode=\count97
+\lst@gtempboxa=\box28
+\lst@token=\toks23
+\lst@length=\count98
+\lst@currlwidth=\dimen106
+\lst@column=\count99
+\lst@pos=\count100
+\lst@lostspace=\dimen107
+\lst@width=\dimen108
+\lst@newlines=\count101
+\lst@lineno=\count102
+\lst@maxwidth=\dimen109
+
+(C:\MiKTex\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
+\c@lstnumber=\count103
+\lst@skipnumbers=\count104
+\lst@framebox=\box29
+)
+(C:\MiKTex\tex\latex\listings\listings.cfg
+File: listings.cfg 2013/06/27 1.5pre1 listings configuration
+))
+Package: listings 2013/07/10 1.5 (Carsten Heinz)
+
+(C:\MiKTex\tex\latex\graphics\color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+ (C:\MiKTex\tex\latex\00miktex\color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+) (C:\MiKTex\tex\latex\picins\picins.sty
+Option `picins' Version 3.0 Sep. 1992, TH Darmstadt/HRZ
+\@BILD=\box30
+\@TEXT=\box31
+\d@breite=\dimen110
+\d@hoehe=\dimen111
+\d@xoff=\dimen112
+\d@yoff=\dimen113
+\d@shad=\dimen114
+\d@dash=\dimen115
+\d@boxl=\dimen116
+\d@pichskip=\dimen117
+\d@tmp=\dimen118
+\d@tmpa=\dimen119
+\d@bskip=\dimen120
+\hsiz@=\dimen121
+\p@getot@l=\dimen122
+\c@breite=\count105
+\c@hoehe=\count106
+\c@xoff=\count107
+\c@yoff=\count108
+\c@pos=\count109
+\c@shad=\count110
+\c@dash=\count111
+\c@boxl=\count112
+\c@zeilen=\count113
+\@changemode=\count114
+\c@piccaption=\count115
+\c@piccaptionpos=\count116
+\c@picpos=\count117
+\c@whole=\count118
+\c@half=\count119
+\c@tmp=\count120
+\c@tmpa=\count121
+\c@tmpb=\count122
+\c@tmpc=\count123
+\c@tmpd=\count124
+\d@leftskip=\skip45
+\ptoti=\dimen123
+\ptotii=\dimen124
+\env@box=\box32
+\d@envdp=\dimen125
+\c@hsize=\count125
+\c@envdp=\count126
+\d@envb=\dimen126
+)
+(C:\MiKTex\tex\latex\wrapfig\wrapfig.sty
+\wrapoverhang=\dimen127
+\WF@size=\dimen128
+\c@WF@wrappedlines=\count127
+\WF@box=\box33
+\WF@everypar=\toks24
+Package: wrapfig 2003/01/31  v 3.6
+)
+(C:\MiKTex\tex\latex\amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\MiKTex\tex\latex\amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks25
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\MiKTex\tex\latex\amsmath\amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+(C:\MiKTex\tex\latex\amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(C:\MiKTex\tex\latex\amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks26
+\ex@=\dimen129
+))
+(C:\MiKTex\tex\latex\amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen130
+)
+(C:\MiKTex\tex\latex\amsmath\amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count128
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count129
+\leftroot@=\count130
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count131
+\DOTSCASE@=\count132
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box34
+\strutbox@=\box35
+\big@size=\dimen131
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count133
+\c@MaxMatrixCols=\count134
+\dotsspace@=\muskip11
+\c@parentequation=\count135
+\dspbrk@lvl=\count136
+\tag@help=\toks27
+\row@=\count137
+\column@=\count138
+\maxfields@=\count139
+\andhelp@=\toks28
+\eqnshift@=\dimen132
+\alignsep@=\dimen133
+\tagshift@=\dimen134
+\tagwidth@=\dimen135
+\totwidth@=\dimen136
+\lineht@=\dimen137
+\@envbody=\toks29
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks30
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+) (C:\MiKTex\tex\latex\tools\array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen138
+\extrarowheight=\dimen139
+\NC@list=\toks31
+\extratabsurround=\skip49
+\backup@length=\skip50
+) (C:\MiKTex\tex\latex\kerkis\kerkis.sty
+File: kerkis.sty 2000/02/25 v1.5 Package `kerkis.sty'
+  
+***********************************************
+******** Loading The Kerkis FontFamily ********
+********** Department of Mathematics **********
+*********** University of the Aegean **********
+***********************************************
+LaTeX Info: Redefining \LaTeX on input line 156.
+LaTeX Info: Redefining \LaTeXe on input line 166.
+)
+(C:\MiKTex\tex\latex\setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(C:\MiKTex\tex\latex\amscls\amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks32
+\thm@bodyfont=\toks33
+\thm@headfont=\toks34
+\thm@notefont=\toks35
+\thm@headpunct=\toks36
+\thm@preskip=\skip51
+\thm@postskip=\skip52
+\thm@headsep=\skip53
+\dth@everypar=\toks37
+) (C:\MiKTex\tex\latex\xtab\xtab.sty
+Package: xtab 2011/07/31 v2.3f Extended supertabular package
+\c@tracingst=\count140
+\PWSTcapht=\dimen140
+\ST@wd=\dimen141
+\ST@rightskip=\skip54
+\ST@leftskip=\skip55
+\ST@parfillskip=\skip56
+\c@PWSTtable=\count141
+\PWSTlastpage=\count142
+\PWSTpenultimate=\count143
+\PWSTcurpage=\count144
+\PWSTtempc=\count145
+\PWSTlines=\count146
+\PWST@lastht=\dimen142
+\PWST@generalht=\dimen143
+\PWST@ht=\dimen144
+\ST@pageleft=\dimen145
+\ST@headht=\dimen146
+\ST@tailht=\dimen147
+\ST@pagesofar=\dimen148
+\ST@pboxht=\dimen149
+\ST@lineht=\dimen150
+\ST@stretchht=\dimen151
+\ST@prevht=\dimen152
+\ST@toadd=\dimen153
+\ST@dimen=\dimen154
+\ST@pbox=\box36
+)
+(C:\MiKTex\tex\latex\tools\longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count147
+\LTcapwidth=\dimen155
+\LT@head=\box37
+\LT@firsthead=\box38
+\LT@foot=\box39
+\LT@lastfoot=\box40
+\LT@cols=\count148
+\LT@rows=\count149
+\c@LT@tables=\count150
+\c@LT@chunks=\count151
+\LT@p@ftn=\toks38
+)
+(C:\MiKTex\tex\latex\tocloft\tocloft.sty
+Package: tocloft 2013/05/02 v2.3f parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 44.
+\cftparskip=\skip61
+\cftbeforetoctitleskip=\skip62
+\cftaftertoctitleskip=\skip63
+\cftbeforepartskip=\skip64
+\cftpartnumwidth=\skip65
+\cftpartindent=\skip66
+\cftbeforechapskip=\skip67
+\cftchapindent=\skip68
+\cftchapnumwidth=\skip69
+\cftbeforesecskip=\skip70
+\cftsecindent=\skip71
+\cftsecnumwidth=\skip72
+\cftbeforesubsecskip=\skip73
+\cftsubsecindent=\skip74
+\cftsubsecnumwidth=\skip75
+\cftbeforesubsubsecskip=\skip76
+\cftsubsubsecindent=\skip77
+\cftsubsubsecnumwidth=\skip78
+\cftbeforeparaskip=\skip79
+\cftparaindent=\skip80
+\cftparanumwidth=\skip81
+\cftbeforesubparaskip=\skip82
+\cftsubparaindent=\skip83
+\cftsubparanumwidth=\skip84
+\cftbeforeloftitleskip=\skip85
+\cftafterloftitleskip=\skip86
+\cftbeforefigskip=\skip87
+\cftfigindent=\skip88
+\cftfignumwidth=\skip89
+\c@lofdepth=\count152
+\c@lotdepth=\count153
+\cftbeforelottitleskip=\skip90
+\cftafterlottitleskip=\skip91
+\cftbeforetabskip=\skip92
+\cfttabindent=\skip93
+\cfttabnumwidth=\skip94
+)
+(C:\MiKTex\tex\latex\geometry\geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(C:\MiKTex\tex\generic\oberdiek\ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(C:\MiKTex\tex\generic\oberdiek\ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(C:\MiKTex\tex\generic\ifxetex\ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count154
+\Gm@cntv=\count155
+\c@Gm@tempcnt=\count156
+\Gm@bindingoffset=\dimen156
+\Gm@wd@mp=\dimen157
+\Gm@odd@mp=\dimen158
+\Gm@even@mp=\dimen159
+\Gm@layoutwidth=\dimen160
+\Gm@layoutheight=\dimen161
+\Gm@layouthoffset=\dimen162
+\Gm@layoutvoffset=\dimen163
+\Gm@dimlist=\toks39
+
+(C:\MiKTex\tex\latex\geometry\geometry.cfg))
+(C:\MiKTex\tex\latex\fancyhdr\fancyhdr.sty
+\fancy@headwidth=\skip95
+\f@ncyO@elh=\skip96
+\f@ncyO@erh=\skip97
+\f@ncyO@olh=\skip98
+\f@ncyO@orh=\skip99
+\f@ncyO@elf=\skip100
+\f@ncyO@erf=\skip101
+\f@ncyO@olf=\skip102
+\f@ncyO@orf=\skip103
+)
+(C:\MiKTex\tex\latex\hyperref\hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(C:\MiKTex\tex\generic\oberdiek\hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+(C:\MiKTex\tex\generic\oberdiek\hobsub-generic.sty
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(C:\MiKTex\tex\latex\oberdiek\auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(C:\MiKTex\tex\latex\oberdiek\kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen164
+\Hy@linkcounter=\count157
+\Hy@pagecounter=\count158
+
+(C:\MiKTex\tex\latex\hyperref\pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count159
+
+(C:\MiKTex\tex\latex\00miktex\hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `bookmarksopen' set `false' on input line 4319.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4319.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count160
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen165
+\Fld@menulength=\count161
+\Field@Width=\dimen166
+\Fld@charsize=\dimen167
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count162
+\c@Item=\count163
+\c@Hfootnote=\count164
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(C:\MiKTex\tex\latex\hyperref\hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count165
+\c@bookmark@seq@number=\count166
+
+(C:\MiKTex\tex\latex\oberdiek\rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip104
+)
+Package hyperref Info: Option `unicode' set `true' on input line 53.
+
+(C:\MiKTex\tex\latex\hyperref\puenc.def
+File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 53.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 53.
+Package hyperref Info: Option `pdffitwindow' set `true' on input line 53.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 53.
+Package hyperref Info: Option `colorlinks' set `true' on input line 53.
+
+(C:\MiKTex\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
+)
+(C:\MiKTex\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
+)
+(C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.aux
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 19.
+
+(C:\MiKTex\tex\generic\babel\lgrcmr.fd
+File: lgrcmr.fd 2008/06/17 v2.3 Greek Computer Modern
+)
+
+LaTeX Warning: Label `Chapter6' multiply defined.
+
+
+LaTeX Warning: Label `Chapter6' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Try loading font information for OT1+mak on input line 82.
+ (C:\MiKTex\tex\latex\kerkis\ot1mak.fd)
+LaTeX Font Info:    Font shape `OT1/mak/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 82.
+LaTeX Font Info:    Try loading font information for LGR+mak on input line 82.
+ (C:\MiKTex\tex\latex\kerkis\lgrmak.fd)
+LaTeX Font Info:    Font shape `LGR/mak/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 82.
+(C:\MiKTex\tex\latex\ucs\ucsencs.def
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+LGR\textpentedeka already defined.
+LGR\textpenteqilioi already defined.
+LGR\textpentemuria already defined.
+LGR\textstigma already defined.
+LGR\textqoppa already defined.
+LGR\texteuro already defined.
+LGR\textperthousand already defined.
+LGR\textquoteleft already defined.
+LGR\textquoteright already defined.
+LGR\u already defined.
+LGR\= already defined.
+LGR\" already defined.
+LGR\textpercent already defined.
+LGR\textperiodcentered already defined.
+LGR\' already defined.
+LGR\textanoteleia already defined.
+LGR\textAlpha already defined.
+LGR\textBeta already defined.
+LGR\textDelta already defined.
+LGR\textEpsilon already defined.
+LGR\textPhi already defined.
+LGR\textGamma already defined.
+LGR\textEta already defined.
+LGR\textIota already defined.
+LGR\textTheta already defined.
+LGR\textKappa already defined.
+LGR\textLambda already defined.
+LGR\textMu already defined.
+LGR\textNu already defined.
+LGR\textOmicron already defined.
+LGR\textPi already defined.
+LGR\textChi already defined.
+LGR\textRho already defined.
+LGR\textSigma already defined.
+LGR\textTau already defined.
+LGR\textUpsilon already defined.
+LGR\textOmega already defined.
+LGR\textXi already defined.
+LGR\textPsi already defined.
+LGR\textZeta already defined.
+LGR\` already defined.
+LGR\textalpha already defined.
+LGR\textbeta already defined.
+LGR\textvarsigma already defined.
+LGR\textdelta already defined.
+LGR\textepsilon already defined.
+LGR\textphi already defined.
+LGR\textgamma already defined.
+LGR\texteta already defined.
+LGR\textiota already defined.
+LGR\texttheta already defined.
+LGR\textkappa already defined.
+LGR\textlambda already defined.
+LGR\textmu already defined.
+LGR\textnu already defined.
+LGR\textomicron already defined.
+LGR\textpi already defined.
+LGR\textchi already defined.
+LGR\textrho already defined.
+LGR\textautosigma already defined.
+LGR\textsigma already defined.
+LGR\texttau already defined.
+LGR\textupsilon already defined.
+LGR\textomega already defined.
+LGR\textxi already defined.
+LGR\textpsi already defined.
+LGR\textzeta already defined.
+LGR\guillemotleft already defined.
+LGR\guillemotright already defined.
+LGR\~ already defined.
+LGR\textemdash already defined.
+LGR\textdigamma already defined.
+LGR\textDigamma already defined.
+LGR\textdexiakeraia already defined.
+LGR\textaristerikeraia already defined.
+
+fontencoding LGR patched
+) (C:\MiKTex\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count167
+\scratchdimen=\dimen168
+\scratchbox=\box41
+\nofMPsegments=\count168
+\nofMParguments=\count169
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count170
+\MPscratchDim=\dimen169
+\MPnumerator=\count171
+\makeMPintoPDFobject=\count172
+\everyMPtoPDFconversion=\toks41
+)
+\c@lstlisting=\count173
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* bindingoffset: 14.22636pt
+* modes: twoside 
+* h-part:(L,W,R)=(56.9055pt, 486.25763pt, 56.9055pt)
+* v-part:(T,H,B)=(92.47145pt, 610.02708pt, 92.47145pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=486.25763pt
+* \textheight=610.02708pt
+* \oddsidemargin=-1.13812pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-40.36447pt
+* \headheight=35.56593pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=35.56593pt
+* \marginparwidth=95.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\AtBeginShipoutBox=\box42
+Package hyperref Info: Link coloring ON on input line 82.
+(C:\MiKTex\tex\latex\hyperref\nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(C:\MiKTex\tex\generic\oberdiek\gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count174
+)
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
+
+(C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.out)
+(C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.out)
+\@outlinefile=\write3
+
+<images/logo.jpg, id=159, 179.16937pt x 185.19188pt>
+File: images/logo.jpg Graphic file (type jpg)
+ <use images/logo.jpg>
+Package pdftex.def Info: images/logo.jpg used on input line 93.
+(pdftex.def)             Requested size: 53.75122pt x 55.55798pt.
+LaTeX Font Info:    Font shape `LGR/mak/bx/n' will be
+(Font)              scaled to size 10.79993pt on input line 96.
+LaTeX Font Info:    Font shape `LGR/mak/m/n' will be
+(Font)              scaled to size 12.59991pt on input line 96.
+LaTeX Font Info:    Font shape `LGR/mak/bx/n' will be
+(Font)              scaled to size 12.59991pt on input line 96.
+
+(C:\MiKTex\tex\latex\ucs\uni-3.def
+File: uni-3.def 2013/05/13 UCS: Unicode data U+0300..U+03FF
+)
+LaTeX Font Info:    Font shape `LGR/mak/m/n' will be
+(Font)              scaled to size 14.3999pt on input line 108.
+LaTeX Font Info:    Font shape `LGR/mak/bx/n' will be
+(Font)              scaled to size 14.3999pt on input line 108.
+LaTeX Font Info:    Try loading font information for U+msa on input line 117.
+ (C:\MiKTex\tex\latex\amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 117.
+
+(C:\MiKTex\tex\latex\amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{C:/Users/Spy_2/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Sp
+y_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/logo.jpg>] [2
+
+]
+LaTeX Font Info:    Font shape `LGR/mak/m/n' will be
+(Font)              scaled to size 22.39185pt on input line 132.
+LaTeX Font Info:    Font shape `LGR/mak/bx/n' will be
+(Font)              scaled to size 22.39185pt on input line 132.
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+[3] [4
+
+
+]
+LaTeX Font Info:    Font shape `OT1/mak/bx/n' will be
+(Font)              scaled to size 22.39185pt on input line 144.
+LaTeX Font Info:    Font shape `OT1/mak/bx/n' will be
+(Font)              scaled to size 10.79993pt on input line 149.
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+[5] [6
+
+] [7] (C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.toc
+Underfull \vbox (badness 2197) has occurred while \output is active []
+
+ [8
+
+])
+\tf@toc=\write4
+LaTeX Font Info:    Font shape `LGR/mak/m/it' will be
+(Font)              scaled to size 10.79993pt on input line 167.
+
+[9] (C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.lof)
+\tf@lof=\write5
+ [10
+
+]
+(C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.lot)
+\tf@lot=\write6
+ [11
+
+] [12
+
+
+]
+[13] [14
+
+]
+Kef'alaio 1.
+LaTeX Font Info:    Font shape `LGR/mak/m/n' will be
+(Font)              scaled to size 15.55188pt on input line 184.
+LaTeX Font Info:    Font shape `LGR/mak/bx/n' will be
+(Font)              scaled to size 15.55188pt on input line 184.
+[15]
+LaTeX Font Info:    Font shape `OT1/mak/bx/n' will be
+(Font)              scaled to size 15.55188pt on input line 190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 190.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 190.
+
+LaTeX Font Info:    Font shape `LGR/mak/m/n' will be
+(Font)              scaled to size 12.9599pt on input line 192.
+LaTeX Font Info:    Font shape `LGR/mak/bx/n' will be
+(Font)              scaled to size 12.9599pt on input line 192.
+LaTeX Font Info:    Font shape `OT1/mak/bx/n' will be
+(Font)              scaled to size 12.9599pt on input line 192.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 192.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 192.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 192.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 192.
+
+[16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 213.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 213.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 213.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 213.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 213.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 213.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 218.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 218.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 218.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 218.
+
+<images/android_versions.jpg, id=327, 328.97906pt x 381.67593pt>
+File: images/android_versions.jpg Graphic file (type jpg)
+
+<use images/android_versions.jpg>
+Package pdftex.def Info: images/android_versions.jpg used on input line 222.
+(pdftex.def)             Requested size: 328.97826pt x 381.675pt.
+ [18]
+<images/distribution.jpg, id=335, 501.37312pt x 221.32687pt>
+File: images/distribution.jpg Graphic file (type jpg)
+
+<use images/distribution.jpg>
+Package pdftex.def Info: images/distribution.jpg used on input line 229.
+(pdftex.def)             Requested size: 501.37189pt x 221.32631pt.
+
+Overfull \hbox (15.11426pt too wide) in paragraph at lines 229--230
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/android_versions.jp
+g>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 232.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 232.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 232.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 232.
+
+LaTeX Font Info:    Try loading font information for OMS+mak on input line 235.
+
+(C:\MiKTex\tex\latex\kerkis\omsmak.fd
+File: omsmak.fd 
+)
+LaTeX Font Info:    Font shape `OMS/mak/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 235.
+LaTeX Font Info:    Font shape `OT1/mak/m/it' will be
+(Font)              scaled to size 10.79993pt on input line 235.
+Missing character: There is no v in font gk7t!
+ [20 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/distribution.jpg>]
+<images/android_arc.png, id=351, 889.82437pt x 575.90157pt>
+File: images/android_arc.png Graphic file (type png)
+
+<use images/android_arc.png>
+Package pdftex.def Info: images/android_arc.png used on input line 243.
+(pdftex.def)             Requested size: 439.62941pt x 284.52756pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 247.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 247.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 247.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 247.
+
+[21 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/android_arc.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 267.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 267.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 267.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 267.
+
+[22] <images/kdd_process.jpg, id=371, 724.20563pt x 493.0922pt>
+File: images/kdd_process.jpg Graphic file (type jpg)
+
+<use images/kdd_process.jpg>
+Package pdftex.def Info: images/kdd_process.jpg used on input line 275.
+(pdftex.def)             Requested size: 501.48155pt x 341.43306pt.
+
+Overfull \hbox (15.22392pt too wide) in paragraph at lines 275--276
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+(C:\MiKTex\tex\latex\ucs\uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+) [24 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/kdd_process.jpg>] 
+[25]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 299.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 299.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 299.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 299.
+
+[26] [27] [28
+
+]
+Kef'alaio 2.
+<images/mt1.jpg, id=418, 260.975pt x 434.62375pt>
+File: images/mt1.jpg Graphic file (type jpg)
+ <use images/mt1.jpg>
+Package pdftex.def Info: images/mt1.jpg used on input line 323.
+(pdftex.def)             Requested size: 136.67943pt x 227.62204pt.
+
+<images/mt2.jpg, id=419, 260.975pt x 434.62375pt>
+File: images/mt2.jpg Graphic file (type jpg)
+ <use images/mt2.jpg>
+Package pdftex.def Info: images/mt2.jpg used on input line 325.
+(pdftex.def)             Requested size: 136.67943pt x 227.62204pt.
+
+<images/mt3.jpg, id=420, 260.975pt x 434.62375pt>
+File: images/mt3.jpg Graphic file (type jpg)
+ <use images/mt3.jpg>
+Package pdftex.def Info: images/mt3.jpg used on input line 327.
+(pdftex.def)             Requested size: 136.67943pt x 227.62204pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29]
+<images/nr1.jpg, id=426, 260.975pt x 434.62375pt>
+File: images/nr1.jpg Graphic file (type jpg)
+ <use images/nr1.jpg>
+Package pdftex.def Info: images/nr1.jpg used on input line 335.
+(pdftex.def)             Requested size: 136.67943pt x 227.62204pt.
+
+<images/nr2.jpg, id=427, 260.975pt x 434.62375pt>
+File: images/nr2.jpg Graphic file (type jpg)
+ <use images/nr2.jpg>
+Package pdftex.def Info: images/nr2.jpg used on input line 337.
+(pdftex.def)             Requested size: 136.67943pt x 227.62204pt.
+
+<images/nr3.jpg, id=428, 260.975pt x 434.62375pt>
+File: images/nr3.jpg Graphic file (type jpg)
+ <use images/nr3.jpg>
+Package pdftex.def Info: images/nr3.jpg used on input line 339.
+(pdftex.def)             Requested size: 136.67943pt x 227.62204pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/mt1.jpg> <C:/Users/
+Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/mt2.jpg> <C:/Users/Spy_2/Dropbox/P
+tuxiaki/spyridoulaTrag/images/mt3.jpg>] <images/rk1.jpg, id=434, 260.975pt x 46
+3.7325pt>
+File: images/rk1.jpg Graphic file (type jpg)
+
+<use images/rk1.jpg>
+Package pdftex.def Info: images/rk1.jpg used on input line 346.
+(pdftex.def)             Requested size: 128.10187pt x 227.62204pt.
+ <images/rk2.jpg, id=435, 260.975pt x 463.7325pt>
+File: images/rk2.jpg Graphic file (type jpg)
+
+<use images/rk2.jpg>
+Package pdftex.def Info: images/rk2.jpg used on input line 348.
+(pdftex.def)             Requested size: 128.10187pt x 227.62204pt.
+ <images/rk3.jpg, id=436, 260.975pt x 463.7325pt>
+File: images/rk3.jpg Graphic file (type jpg)
+
+<use images/rk3.jpg>
+Package pdftex.def Info: images/rk3.jpg used on input line 350.
+(pdftex.def)             Requested size: 128.10187pt x 227.62204pt.
+
+Underfull \vbox (badness 3189) has occurred while \output is active []
+
+ [31 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/nr1.jpg> <C:/Users/
+Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/nr2.jpg> <C:/Users/Spy_2/Dropbox/P
+tuxiaki/spyridoulaTrag/images/nr3.jpg>] (C:\MiKTex\tex\latex\ucs\uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+) [32 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/rk1.jpg> <C:/Users
+/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/rk2.jpg> <C:/Users/Spy_2/Dropbox/
+Ptuxiaki/spyridoulaTrag/images/rk3.jpg>]
+<images/space_time_cube.jpg, id=450, 206.27063pt x 234.8775pt>
+File: images/space_time_cube.jpg Graphic file (type jpg)
+
+<use images/space_time_cube.jpg>
+Package pdftex.def Info: images/space_time_cube.jpg used on input line 363.
+(pdftex.def)             Requested size: 206.27011pt x 234.87692pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/space_time_cube.jpg
+>] [34]
+[35] [36] [37] [38] [39]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 455.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 455.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 455.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 455.
+
+[40] [41] [42
+
+]
+Kef'alaio 3.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 470.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 470.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 470.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 470.
+
+<images/eclipseSDK.jpg, id=522, 277.035pt x 168.63pt>
+File: images/eclipseSDK.jpg Graphic file (type jpg)
+
+<use images/eclipseSDK.jpg>
+Package pdftex.def Info: images/eclipseSDK.jpg used on input line 476.
+(pdftex.def)             Requested size: 277.03432pt x 168.62958pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [43]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 482.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 482.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 482.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 482.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 486.
+
+[44 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/eclipseSDK.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 490.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 490.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 490.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 490.
+
+<images/sdk_manager.jpg, id=534, 702.625pt x 501.875pt>
+File: images/sdk_manager.jpg Graphic file (type jpg)
+
+<use images/sdk_manager.jpg>
+Package pdftex.def Info: images/sdk_manager.jpg used on input line 493.
+(pdftex.def)             Requested size: 358.51627pt x 256.0748pt.
+ [45 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/sdk_manager.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 498.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 498.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 498.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 498.
+
+<images/emulator.jpg, id=541, 479.7925pt x 461.725pt>
+File: images/emulator.jpg Graphic file (type jpg)
+
+<use images/emulator.jpg>
+Package pdftex.def Info: images/emulator.jpg used on input line 501.
+(pdftex.def)             Requested size: 266.09763pt x 256.0748pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 506.
+
+<images/avd_manager.jpg, id=542, 689.57625pt x 432.61626pt>
+File: images/avd_manager.jpg Graphic file (type jpg)
+
+<use images/avd_manager.jpg>
+Package pdftex.def Info: images/avd_manager.jpg used on input line 509.
+(pdftex.def)             Requested size: 408.19328pt x 256.0748pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [46 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/emulator.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 515.
+
+<images/ddms.jpg, id=547, 1026.08344pt x 547.2947pt>
+File: images/ddms.jpg Graphic file (type jpg)
+ <use images/ddms.jpg>
+Package pdftex.def Info: images/ddms.jpg used on input line 518.
+(pdftex.def)             Requested size: 480.09865pt x 256.0748pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [47 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/avd_manager.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 524.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 524.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 524.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 524.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 526.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 528.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\encodingdefault' on input line 529.
+
+[48 <C:/Users/Spy_2/Dropbox/Ptuxiaki/spyridoulaTrag/images/ddms.jpg>] [49]
+[50
+
+]
+Kef'alaio 4.
+[51] [52
+
+]
+Kef'alaio 5.
+[53] [54
+
+]
+Kef'alaio 6.
+(C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.bbl [55] [56
+
+] [57]
+[58])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 549.
+ [59]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 549.
+ (C:\Users\Spy_2\Dropbox\Ptuxiaki\spyridoulaTrag\BSthesis.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 549.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 549.
+Package rerunfilecheck Info: File `BSthesis.out' has not changed.
+(rerunfilecheck)             Checksum: 4840085563A4687357661E9505727B78;9334.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 549.
+ ) 
+Here is how much of TeX's memory you used:
+ 15253 strings out of 493921
+ 211120 string characters out of 3154500
+ 299466 words of memory out of 3000000
+ 18129 multiletter control sequences out of 15000+200000
+ 29152 words of font info for 68 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 32i,12n,49p,2982b,514s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/MiKTex/fonts/enc/dvips/kerkis/kerkis.enc}{C:/MiKTex/fonts/enc/dvips/kerki
+s/kmsym.enc}{C:/MiKTex/fonts/enc/dvips/kerkis/gpkerkis.enc}<C:/MiKTex/fonts/typ
+e1/public/kerkis/Kerkis-Bold.pfb><C:/MiKTex/fonts/type1/public/kerkis/Kerkis-It
+alic.pfb><C:/MiKTex/fonts/type1/public/kerkis/Kerkis.pfb><C:/MiKTex/fonts/type1
+/public/kerkis/ktsy.pfb>
+Output written on BSthesis.pdf (59 pages, 1487246 bytes).
+PDF statistics:
+ 662 PDF objects out of 1000 (max. 8388607)
+ 173 named destinations out of 1000 (max. 500000)
+ 413 words of extra memory for PDF output out of 10000 (max. 10000000)
+

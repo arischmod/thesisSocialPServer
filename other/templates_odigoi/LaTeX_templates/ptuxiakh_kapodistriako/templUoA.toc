@@ -1,0 +1,12 @@
+\select@language {greek}
+\contentsline {paragraph}{}{5}{section*.2}
+\contentsline {paragraph}{}{7}{section*.4}
+\contentsline {paragraph}{}{11}{section*.6}
+\contentsline {chapter}{Pr'ologoc}{21}{chapter*.8}
+\contentsline {paragraph}{}{21}{section*.9}
+\contentsline {chapter}{\numberline {1}Eisagwg'h}{23}{chapter.1}
+\contentsline {chapter}{\numberline {2}T'itloc}{25}{chapter.2}
+\contentsline {chapter}{\numberline {3}Ep'ilogoc}{27}{chapter.3}
+\contentsline {chapter}{Orolog'ia}{29}{chapter*.10}
+\contentsline {chapter}{Suntm'hseic - Arktik'olexa}{31}{chapter*.11}
+\contentsline {chapter}{Bibliograf'ia}{33}{chapter*.12}

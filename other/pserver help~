@@ -1,0 +1,41 @@
+
+---> DataSets
+http://www.grouplens.org/node/12
+
+----> rest API
+http://scify.iit.demokritos.gr/SciFYwiki/doku.php?id=v1.0
+
+--> simple API example
+http://localhost:1111/pers?clnt=LastFM|1234&com=getusrs&whr=*
+
+----> Hraklhs
+Για να ανακεφαλαιώσω αυτά που είπαμε στη σημερινή συνάντηση οι στόχοι του Άρη είναι με τη σειρά οι ακόλουθοι:
+- Επέκταση της υποδομής του pServer ώστε να υποστηρίζει γράφο κοινωνικού δικτύου.
+Για μια γρήγορη εισαγωγή στα κοινωνικά δίκτυα και στο πως μοντελοποιείται η δομή τους δες εδώ
+http://www.slideshare.net/gcheliotis/social-network-analysis-3273045
+http://faculty.ucr.edu/~hanneman/nettext/C3_Graphs.html
+- Υλοποίηση/ενσωμάτωση του CLUTO (ή άλλης τεχνικής clustering) στην υποδομή ώστε να παράγονται clusters απευθείας από τον κοινωνικό γράφο
+- Δημιουργία ενός module το οποίο θα επιτρέπει με τρόπο αδιαφανή προς τον τελικό χρήστη τη συγκριτική αξιολόγηση των recommendations.
+
+
+---> GIT
+http://git-scm.com/book
+
+github - acount
+fork
+
+git - app install
+comands:  git clone url "./location/"
+git pull (pull canges)
+git add -A (prosthese kenouria arxia)
+git commit -a (paketareis kai perigrafeis)
+git push origin master (upload new version)
+git status  (saw changes)
+
+----> NetBeans
+
+an problem: nb projects
+PersServerUtils
+PServer
+
+

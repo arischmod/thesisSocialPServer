@@ -1,0 +1,73 @@
+0. public interface PService
+	getMimeType()
+	init( String[] params )
+	service( VectorMap parameters, StringBuffer response, DBAccess dbAccess )
+
+
+0.1 public class Communities implements pserver.pservlets.PService (0)
+	service(VectorMap parameters, StringBuffer response, DBAccess dbAccess)
+	comCommuMakeCommunities (2.1)
+	comCommuMakeUserDistances (1.1)
+
+1.1 comCommuMakeUserDistances(VectorMap queryParam, StringBuffer respBody, DBAccess dbAccess)
+	execMakeUserDistances(queryParam, respBody, dbAccess); (1.2)
+
+1.2 execMakeUserDistances(VectorMap queryParam, StringBuffer respBody, DBAccess dbAccess)
+	VectorMetric metric = PersServer.pbeansLoadader.getVMetrics().get(smetricName); (1.3)
+	generateDistances(dbAccess, clientName, metric, features); (1.4)
+
+1.3 public interface VectorMetric 
+	getMaximuxmCoefficientValue();
+	getMinimumCoefficientValue();
+	getDistance( PServerVector vec1, PServerVector vec2 ); 
+
+1.4 generateDistances(DBAccess dbAccess, String clientName, VectorMetric metric, String features)
+        PCommunityDBAccess pdbAccess = new PCommunityDBAccess(dbAccess); (2.5)
+        pdbAccess.deleteUserAccociations(clientName, DBAccess.RELATION_SIMILARITY); (2.5)
+        pdbAccess.generateUserDistances(clientName, metric, DBAccess.RELATION_SIMILARITY, Integer.parseInt(PersServer.pref.getPref("thread_num")), features); (1.5)
+
+1.5 generateUserDistances(String clientName, VectorMetric metric, int dataRelationType, int numOfThreads, String features)
+	makeUserDistances(pusers, users, i, threadExecutor, dataRelationType, clientName, metric, ftrs, pudb); (1.6)
+
+1.6 makeUserDistances(ArrayList<PUser> pusers, ArrayList<String> users, int uPos, ExecutorService threadExecutor, int dataRelationType, String clientName, VectorMetric metric, String ftrs[], PUserDBAccess pudb) 
+	saveUserSimilarity(target, comparWith, metric, clientName, dataRelationType);
+
+1.7 public class PUserDBAccess 
+	getUserProfile(String userName, String[] featureTypes, String clientName, boolean loadAssociations)
+
+2.1 comCommuMakeCommunities(VectorMap queryParam, StringBuffer respBody, DBAccess dbAccess)
+	execMakeCommunities(queryParam, respBody, dbAccess); (2.2)
+
+2.2 execMakeCommunities(VectorMap queryParam, StringBuffer respBody, DBAccess dbAccess)
+	GraphClustering algorithm = PersServer.pbeansLoadader.getGClustering().get(algorithmName); (2.3)
+
+	dbAccess.clearUserCommunities(clientName); (2.4)
+        PCommunityDBAccess pdbAccess = new PCommunityDBAccess(dbAccess); (2.5)
+        pdbAccess.deleteUserAccociations(clientName, DBAccess.RELATION_BINARY_SIMILARITY); (2.5)
+        pdbAccess.generateBinarySimilarities(dbAccess, clientName, op, threashold); (2.5)
+        String sql = "SELECT * FROM " + DBAccess.UASSOCIATIONS_TABLE + " WHERE " + DBAccess.FIELD_PSCLIENT + "='" + clientName + "' AND " + DBAccess.UASSOCIATIONS_TABLE_FIELD_TYPE + "=" + DBAccess.RELATION_BINARY_SIMILARITY;
+        UserCommunityManager cManager = new UserCommunityManager(dbAccess, clientName); (2.6)
+        algorithm.execute(sql, cManager, dbAccess);  (2.7)
+
+2.3 public interface GraphClustering
+	execute( String querySql, GraphClusterManager graphClusterManager, DBAccess dbAccess )
+
+2.4 public class DBAccess
+	clearUserCommunities
+
+2.5 public class PCommunityDBAccess
+	deleteUserAccociations(String clientName, int relationType)
+	generateBinarySimilarities(DBAccess dbAccess, String clientName, int op, float threashold)
+	generateUserDistances(clientName, metric, DBAccess.RELATION_SIMILARITY, Integer.parseInt(PersServer.pref.getPref("thread_num")), features);  (1.5)
+	makeUserDistances(ArrayList<PUser> pusers, ArrayList<String> users, int uPos, ExecutorService threadExecutor, int dataRelationType, String clientName, VectorMetric metric, String ftrs[], PUserDBAccess pudb) (1.6)
+	saveUserSimilarity(PUser user1, PUser user2, VectorMetric metric, String clientName, int dataRelationType  )
+
+2.6 public class UserCommunityManager implements GraphClusterManager
+
+2.7 public class BK implements GraphClustering
+	BK() - constructor
+	execute( String querySql, GraphClusterManager graphClusterManager, DBAccess dbAccess )
+	-> getMaximalCliques() -> runBK( R, P, X ); 
+
+ 
+	
