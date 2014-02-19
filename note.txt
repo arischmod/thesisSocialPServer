@@ -1,0 +1,92 @@
+java -Xms3000m -jar ~/NetBeansProjects/PServer/socialPServer/dist/socialPServer.jar flixster metis
+java -jar ~/NetBeansProjects/PServer/socialPServer/dist/socialPServer.jar LastFM metis
+
+FLIXSTER
+
+  WeakComponent algoritm is trying to find communities...
+WeakComponent algoritm  ***found 70 clusters***
+ discovery runTime: 17270
+      785754 unclustered Users
+      found 69 communities
+      max comminity size = 4
+      min comminity size = 2
+      average comminity size = 2.4927535
+     
+     Total clustering scheme compactness = 0.20660953
+     Compactness of all centroids = 0.007924251
+    clusterer quality = 26.073067
+
+
+  Metis algoritm is trying to find communities...
+Metis algoritm  ***found 9000 clusters***
+ discovery runTime: 108963
+      0 unclustered Users
+      found 9000 communities
+      max comminity size = 89
+      min comminity size = 0
+      average comminity size = 87.32511
+     
+     Total clustering scheme compactness = 0.026727572
+     Compactness of all centroids = 0.12443053
+    clusterer quality = 0.21479915
+
+
+
+LASTFM
+
+  BronKerboschClique algoritm is trying to find communities...
+BronKerboschClique algoritm  ***found 11636 clusters***
+ discovery runTime: 3287
+      0 unclustered Users
+      found 11636 communities
+      max comminity size = 10
+      min comminity size = 2
+      average comminity size = 3.5090237
+     
+     Total clustering scheme compactness = 12.303899
+     Compactness of all centroids = 0.13966095
+    clusterer quality = 88.09834
+
+
+  WeakComponent algoritm is trying to find communities...
+WeakComponent algoritm  ***found 20 clusters***
+ discovery runTime: 37
+      1843 unclustered Users
+      found 19 communities
+      max comminity size = 7
+      min comminity size = 2
+      average comminity size = 2.5789473
+     
+     Total clustering scheme compactness = 0.62739503
+     Compactness of all centroids = 0.035697874
+    clusterer quality = 17.575138
+
+
+  Metis algoritm is trying to find communities...
+Metis algoritm  ***found 50 clusters***
+ discovery runTime: 221
+      0 unclustered Users
+      found 50 communities
+      max comminity size = 38
+      min comminity size = 35
+      average comminity size = 37.84
+     
+     Total clustering scheme compactness = 0.26465952
+     Compactness of all centroids = 0.1481018
+    clusterer quality = 1.7870108
+
+
+  EdgeBetweenness algoritm is trying to find communities...
+EdgeBetweenness algoritm  ***found 22 clusters***
+ discovery runTime: 89521
+      1834 unclustered Users
+      found 21 communities
+      max comminity size = 7
+      min comminity size = 2
+      average comminity size = 2.7619047
+     
+     Total clustering scheme compactness = 0.5821527
+     Compactness of all centroids = 0.037443716
+    clusterer quality = 15.547408
+
+
