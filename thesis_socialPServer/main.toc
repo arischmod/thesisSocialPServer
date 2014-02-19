@@ -1,0 +1,65 @@
+\contentsline {chapter}{Περίληψη}{i}{dummy.1}
+
+\contentsline {chapter}{Abstract}{ii}{dummy.2}
+
+\contentsline {chapter}{Ευχαριστίες}{iii}{dummy.3}
+\vspace {1em}
+\contentsline {chapter}{Περιεχόμενα}{iv}{dummy.4}
+\contentsline {chapter}{\numberline {1}Εισαγωγή}{1}{chapter.6}
+\contentsline {section}{\numberline {1.1}Ανάλυση Του Προβλήματος}{1}{section.7}
+\contentsline {section}{\numberline {1.2}Προσέγγιση}{2}{section.8}
+\contentsline {chapter}{\numberline {2}Θεωρητική Ανάλυση και Αλγόριθμοι}{4}{chapter.9}
+\contentsline {section}{\numberline {2.1}Προσωποποίηση}{4}{section.10}
+\contentsline {section}{\numberline {2.2}Συστήματα Συστάσεων}{4}{section.11}
+\contentsline {subsection}{\numberline {2.2.1}Εισαγωγή Στα Συστήματα Συστάσεων}{5}{subsection.12}
+\contentsline {subsection}{\numberline {2.2.2}Μέθοδοι Συστάσεων}{6}{subsection.13}
+\contentsline {section}{\numberline {2.3}Κοινωνικά Συστήματα Συστάσεων}{7}{section.14}
+\contentsline {subsection}{\numberline {2.3.1}Κοινωνικά Δίκτυα και Συστήματα Συστάσεων}{7}{subsection.15}
+\contentsline {subsection}{\numberline {2.3.2}Συστάσεις βάση Εμπιστοσύνης και Κοινωνικές Συστάσεις}{8}{subsection.16}
+\contentsline {subsection}{\numberline {2.3.3}Πώς Θα Πετύχουμε Κοινωνικές Συστάσεις}{9}{subsection.17}
+\contentsline {subsection}{\numberline {2.3.4}Τι είναι και τι αντιπροσωπεύει μια Κοινότητα Χρηστών}{9}{subsection.18}
+\contentsline {section}{\numberline {2.4}Αλγόριθμοι για την παραγωγή Κοινοτήτων Χρηστών}{10}{section.19}
+\contentsline {section}{\numberline {2.5}Ανάλυση των Αλγορίθμων}{11}{section.20}
+\contentsline {subsection}{\numberline {2.5.1}WeakComponent}{12}{subsection.21}
+\contentsline {subsection}{\numberline {2.5.2}EdgeBetweenness}{13}{subsection.22}
+\contentsline {subsection}{\numberline {2.5.3}BronKerbosch}{14}{subsection.24}
+\contentsline {subsection}{\numberline {2.5.4}Metis}{15}{subsection.25}
+\contentsline {chapter}{\numberline {3}Σχεδιασμός}{17}{chapter.27}
+\contentsline {section}{\numberline {3.1}socialPServer}{17}{section.28}
+\contentsline {section}{\numberline {3.2}Κοινωνική Πληροφορία}{19}{section.30}
+\contentsline {section}{\numberline {3.3}Κοινότητες χρηστών}{20}{section.32}
+\contentsline {section}{\numberline {3.4}Προφίλ Χρήστη (userProfile)}{20}{section.33}
+\contentsline {section}{\numberline {3.5}PServer}{20}{section.34}
+\contentsline {section}{\numberline {3.6}Αρχιτεκτονική του PServer}{22}{section.35}
+\contentsline {section}{\numberline {3.7}ενσωμάτωση στον PServer}{24}{section.37}
+\contentsline {chapter}{\numberline {4}Υλοποίηση}{26}{chapter.39}
+\contentsline {section}{\numberline {4.1}Πακέτο socialpserver}{26}{section.40}
+\contentsline {subsection}{\numberline {4.1.1}SocialPServer-main}{27}{subsection.42}
+\contentsline {subsection}{\numberline {4.1.2}Community}{28}{subsection.43}
+\contentsline {subsection}{\numberline {4.1.3}SetOfCommunities}{29}{subsection.69}
+\contentsline {section}{\numberline {4.2}Πακέτο socialpserver.algorithmic}{32}{section.104}
+\contentsline {subsection}{\numberline {4.2.1}interface ClustererAlgorithm}{33}{subsection.106}
+\contentsline {subsection}{\numberline {4.2.2}Eνδεικτικές Yλοποιήσεις Αλγορίθμων}{34}{subsection.120}
+\contentsline {section}{\numberline {4.3}Πακέτο socialpserver.dataio}{38}{section.188}
+\contentsline {subsection}{\numberline {4.3.1}Ανάκτηση - Αποθήκευση}{39}{subsection.190}
+\contentsline {subsection}{\numberline {4.3.2}DBAccess}{40}{subsection.204}
+\contentsline {subsection}{\numberline {4.3.3}Loggers}{41}{subsection.210}
+\contentsline {chapter}{\numberline {5}Αξιολόγηση παραγόμενων κοινοτήτων}{43}{chapter.223}
+\contentsline {section}{\numberline {5.1}Δεδομένα (DataSets)}{44}{section.224}
+\contentsline {section}{\numberline {5.2}Σχεδιασμός της μεθόδου Αξιολόγησης}{45}{section.225}
+\contentsline {subsection}{\numberline {5.2.1}Αντιπροσωπευτικό σημείο συστάδας - centroid}{46}{subsection.226}
+\contentsline {subsection}{\numberline {5.2.2}Μετρική ομοιότητας - cosine similarity}{47}{subsection.227}
+\contentsline {subsection}{\numberline {5.2.3}Μετρική ομοιότητας ζεύγους συστάδων - Intra Simmilarity}{47}{subsection.228}
+\contentsline {subsection}{\numberline {5.2.4}Inter Simmilarity}{48}{subsection.229}
+\contentsline {section}{\numberline {5.3}Υλοποίηση της Αξιολόγησης}{48}{section.231}
+\contentsline {chapter}{\numberline {6}Εφαρμογή Προγράμματος και Αλγορίθμων Σε Πραγματικά Δεδομένα - Συμπεράσματα}{50}{chapter.232}
+\contentsline {section}{\numberline {6.1}Εφαρμογή Σε Πραγματικά Δεδομένα}{50}{section.233}
+\contentsline {subsection}{\numberline {6.1.1}Χαρακτηριστικά των Αλγορίθμων:}{51}{subsection.234}
+\contentsline {subsection}{\numberline {6.1.2}Εφαρμογή Αλγορίθμων Ομαδοποίησης (Clustering)}{54}{subsection.235}
+\contentsline {subsection}{\numberline {6.1.3}Εφαρμογή Αλγορίθμων Κατάτμησης (Partitioning): Metis}{56}{subsection.236}
+\contentsline {section}{\numberline {6.2}Συμπεράσματα}{58}{section.237}
+\contentsline {chapter}{\numberline {7}Μελλοντικές Επεκτάσεις - Προσωπικά Δεδομένα - Άδειες}{59}{chapter.238}
+\contentsline {section}{\numberline {7.1}Μελλοντικές Επεκτάσεις}{59}{section.239}
+\contentsline {section}{\numberline {7.2}Προσωπικά Δεδομένα}{60}{section.240}
+\contentsline {section}{\numberline {7.3}Άδειες}{61}{section.241}
+\contentsline {chapter}{Βιβλιογραφία}{62}{dummy.242}

@@ -1,0 +1,259 @@
+\begin{thebibliography}{37}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Mulvenna et~al.(2000)Mulvenna, Anand, and
+  B{\"u}chner]{mulvenna2000personalization}
+Maurice~D Mulvenna, Sarabjot~S Anand, and Alex~G B{\"u}chner.
+\newblock Personalization on the net using web mining: introduction.
+\newblock \emph{Communications of the ACM}, 43\penalty0 (8):\penalty0 122--125,
+  2000.
+
+\bibitem[Mobasher et~al.(2000)Mobasher, Cooley, and
+  Srivastava]{mobasher2000automatic}
+Bamshad Mobasher, Robert Cooley, and Jaideep Srivastava.
+\newblock Automatic personalization based on web usage mining.
+\newblock \emph{Communications of the ACM}, 43\penalty0 (8):\penalty0 142--151,
+  2000.
+
+\bibitem[Eirinaki and Vazirgiannis(2003)]{eirinaki2003web}
+Magdalini Eirinaki and Michalis Vazirgiannis.
+\newblock Web mining for web personalization.
+\newblock \emph{ACM Transactions on Internet Technology (TOIT)}, 3\penalty0
+  (1):\penalty0 1--27, 2003.
+
+\bibitem[Adomavicius and Tuzhilin(2005)]{NGRS}
+G.~Adomavicius and A.~Tuzhilin.
+\newblock Toward the next generation of recommender systems: a survey of the
+  state-of-the-art and possible extensions.
+\newblock \emph{Knowledge and Data Engineering, IEEE Transactions on},
+  17\penalty0 (6):\penalty0 734--749, 2005.
+\newblock ISSN 1041-4347.
+\newblock \doi{10.1109/TKDE.2005.99}.
+
+\bibitem[Hill et~al.(1995)Hill, Stead, Rosenstein, and
+  Furnas]{hill1995recommending}
+Will Hill, Larry Stead, Mark Rosenstein, and George Furnas.
+\newblock Recommending and evaluating choices in a virtual community of use.
+\newblock In \emph{Proceedings of the SIGCHI conference on Human factors in
+  computing systems}, pages 194--201. ACM Press/Addison-Wesley Publishing Co.,
+  1995.
+
+\bibitem[Resnick et~al.(1994)Resnick, Iacovou, Suchak, Bergstrom, and
+  Riedl]{resnick1994grouplens}
+Paul Resnick, Neophytos Iacovou, Mitesh Suchak, Peter Bergstrom, and John
+  Riedl.
+\newblock Grouplens: an open architecture for collaborative filtering of
+  netnews.
+\newblock In \emph{Proceedings of the 1994 ACM conference on Computer supported
+  cooperative work}, pages 175--186. ACM, 1994.
+
+\bibitem[Shardanand and Maes(1995)]{shardanand1995social}
+Upendra Shardanand and Pattie Maes.
+\newblock Social information filtering: algorithms for automating “word of
+  mouth”.
+\newblock In \emph{Proceedings of the SIGCHI conference on Human factors in
+  computing systems}, pages 210--217. ACM Press/Addison-Wesley Publishing Co.,
+  1995.
+
+\bibitem[Euler(1741)]{Euler41}
+Leonard Euler.
+\newblock {Solutio problematis ad geometriam situs pertinentis}.
+\newblock \emph{Commentarii academiae scientiarum Petropolitanae}, 8:\penalty0
+  128--140, 1741.
+\newblock URL \url{http://www.math.dartmouth.edu/\~{}euler/pages/E053.html}.
+
+\bibitem[Falahi et~al.(2012)Falahi, Mavridis, and Atif]{SNRSWCFS}
+KannaAl Falahi, Nikolaos Mavridis, and Yacine Atif.
+\newblock Social networks and recommender systems: A world of current and
+  future synergies.
+\newblock \emph{Computational Social Networks}, pages 445--465, 2012.
+\newblock \doi{10.1007/978-1-4471-4048-1_18}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-1-4471-4048-1_18}.
+
+\bibitem[Ma et~al.(2011)Ma, Zhou, Liu, Lyu, and King]{RSwithSreg}
+Hao Ma, Dengyong Zhou, Chao Liu, Michael~R. Lyu, and Irwin King.
+\newblock Recommender systems with social regularization.
+\newblock pages 287--296, 2011.
+\newblock \doi{10.1145/1935826.1935877}.
+\newblock URL \url{http://doi.acm.org/10.1145/1935826.1935877}.
+
+\bibitem[Mishra et~al.(2007)Mishra, Schreiber, Stanton, and
+  Tarjan]{ClusteringSocialNetworks}
+Nina Mishra, Robert Schreiber, Isabelle Stanton, and RobertE. Tarjan.
+\newblock Clustering social networks.
+\newblock In Anthony Bonato and FanR.K. Chung, editors, \emph{Algorithms and
+  Models for the Web-Graph}, volume 4863 of \emph{Lecture Notes in Computer
+  Science}, pages 56--67. Springer Berlin Heidelberg, 2007.
+\newblock ISBN 978-3-540-77003-9.
+\newblock \doi{10.1007/978-3-540-77004-6_5}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-77004-6_5}.
+
+\bibitem[Newman and Girvan(2004)]{PhysRevE.69.026113}
+M.~E.~J. Newman and M.~Girvan.
+\newblock Finding and evaluating community structure in networks.
+\newblock \emph{Phys. Rev. E}, 69:\penalty0 026113, Feb 2004.
+\newblock \doi{10.1103/PhysRevE.69.026113}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/PhysRevE.69.026113}.
+
+\bibitem[Kabiljo()]{kabiljosocial}
+Igor Kabiljo.
+\newblock Social graph clustering.
+
+\bibitem[White(2009)]{WeakComponent}
+Scott White.
+\newblock Weak component clusterer, a tool taken from jung2 2.0 api, 2009.
+\newblock URL
+  \url{http://jung.sourceforge.net/doc/api/edu/uci/ics/jung/algorithms/cluster/WeakComponentClusterer.html}.
+
+\bibitem[Freeman(1977)]{freeman1977set}
+Linton~C Freeman.
+\newblock A set of measures of centrality based on betweenness.
+\newblock \emph{Sociometry}, pages 35--41, 1977.
+
+\bibitem[Rocchini(2007)]{GraphBetweenness}
+Claudio Rocchini.
+\newblock Graph betweenness img, hue scale representing node betweenness on a
+  graph, April 2007.
+\newblock URL \url{https://en.wikipedia.org/wiki/File:Graph_betweenness.svg}.
+
+\bibitem[Girvan and Newman(2002)]{Girvan11062002}
+M.~Girvan and M.~E.~J. Newman.
+\newblock Community structure in social and biological networks.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 99\penalty0
+  (12):\penalty0 7821--7826, 2002.
+\newblock \doi{10.1073/pnas.122653799}.
+\newblock URL \url{http://www.pnas.org/content/99/12/7821.abstract}.
+
+\bibitem[Scott~White(2009)]{EdgeBetweenness}
+Tom~Nelson Scott~White.
+\newblock Edge betweenness clusterer, a tool taken from jung2 2.0 api, 2009.
+\newblock URL
+  \url{http://jung.sourceforge.net/doc/api/edu/uci/ics/jung/algorithms/cluster/EdgeBetweennessClusterer.html}.
+
+\bibitem[Bron and Kerbosch(1973)]{Bron:1973:AFC:362342.362367}
+Coen Bron and Joep Kerbosch.
+\newblock Algorithm 457: Finding all cliques of an undirected graph.
+\newblock \emph{Commun. ACM}, 16\penalty0 (9):\penalty0 575--577, September
+  1973.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/362342.362367}.
+\newblock URL \url{http://doi.acm.org/10.1145/362342.362367}.
+
+\bibitem[Samudrala and Moult(1998)]{SamudralaMoult:2931890}
+R.~Samudrala and J.~Moult.
+\newblock A graph-theoretic algorithm for comparative modeling of protein
+  structure.
+\newblock \emph{Journal of molecular biology}, 279\penalty0 (1):\penalty0
+  287--302, May 1998.
+\newblock ISSN 0022-2836.
+\newblock \doi{10.1006/jmbi.1998.1689}.
+\newblock URL \url{http://dx.doi.org/10.1006/jmbi.1998.1689}.
+
+\bibitem[Proschak()]{BronKerbosch}
+Ewgenij Proschak.
+\newblock Bronkerbosch clique finder, tool taken from jgrapht java graph
+  library.
+\newblock URL
+  \url{http://jgrapht.org/javadoc/org/jgrapht/alg/BronKerboschCliqueFinder.html}.
+
+\bibitem[George()]{Metis}
+Karypis George.
+\newblock set of serial programs for partitioning graphs.
+\newblock URL \url{http://glaros.dtc.umn.edu/gkhome/metis/metis/overview}.
+
+\bibitem[George(2013)]{karypisΜetis}
+Karypis George.
+\newblock Metis manual, version 5.1.x.
+\newblock \emph{University of Minnesota, Department of Computer Science and
+  Engineering}, 2013.
+
+\bibitem[Grph()]{GpMetis}
+Grph.
+\newblock Gpmetis, tool taken from grph high performance graph library for
+  java.
+\newblock URL
+  \url{http://www.i3s.unice.fr/~hogie/grph/javadoc/grph/algo/partitionning/metis/Gpmetis.html}.
+
+\bibitem[for Scientific Research~"Demokritos" and
+  SciFY({\natexlab{a}})]{pServer}
+National~Center for Scientific Research~"Demokritos" and SciFY.
+\newblock Pserver project, {\natexlab{a}}.
+\newblock URL \url{http://pserver-project.org/en}.
+
+\bibitem[for Scientific Research~"Demokritos" and
+  SciFY({\natexlab{b}})]{pServerUserGuide}
+National~Center for Scientific Research~"Demokritos" and SciFY.
+\newblock User’s guide for pserver, {\natexlab{b}}.
+\newblock URL
+  \url{pserver-project.org/sites/default/files/PServerUsersGuide.pdf}.
+
+\bibitem[FM()]{LastFM}
+Last FM.
+\newblock Last.fm online music system.
+\newblock URL \url{http://www.lastfm.com}.
+
+\bibitem[Cantador et~al.(2011)Cantador, Brusilovsky, and Kuflik]{RecSys2011}
+Iv\'{a}n Cantador, Peter Brusilovsky, and Tsvi Kuflik.
+\newblock 2nd workshop on information heterogeneity and fusion in recommender
+  systems (hetrec 2011).
+\newblock In \emph{Proceedings of the 5th ACM conference on Recommender
+  systems}, RecSys 2011, New York, NY, USA, 2011. ACM.
+
+\bibitem[grouplens()]{grouplens}
+grouplens.
+\newblock grouplens lastfm dataset.
+\newblock URL \url{http://grouplens.org/datasets/hetrec-2011/}.
+
+\bibitem[flixster.com()]{flixster}
+flixster.com.
+\newblock Flixster is a social movie site.
+\newblock URL \url{http://www.flixster.com/}.
+
+\bibitem[sja25@sfu.ca(2010)]{MohsenJamali}
+Mohsen~Jamali sja25@sfu.ca.
+\newblock Flixster, 2010.
+\newblock URL \url{http://www.cs.sfu.ca/~sja25/personal/datasets/}.
+
+\bibitem[Massa and Avesani(2006)]{massa2006trust}
+Paolo Massa and Paolo Avesani.
+\newblock Trust-aware bootstrapping of recommender systems.
+\newblock In \emph{ECAI Workshop on Recommender Systems}, pages 29--33.
+  Citeseer, 2006.
+
+\bibitem[Manning et~al.(2008)Manning, Raghavan, and
+  Sch{\"u}tze]{manning2008introduction}
+Christopher~D Manning, Prabhakar Raghavan, and Hinrich Sch{\"u}tze.
+\newblock \emph{Introduction to information retrieval}, volume 1, chapter: Flat
+  clustering-Evaluation of clustering.
+\newblock Cambridge University Press Cambridge, 2008.
+
+\bibitem[Davies and Bouldin(1979)]{DaviesBouldinIndex}
+David~L. Davies and Donald~W. Bouldin.
+\newblock A cluster separation measure.
+\newblock \emph{Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, PAMI-1\penalty0 (2):\penalty0 224--227, April 1979.
+\newblock ISSN 0162-8828.
+\newblock \doi{10.1109/TPAMI.1979.4766909}.
+
+\bibitem[Miettinen et~al.(2006)Miettinen, Honkala, and Roos]{miettinen}
+Pekka Miettinen, Mikko Honkala, and Janne Roos.
+\newblock \emph{Using metis and hmetis algorithms in circuit partitioning}.
+\newblock Helsinki University of Technology, 2006.
+
+\bibitem[Gleiser and Danon(2003)]{jazz}
+Pablo~M Gleiser and Leon Danon.
+\newblock Community structure in jazz.
+\newblock \emph{Advances in complex systems}, 6\penalty0 (04):\penalty0
+  565--573, 2003.
+
+\bibitem[Palla et~al.(2005)Palla, Der{\'e}nyi, Farkas, and Vicsek]{overlapping}
+Gergely Palla, Imre Der{\'e}nyi, Ill{\'e}s Farkas, and Tam{\'a}s Vicsek.
+\newblock Uncovering the overlapping community structure of complex networks in
+  nature and society.
+\newblock \emph{Nature}, 435\penalty0 (7043):\penalty0 814--818, 2005.
+
+\end{thebibliography}

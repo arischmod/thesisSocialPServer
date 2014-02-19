@@ -1,0 +1,9 @@
+% Επίλογος Ep
+
+\chapter{Επίλογος} % Main appendix title
+
+\label{Επίλογος} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+\lhead{ \emph{Επίλογος}} % This is for the header on each page - perhaps a shortened title
+
+..............

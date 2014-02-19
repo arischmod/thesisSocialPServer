@@ -1,0 +1,427 @@
+
+% Chapter Template
+
+\chapter{Aνάλυση βιβλιογραφίας} % Main chapter title
+
+\label{Chapter2} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 2. \emph{ανάλυση βιβλιογραφίας}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Intro}
+
+Η Έρευνα αυτή είναι μια μελέτη της σχετικής Θεωρίας και των πρακτικών που χρειάζονται για την δημιουργία ενός συστήματος συστάσεων που βασίζεται στην πληροφορία που αντλήται από ένα κοινωνικό γράφο.\\
+
+Αρχικά σε ένα πρώτο κομμάτι της έρευνας θα περιγράψουμε τις σχετικές έννοιες βασιζόμενοι στην βιβλιογραφική μελέτη.
+Ξεκινώντας από τα Recomender Systems, τις διαφορετικές μεθόδους, τύπους και προσεγγίσεις τους προκειμένου να γίνει Personalization.
+Στην συνέχεια θα αναφερθούμε στο πρακτικό πρόβλημα το οποίο καλούμαστε να λύσουμε, το οποίο είναι: Έχουμε μια μηχανή εξατομίκευσης στα χέρια μας η οποία χρησιμοποιείται σε ένα σύστημα συστάσεων το οποίο κάνει προτάσεις αντικειμένων στους χρήστες βασιζόμενο στα αντικείμενα που έχουν είδη αξιολογηθεί, καλούμαστε να προσαρμόσουμε αυτό το σύστημα ώστε να κάνει προτάσεις στους χρήστες βασιζόμενα στα αντικείμενα που έχουν αξιολογηθεί από τους κοντινότερους φίλους του, δοσμένου
+του κοινωνικού γράφου της εφαρμογής. Επομένως στην συνέχεια στο δεύτερο κομμάτι θα περιγράψουμε την θεωρία των Social Networks και την αποτύπωσή τους σε κοινωνικούς γράφους.
+Αργότερα τις μεθόδους εντοπισμού communities στον γράφο κάνοντας clustering βασιζόμενοι στον πόσο ισχυρός είναι ο δεσμός φιλίας των χρηστών. Με αυτό τον τρόπο θα μπορέσει το
+recomender system να κάνει προτάσεις στον χρήστη βασιζόμενο στις προτιμήσεις των κοντινότερων του φίλων, από τους οποίους σε πολλές περιπτώσεις, κάποιος δέχεται την υψηλότερη επιρροή.
+Τέλος σε ένα τρίτο κομμάτι θα περιγράψουμε τις πρακτικές και τους Αλγορίθμους που χρησιμοποιήσαμε προκειμένου να επιτύχουμε τα παραπάνω και τις μεθόδους αξιολόγησης των αποτελεσμάτων.
+
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Recommender Systems}
+
+	Σε αυτήν την παράγραφο θα γίνει μία εισαγωγή στα Recommender Systems (συστήματα συστάσεων) και στις υπάρχουσες θεωρητικές και πρακτικές κατευθύνσεις. 
+
+\subsection{εισαγωγή στα Recommender Systems}
+
+	Τα Recommender systems άρχισαν να αποτελούν σημαντικό ερευνητικό πεδίο μετά την εμφάνιση των πρώτων papers σχετικών με το collaborative filtering στα μέσα της δεκαετίας του 90. Τόσο στην ακαδημαϊκή κοινότητα αλλά και στον επιχειρηματικό κόσμο, την τελευταία δεκαετία, έχουν γίνει πολλές προσπάθειες προκειμένου να υλοποιηθούν νέες προσεγγίσεις. Το ενδιαφέρον παραμένει ακόμα υψηλό αφού το πεδίο των συστημάτων συστάσεων προσφέρει πολλά ακόμα προβλήματα προς επίλυση και επίσης χώρο για αφθονία εφαρμογών με στόχο να βοηθήσουν τους χρήστες να αντιμετωπίσουν την ολοένα και μεγαλύτερη υπερφόρτωση πληροφορίας παρέχοντας προσωποποιημένες συστάσεις σε επίπεδο περιεχομένου ή υπηρεσιών.
+
+    Παρότι οι ρίζες τον συστημάτων συστάσεων εντοπίζονται σε πολλούς διαφορετικούς τομείς όπως cognitive science (Γνωσιακή επιστήμη),  approximation theory (προσεγγιστική θεωρία), information retrieval, forecasting theories ή ακόμα και στο management, έχει πλέον αναδυθεί ως ανεξάρτητο ερευνητικό πεδίο από την στιγμή που οι ερευνητές άρχισαν να εστιάζουν σε προβλήματα που βασιζόμενα σε δομές αξιολογήσεις (ratings). Στην πιο απλή μορφή του ένα πρόβλημα συστάσεων έγκειται στον υπολογισμό αξιολογήσεων (rating) αντικειμένων με τα οποία ο χρήστης δεν είχε ακόμα επαφή. Αφού υπολογιστούν οι σχετικές αξιολογήσεις μπορούμε πλέον να προτείνουμε στον χρήστη τα αντικείμενα με το υψηλότερο προβλεπόμενο rating.
+
+
+
+Ποιο επίσημα το παραπάνω μπορεί να διατυπωθεί ως εξής: \\
+
+Έστω $C$ το σύνολο όλων των χρηστών και $S$ το σύνολο των υπαρχόντων αντικειμένων\\
+$u$ είναι η συνάρτηση χρησιμότητας που μετρά τη χρησιμότητα του αντικειμένου $s$ για τον χρήστη $c$. \\$u$ είναι η συνάρτηση χρησιμότητας που μετρά τη χρησιμότητα του αντικειμένου $s$ για τον χρήστη $c$. \\
+
+ $u:C$x$S \rightarrow R$ \\
+
+ όπου R είναι ένα καθορισμένο σύνολο (π.χ. μη αρνητικοί ακέραιοι ή πραγματικοί αριθμοί κάποιου εύρους).\\
+
+ Στην συνέχεια για κάθε χρήστη $c\in C$, θέλουμε να επιλέξουμε κάποιο αντικείμενο $\acute{s}\in S$ το οποίο να μεγιστοποιεί την χρησιμότητα για τον χρήστη.\\
+
+ Επομένως:   $\forall c\in C,  \acute{s_c}=\arg_{s\in S} \max u(c,s) $ \\
+ 
+\cite{NGRS}
+
+    Στα συστήματα συστάσεων η χρησιμότητα ενός αντικειμένου εκφράζεται συνήθως με μια αξιολόγηση, η οποία υποδεικνύει πως κάποιος συγκεκριμένος χρήστης είχε ενδιαφέρον για ένα συγκεκριμένο αντικείμενο. Ωστόσο όπως αναφέρθηκε και νωρίτερα η χρησιμότητα μπορεί να είναι και μια καθορισμένη συνάρτηση, η οποία περιλαμβάνει μια συνάρτηση κέρδους.
+Ανάλογα με την φύση της εφαρμογής, η χρησιμότητα $u$ μπορεί είτε να καθοριστεί από τον χρήστη, όπως συχνά γίνεται σε συστήματα που ο χρήστης κάνει αξιολογήσεις σε αντικείμενα, είτε να υπολογιστεί από την ίδια την εφαρμογή, όπως στην περίπτωση που χρησιμοποιείται μια συνάρτηση κέρδους.\\
+
+	Κάθε στοιχείο τους συνόλου χρηστών $C$ μπορεί να περιγραφεί με ένα προφίλ που περιλαμβάνει πληθώρα χαρακτηριστικών, όπως π.χ. δημογραφικά χαρακτηριστικά. Στην πιο απλή περίπτωση μοναδικό στοιχείο που χρειάζεται είναι ένα userID. Παρομοίως κάθε στοιχείο του συνόλου των αντικειμένων $S$ περιγράφεται από ένα σύνολο χαρακτηριστικών. \\
+ 
+	Κεντρικό πρόβλημα των συστημάτων συστάσεων είναι το γεγονός ότι η χρησιμότητα $u$ συνήθως δεν ορίζεται σε όλο το $C$x$S$ διάστημα αλλά μόνο σε ένα υποσύνολο αυτού. Αυτό σημαίνει πως το $u$ θα πρέπει να προεκταθεί σε ολόκληρο το $C$x$S$. Στα συστήματα συστάσεων η χρησιμότητα συνήθως εκφράζεται με ratings και πρώτο στάδιο εξαρτάται από τα αντικείμενα που ο χρήστης έχει είδη αξιολογήσει, επομένως θα πρέπει να είμαστε σε θέση να προβλέψουμε τις αξιολογήσεις των μη-αξιολογημένων αντικειμένων και να κάνουμε συστάσεις βασιζόμενοι στις υψηλότερες τιμές αξιολογήσεων που προβλέψαμε.\\
+
+\cite{NGRS}
+
+
+\subsection{Recommender Methods}
+
+Στον επιστημονικό κόσμο μπορεί να ξεχωρίσει κανείς τρεις διαφορετικούς τύπων Recommender Method, content-based, collaborative, και hybrid recommendation.
+
+
+
+Η εξαγωγή προβλέψεων rating μέσω των υπαρχόντων αξιολογήσεων γίνεται συνήθως είτε προσδιορίζοντας heuristics που ορίζουν την χρησιμότητα και εμπειρικά πιστοποιούν την απόδοσή της, είτε εκτιμώντας την συνάρτηση χρησιμότητας που βελτιστοποιεί κάποιο συγκεκριμένο κριτήριο απόδοσης (πχ mean square error). Τα παραπάνω μπορούν να υλοποιηθούν με πολλούς διαφορετικούς τρόπους χρησιμοποιώντας μεθόδους από πεδία όπως machine learning, approximation theory και διαφόρων τύπων heuristics.\\
+ 
+Όταν πλέον τα άγνωστα ratings έχουν πλέον υπολογιστεί μπορεί να γίνει πρόταση στον χρήστη, επιλέγοντας την υψηλότερη προβλεπόμενη αξιολόγηση για τον εκάστοτε χρήστη. Εναλλακτικά μπορούμε να προτείνουμε τα \emph{Ν} καλύτερα αντικείμενα σε έναν χρήστη ή ένα σύνολο χρηστών σε κάποιο αντικείμενο.\\
+
+Τα Recommender systems συνήθος κατηγοριοποιούνται ανάλογα με την προσέγγιση που έχουν για τον υπολογισμό των rating.
+Η σύνθεση κοινώς αποδεκτών μεθόδων για το recommendation problem πρώτο ξεκίνησε από τους:
+
+- Hill, W., L. Stead, M. Rosenstein, and G. Furnas στο Recommending and evaluating choices in a virtual community of use\\
+- Resnick, P., N. Iakovou, M. Sushak, P. Bergstrom, and J. Riedl στο GroupLens: An open architecture for collaborative filtering of netnews\\
+- Shardanand, U. and P. Maes. Social information filtering στο Algorithms for automating ‘word of mouth’\\
+
+και έκτοτε το πρόβλημα έλαβε τις υπάρχουσες διαστάσεις του και άρχισε να μελετάται περαιτέρω.\\\\
+
+    Ποιο συνήθεις κατηγορίες recommender systems είναι οι:\\
+Content-based recommendations: ο χρήστης συνίσταται αντικείμενα παρόμοια με αυτά που έχει προτημίσει στο παρελθόν\\
+Collaborative recommendation: ο χρήστης συνίσταται αντικείμενα τα οποία έχουν προτιμηθεί στο παρελθόν από χρήστες με κοινές προτιμήσεις και εθιστική.\\
+Hybrid approaches: συνδυασμός των δυο παραπάνω μεθόδων.\\
+
+ Αναφορικά, σε αντίθεση με τις παραπάνω μεθόδους οι οποίες προβλέπουν τις \emph{απόλυτες τιμές} των αξιολογήσεων μια άλλη λιγότερο διαδεδομένη τεχνική είναι το \emph{preference-based filtering} κατά το οποίο πραγματοποιείται υπολογισμός των \emph{σχετικών τιμών} των rating. Για παράδειγμα σε μια υπηρεσία αναζήτησης και αξιολόγησης κινηματογραφικών ταινιών αντί να υπολογιστεί το rating της κάθε μη αξιολογημένης από τον χρήστη ταινίας η μέθοδος στοχεύει στην πρόβλεψη της \emph{σχετικής σειράς (relative order)} των ταινιών. 
+
+\cite{NGRS}
+
+Στα πλαίσια της παρούσας πτυχιακής χρησιμοποιούνται \emph{Collaborative recommendations} καθώς επιθυμούμε να εξάγουμε συμπεράσματα εκμεταλλευόμενοι τα rating άλλων χρηστών\\ 
+
+
+\subsection{Collaborative Methods}
+
+Προβλέπουν την χρησημότητα βασηζόμενα στα αντηκήμενα που έχουν ήδη αξιολογηθεί απο άλλους χρήστες. 
+
+Grundy system [87] was the first recommender system. Later on, the Tapestry system.
+
+Οι αλγόριθμοι για τις Collaborative Methods χωρίζονται σε 2 μεγάλες κατηγορίες: memory-based (or heuristic-based) και model-based. 
+
+Οι memory-based είναι heuristics που κάνουν rating προβλέψείς βασηζόμενα σε ολόκληρη τη σηλογή των είδη rated αντηκιένων απο τους χρήστες. 
+Στην πιό απλή μορφή η συσχέτηση μπορεί απλά να είναι ένα μέσο όρο, παρόλα αφτά η πιο σήνηθες συσχέτηση γήνεται με τη χρήση weighted sum. 
+
+Το similarity είναι ένα είδος distance μετρικής που χρησημοποιήται σαν βάρος. \\
+\\Συνέχια ανάλισης και μαθηματικά....
+
+\cite{NGRS}
+
+
+
+
+
+\subsection{Towards the Next Generation of Recommender Systems: A Survey of the State-of-the-Art and Possible Extensions}
+
+Abstract\\
+
+Περιγραφή 3 Διαφορετικών τύπων Recommender Methods: content-based, collaborative, and hybrid recommendation. 
+Στη συνέχια περιγράφει τους περιορισμούς των υπάρχοντων methods και συζητάει για πηθανές εξελίξεις που θα μπορούσαν να βελτιώσουν τις δηνατότητες.
+Αυτές οι βετιώσεις περιλαμβάνουν, μεταξή άλλων, improvement of understanding of users and items, 
+incorporation of the contextual information into the recommendation process, support for multi-criteria ratings, 
+and provision of more flexible and less intrusive types of recommendations.\\
+
+
+\section{Social Networks}
+
+\section{Social Networks and Recommender Systems}
+
+\subsection{Social Networks and Recommender Systems: A World of Current and Future Synergies}
+
+\textbf{Introduction}\\ \\
+
+H επιστήμη των δικτίων εκτημάται πως έχει τις ρίζες της στο 1700 όπου ο  Euler’s Seven Bridges of Knigsberg, εισήγαγε κάποια βασικά στάδια όπος
+η διμιουργία της θεωρίας των γράφων, το sociogram, την ανάληση των social network. Πρόσφατα έχει σημιώθεί έκριξη της συγκεκρημένης
+επιστήμης η οποία οδήγησε και στην καθηέρωσή της. Μέσα στην τελεφτέα δεκαετία την εμφάνησή τους και τα Social sites τα οποία στην
+κορήφωσή τους έχουν καυταφέρει να έχουν πάνω από το 6εκατο του παγκόσμειου πλήθισμού σαν ενεργούς χρήστες.\\\\
+
+Παράλληλα έχει δημιουργίθεί το World Wide Web (1991) και έχει αναπτηχθεί και διαδωθεί ο Graphical browsers (mosaic, 1993), ανακαλήψεις που γρήγορα 
+χρησημοποιήθικαν σε μεγάλο βαθμό σαν πλατφόρμες φιλοξενίας εφαρμογών βασικών στην σύνχρωνη ζωή.\\ \\
+
+****Δεν βάζω για e-commerce - πάω κατευθίαν σε recomendations γενικά******\\ \\ 
+
+(\textbf{Αρhς}: για πολλούς λόγους όπος για να αποφεύγεται η υπερπληροφώρηση των χρηστων αλλά και για άλλους κάλνουμε Personalization)\\ \\ 
+
+Στην καρδιά του προβλήματος του να δημιουργηθεί ένα επιτυχιμένο Recomendation βρήσκεται η δηνατότητα να γενικεύουμε βασιζόμενοι σε γνωστά η υπολογισμένα 
+χαρακτηριστικά αντικημένων και χρηστών και πιθανά από αξιολογήσεις άλλων χρηστών. Επομένος για την επυτιχή πρόβλεψη πρέπει να έχει κανής στην κατοχή του
+πληροφορίες και αλγορίθμους. Αυτό είναι που οδηγεί στον συνδιασμό των δύο αυτών επιστημών, το γεγονός πως τα SN πρωσφέρουν πληθόρα πληροφοριών που αφορούν
+όχι μόνο τα χαρακτηριστικά και τις προτημίσεις των χρηστών αλλά και την μεταξή τους συσχέτηση.\\\\
+
+(\textbf{Αρhς}: Επίσεις μία ακόμα οπτική που οδηγεί στην ανάμηξη αυτών των δύο πεδίων είναι το γεγονός πως οι χρήστες του internet περνάναι πολύ χρόνο στα SN τα 
+οποία δισκολεύουν κιόλας τον χρήστη με υπερληροφώρηση. Είναι επομένος ένας χόρος ιδανικός για την εφαρμογή recomendation μεθόδων. Μεθόδων που αφορούν την 
+στοχευμένη ανάδηξη αντικημένων όπος υπιρεσείες, τάσεις αλλά και σχετικές κοινονικές ομάδες.)\\\\
+
+
+The rest of this chapter is organized as follows:\\
+The section “Social Networks”\\
+presents background on relevant research on social networks and sites, while sections\\
+“Recommendation Techniques” and “Recommender Systems Limitations”\\
+discusses recommender systems with their underlying techniques and algorithms as well as the limitations in these systems. In section\\
+“Recommender Systems in Social Networks”\\
+after talking about shortcomings of recommender systems, we
+discuss how these have been and can be potentially further addressed through their
+synergies with social networks, followed by sections on future work and conclusion\\\\
+
+
+ \textbf{Recommender Systems in Social Networks}
+
+ \textbf{How Can Recommender Systems Use Social Networks to Perform Recommendations?}
+
+Πώς μπορούν χρησημοποιηθούν τα Social Networks απο τα Recommender Systems για την παραγωγή συστάσεων\\\\
+
+Οι έρευνες σχετικές με τον συνδιασμό Social Networks και Recommender Systems πικήλουν και συναντόνται σε πολλούς τομείς (network value, trust, social tagging, etc).\\\\
+Το network value αφορά την δηνατότητα των user να έχουν επιροή (influence) πάνω στους φίλους τους.\\
+Άλλο στιχείο είναι η εμπιστοσήνη (Trust), η οποία ορίζεται ώς το επίπεδο της υποκιμενικής πιθανότητας,
+όπου ο κάθε agent βοηθά τον άλλον να πραγματοποιήσει κάποια μελοντική σημπεριφορά. 
+Στα SN οι χρήστες προτημούν να παίρνουν συστάσεις απο τους "φίλους" τους.\\\\
+ 
+
+
+
+Όταν τα Recomm. Syst. χρησημοποιούν social graphs βελτιώνεται 1. η ακρίβια της πρόβλεψεις και 2. ο εντοπισμός ομοιότητας μεταξή φίλων\\
+
+
+
+
+\cite{SNRSWCFS}
+
+
+
+
+\subsection{Recommender systems with social regularization}
+
+(1) We
+elaborate how social network information can benefit recom-
+mender systems; (2) We interpret the differences between
+social-based recommender systems and trust-aware recom-
+mender systems; (3) We coin the term
+Social Regularization
+to represent the social constraints on recommender systems,
+and we systematically illustrate how to design a matrix fac-
+torization objective function with social regularization; and
+(4) The proposed method is quite general, which can be eas-
+ily extended to incorporate other contextual information,
+like social tags, etc. \\ \\
+
+Ένας απο τους λόγους της επιτυχίας των Recomender Systems την τελεφτέα δεκαετία είναι η μεγάλη τους αξία στους εμπορικούς τομείς. 
+Με την ένια πως μπορούν και έχουν χρησημοποιηθεί σε πλατφόρμες μουσικής, τενιών, προιόντων και άλλα.\\ \\ 
+
+Τα παραδοσιακά recommender systems αγνοούσαν τις κοινονικές σχέσεις μεταξί των χρήστων. Αλλά στην πραγματική ζωή όταν ζητάμε απο κάποιον
+φίλο να μας πρωτήνει κάποιο "αντικήμενο", στην πραγματικότητα ζητάμε λεκτικά social recommendations.\\ \\ 
+
+\textbf{trust vs social}\\
+Πρόσφατα, βασιζόμενες στην διαίσθηση ότυι οι σχέσεις εμιστοσήνης (trust) μπορούν να χρησημοποιηθούν για την βελτίωση των παραδοσιακών συστημάτων συστάσεων, 
+προτάθηκαν κάποιες trust-aware recommendation μέθοδη. Αυτές οι μέθοδη χρησημοποιούν τις σχετικές implicit ή observed explicit πληροφορίες για να βελτιώσουν
+τα παραδοσιακά συστήματα. Τα Trust-aware recommender system πραγματοποιούν ένα σημαντικό βήμα στην σχετικλη έρευνα, χωρίς όμως να πετυχαίνουν 
+το στόχο του "social recommendation”, έχοντας ακόμα πολλούς περιορισμούς και αδηναμίες που πρέπει να ξεπεραστούν.\\ \\
+
+Πρώτον οι "Trust relationships” διαφέρουν καταπολύ απο τις “social friendships” απο πολλές πλευρές. Για παράδηγμα όταν κάποιος μέσος χρήστης αρέσκεται 
+στις αναρτήσεις κάποιου θα τον προσθέσει στο trust list του χωρίς να έχει κάποια κοινονικλη σχέση μαζί του. Επίσεις έιναι μια μονομερής διαδικασία 
+η οποία δεν απετεί τον δεύτερο χρήστη να επιβεβεώσει την διαδικασία (directed graph). Τα πραγματικά SN είναι σχεδιασμένα όστε οι χρήστες να αλληλεπιδρούν και
+να συνδέονται με τους πραγμτικούς τους φίλους. Σε τέτιες περήπτοσεις λοιπόν τα Trust-aware recommender system δεν αντιπρωσοπεύουν την ένια “social recommendation”
+η οποία προιποθέτει ενσομάτωση ενός πραγματικού κοινονικού γράφου σε ένα recommender system.\\
+Δεύτερον, τα trust-aware recommender systems βασίζονται στην υπόθεση οτι οι users έχουν παρόμιες προτημίσεις με τους ανθρώπους που εμπιστεύονται. 
+Αυτή η υπόθεση δεν είναι πάντα αληθής στα social recommender systems αφού η εσθητική και οι πρωτημίσεις των φίλων κάποιου μπορεί να διαφέρουν σημαντικά. Με κάποιους ο \\
+
+\cite{RSwithSreg}
+
+
+
+\subsection{Recommender Systems Research: A Connection-Centric Survey}
+
+Abstract\\
+Recommender systems attempt to reduce information overload and retain customers by selecting a
+subset of items from a universal set based on user preferences. While research in recommender systems grew out of
+information retrieval and filtering, the topic has steadily advanced into a legitimate and challenging research area
+of its own. Recommender systems have traditionally been studied from a content-based filtering vs. collaborative
+design perspective. Recommendations, however, are not delivered within a vacuum, but rather cast within an
+informal community of users and social context. Therefore, ultimately all recommender systems make
+connections
+among people and thus should be surveyed from such a perspective. This viewpoint is under-emphasized in
+the recommender systems literature. We therefore take a
+connection-oriented
+perspective toward recommender
+systems research. We posit that recommendation has an inherently social element and is ultimately intended
+to connect people either directly as a result of explicit user modeling or indirectly through the discovery of
+relationships implicit in extant data. Thus, recommender systems are characterized by how they model users
+to bring people together: explicitly or implicitly. Finally, user modeling and the connection-centric viewpoint
+raise broadening and social issues—such as evaluation, targeting, and privacy and trust—which we also briefly
+address.
+
+
+Accordingly, in this survey, we take a
+connection-centric
+approach toward studying recommender systems.
+
+Readers Guaide:
+ 
+[1 - intro]
+
+[2 - RecSyst History, etc...] 
+
+[4 - aproaches to identifying social networks implicit]
+
+[5 - User modeling and the connection-centric viewpoint raise 
+ 
+ broadening and social issues, such as evaluation, targeting,
+ 
+ and privacy and trust]
+
+\cite{RSR}
+
+
+
+\section{links, trust, ...}
+
+\section{Community}
+
+
+\subsection{Finding and evaluating community structure in networks}
+
+We propose and study a set of algorithms for discovering community structure in networks natural divisions
+of network nodes into densely connected subgroups. Our algorithms all share two
+definitive features: first, they involve iterative removal of edges from the network to split it into
+communities, the edges removed being identified using one of a number of possible “betweenness”
+measures, and second, these measures are, crucially, recalculated after each removal. We also propose
+a measure for the strength of the community structure found by our algorithms, which gives us an
+objective metric for choosing the number of communities into which a network should be divided.\\ \\
+
+Κάτι το οποίο φένεται να είναι κοινό σε πολλά δύκτια είναι η ύπαρξη δομής κοινότητας. Η διαίρεση δηλαδή των κόμβων σε ομάδες εντός 
+των οποίων οι συνδέσεις είναι πικνές αλλά οι μεταξί των ομάδων συνδέσεις αρεές. Η εύρεση και ανάληση τέτιου είδους δομών προσφέρει 
+ανεκτήμητη βοήθια στην κατανώηση και οπτικοποίηση των δομών των δικτίων. \\
+Η μελέτη των κοινοτικών δομών έχει μακρά ιστορία. Είναι κλάδος στενά συνεδεμένος με ιδέες που αφορούν graph partitioning από graph theory
+και επιστήμη των υπολογιστών και την ιεραρχική ομαδοποίηση απο την κοινωνιολογία.\\\\
+
+Όσον αφορά το Graph partitioning να συμιώσουμε πως αν απλός θέλουμε δεδομένου ενός δυκτίου να βρούμε αν και πως αυτό σπάει σε κοινότητες, 
+συνήθος δεν ξέρουμε πόσες τέτιες κοινότητες θα προκήψουν. Επίσεις ο αρηθμός τον κόμβων απο τους αποτελήται η κάθε κοινότητα επίσεις
+τις περισότερες φορές είναι άγνωστος.\\ \\
+
+\textbf{hierarchical clustering:} \\
+Μια ποίο χρήσημη προσέγκηση δανισμένη απο το πεδίο της social network analysis με ένα σύνολο τεχνικών γνωστών ως: hierarchical clustering. 
+Aυτές οι τεχνικές στοχεύουν στην ανακάλιψη φισικών διερέσεων των SN σε ομάδες, βασιζόμενες σε πικήλες μετρικές similarity ή strength των συνδέσεων μεταξί των κόμβων. 
+Οι τεχνικές αυτές υπάγωνται σε δύο μεγάλες κατηγωρίες, agglomerative and divisive (αυτή η κατηγωριοποίηση εξαρτάται απο το αν επικέντώνονται 
+στην πρόσθεση ή στην αφέρεση κόμβων σε ή από το δύκτιο).\\\\
+
+Στις \textbf{Agglomerative} μεθόδους, οι ομοιότητες μεταξί ενός ζεύγους κόμβων υπολογίζονται 
+με κάποια μέθοδο και στην συνέχια προστήθονται σε ένα αρχικά άδιο δύκτιο (n κόμβοι χωρίς συνδέσεις), αρχίζοντας με τα ζεύγοι που έχουν τη μεγαλήτερη ομοιότητα.
+Η διαδικασία μπορεί να σταματήσει ανα πάσα στηγμή και οι κόμβοι που έχουν μπεί στο νέο δίκτιο αποτελούν τις κοινότητες. Εναλακτικά η όλη διαδικασία
+απο τον άδιο γράφο στον πλήρη γράφο μπορεί να παρουσιαστεί σε μορφή δέντρου ή dendrogram, όπου οι οριζόντιες τομές του δέντρου αντιπροσοπεύουν τις κοινότητες.\\
+Οι Agglomerative μέθοδοι βασίζονται σε μιαμεγάλη πικιλία μετρικών ομοιότητας.\\
+Οι Agglomerative μέθοδοι έχουν βεβέος και τις προβληματικές τους. Ένα πρόβλημα είναι πως συχνά αποτυνχάνουν να βρούν τις σωστές κοινότητες σε δίκτια
+όπου η κοινοτική δομή είναι ίδη γνωστή, πράγμα που σημένει πως γενικά χάνουν την επιστοσήνη τους. Άλλο πρόβλημα είναι πως έχουν την τάση να βρήσκουν μόνο
+τους πυρήνες των κοινοτήτων και να αφήνουν έξω τους περιφεριακούς κόμβους. Οι κόμβοι που αποτελούν τον πηρήνα έχουν μεγάλη ομοιότητα και ως εκ τούτου
+συνδέονται απο την αρχή της agglomerative διαδικασίας, αλλά οι περιφεριακοί κόμβοι που δεν έχουν ισχιρή ομοιότητα με άλλους παραμελούνται.\\\\
+
+\textbf{Divisive methods:} Δεν έχουν μελετιθεί πολύ στην σχετική βιβλιογραφία, αλλά είναι πολλά υποσχόμενες. 
+Σε μία Divisive method ξεκινάμε ψάχνοντας τα ζεύγη κόμβων με τις λιγότερες ομοιότητες και στη συνέχια αφερούμε την μεταξή τους σύνδεση. 
+Επαναλαμβάνοντας την διαικασία καταλήγουμε να διαιρούμε το δίκτιο όλο και πιό μικρές ομάδες και σταματόντας την διαδικασία στο επιθημητό 
+συμείο θεορούμε τις ομάδες αυτές ως τις κοινότητες του δικτείου. Και αυτή η διαδικασία μπορεί να παρουσιαστεί σε δενδρόγραμα το οποίο απεικονίζει
+τις επιτιχείς διερέσεις του δικτείου σε όλο και μικρότερες ομάδες. \\ \\
+
+\textbf{Περιεχόμενα}:\\
+Briefly then, the outline of this paper is as follows.
+In Sec. II we describe the crucial concepts behind our
+methods for finding community structure in networks and
+show how these concepts can be turned into a concrete
+prescription for performing calculations. In Sec. III we
+describe in detail the implementation of our methods. In
+Sec. IV we consider ways of determining when a particu-
+lar division of a network into communities is a good one,
+allowing us to quantify the success of our community-
+finding algorithms. And in Sec. V we give a number
+of applications of our algorithms to particular networks,
+both real and artificial. In Sec. VI we give our conclu-
+sions. A brief report of some of the work contained in
+this paper has appeared previously as Ref. 25. \\ \\
+
+
+\textbf{FINDING COMMUNITIES IN A NETWORK}\\
+
+
+
+\cite{PhysRevE.69.026113}
+
+
+
+\section{Clustering and community detection}
+
+\subsection{Clustering and community detection in directed networks: A survey}
+\cite{Malliaros2013}
+
+
+\subsection{Clustering Social Networks}
+
+Tα Social Nets είναι παντού. Η ανακάληψη στενά συνεδεμένων ομάδων σε τέτια δίκτια αποτελεί πρόβλημα θεμελιόδους και πρακτικού ενδιαφέροντος. 
+Τα υπάρχοντα συστήματα ομαδοποίησης υστερούν στο ότι οι ομάδες δεν επικαλύπτονται. Όλοι οι κόμβοι ομαδοποιούνται και οι εκτός ομάδας συνδέσεις αγνοούνται.\\\\
+Διεσθητικά, ένα cluster είναι μία συλλογή αντικιμένων με πικνή κοινονική συσχετιση στο εσωτερικό τους και αρεή στο εξωτερικό τους.  
+Πως αξιολογήται ένα καλό cluster σε ένα κοινονικό δίκτιο? Υπάρχουν πολλά κριτήρια που καθορίζουν τα καλά graph clusters και το κάθε ένα 
+συνοδεύεται από ένα πλήθος αλγορίθμων. Ένα διαδεδομένο κριτήριο βασίζεται στην εύρεση ομάδων με υψηλή αγωγημότητα. Η αγωγημότητα μιας σύνδεσης Α-Β
+είναι αναλογία του αρηθμού των συνδέσεων που περνούν ...........................\\........................συνέχια (επεξήγηση μεθόδων clustering k overlaping...)
+
+\textbf{ανάληση Clustering}\\
+
+
+\cite{ClusteringSocialNetworks}
+
+
+
+
+\subsection{Social graph clustering}
+
+Contents
+—
+In this paper, we will work on a problem of social graph
+clustering. Problem of graph clustering is very well studied, but in almost all
+cases, disjunctive and total clustering is created. In a social
+graph, it is obvious
+that we can have people that belong to many groups, as is the case for the
+majority of people. But we can also have a person that does not belong to any
+group. We devise few algorithms that can be used to solve this problem. Also,
+curr
+ently, there is no good general metric for measuring quality of such
+clustering, so we created one that best suits the needs of specified task. \\ \\
+
+
+Στα social networks, o κάθε χρήστης έχει μια λίστα άλλων χρηστών με τους οποίους είανι συνεδεμένος. 
+Αυτές οι συνδέσεις φτίαχνουν έναν γράφο ο οποίος ονομάζεται Κοινωνικός Γράφος.\\ \\ 
+
+Η ένια της επιβεβέωσης σε μια πρόταση φιλίας κάνει τον κοινονικό γράφο ποιό ακρηβή.//
+
+Οι περισότεροι υπάρχονταες σχετικοί αλγόριθμοι δημιουργούν ένα πλήρος διαζευκτικό clustering, πράγμα που σημένει 
+πως ο κάθε κόμβος (χρήστης) ανήκει σε ένα μόνο cluster. Σε πραγματικές περιπτώσεις αυτό δεν είναι αποδοτικό και 
+ρεαλιστικό αφού ένας χρήστης μπορεί να ανήκει και συνεπός να επιρεάζεται σε/απο πολλές κοινονικές ομάδες ή ακόμα 
+και απο καμία. Μέχρι στηγμής έχει πραγματοποιηθεί σχετικά μικρή έρευνα στο πεδίο του overlapping clustering (επικαλυμένη ομαδοποίηση) \\\\
+
+\cite{kabiljosocial}
+
+
+
+
+\subsection{Improving Recommendation Accuracy by Clustering Social Networks with Trust}
+
+Η αυξάνουσα δημοτικότητα των Social Netwoks έχει δημιουργήσει την ανάδηση νέον πεδίων και προσεγκήσεων σχετικών με τα Recommender systems. 
+Oι Recommenders υποστηρίζουν μεταξί άλλον και την διαδικασία διαμηρασμού πληροφοριών.\\ \\ 
+
+\textbf{Βελτίωση της ακρίβιας των συστάσεων ομαδοποιόντας με βάση το Trust}\\
+Οι συσχέτηση Trust μεταξί των χρηστών στα SN αντηπροσοπεύει την ομοιότητα των απόψεών τους σε γενική αλλά και πιο λεπτομεριακή προσέγκηση. 
+Έχει χρησημοποιηθεί στο παρελθόν για συτάσεις στο WEB. Νέες μετρικές της εμπιστοσήνης εισάγουν τη χρήση trust clusters για βελτίωση των συστάσεων. 
+Τα αποτελέσματα δήχνουν πως με την χρήση Trust βελτιώνεται η ακρίβια των αποτελεσμάτων σε σχέση με την ομαδοποίηση βάση την ομοιότητα των χρηστών που γηνόταν μέχρι στιγμής.//
+Οι υπάρχουσες μέθοδοι χρησημοποιούν το Trust σαν βάρος (weight) στoυς collaborative filtering αλγορίθμους.
+Αυτό είναι αποτελεσματικό αλλά δεν είναι ο μόνος τρόπος με τον οποίο μπορεί να αξιοποιηθεί αυτή η πληροφορία. 
+Η ομαδοποίηση των χρηστών σε σύνολλα εμπιστοσήνης μπορεί να χρησημοποιηθεί σε πολλούς διαφορετικούς αλγορίθμους.\\ \\
+
+While clustering can be computationally difficult with so-
+cial networks, a new trust metric we have developed makes
+it easy to apply clustering techniques to build these groups.
+Since trust is related to similarity, we use correlation clus-
+tering to identify groups of trusted people.\\ \\
+
+\textbf{A PROBABILISTIC TRUST INFERENCE ALGORITHM.........}
+
+\cite{jannach2009recommender}

@@ -1,0 +1,166 @@
+
+@article{Reference1,
+	Abstract = {We have developed an enhanced Littrow configuration extended cavity diode laser (ECDL) that can be tuned without changing the direction of the output beam. The output of a conventional Littrow ECDL is reflected from a plane mirror fixed parallel to the tuning diffraction grating. Using a free-space Michelson wavemeter to measure the laser wavelength, we can tune the laser over a range greater than 10 nm without any alteration of alignment.},
+	Author = {C. J. Hawthorn and K. P. Weber and R. E. Scholten},
+	Journal = {Review of Scientific Instruments},
+	Month = {December},
+	Number = {12},
+	Numpages = {3},
+	Pages = {4477--4479},
+	Title = {Littrow Configuration Tunable External Cavity Diode Laser with Fixed Direction Output Beam},
+	Volume = {72},
+	Url = {http://link.aip.org/link/?RSI/72/4477/1},
+	Year = {2001}}
+
+@article{Reference3,
+	Abstract = {Operating a laser diode in an extended cavity which provides frequency-selective feedback is a very effective method of reducing the laser's linewidth and improving its tunability. We have developed an extremely simple laser of this type, built from inexpensive commercial components with only a few minor modifications. A 780~nm laser built to this design has an output power of 80~mW, a linewidth of 350~kHz, and it has been continuously locked to a Doppler-free rubidium transition for several days.},
+	Author = {A. S. Arnold and J. S. Wilson and M. G. Boshier},
+	Journal = {Review of Scientific Instruments},
+	Month = {March},
+	Number = {3},
+	Numpages = {4},
+	Pages = {1236--1239},
+	Title = {A Simple Extended-Cavity Diode Laser},
+	Volume = {69},
+	Url = {http://link.aip.org/link/?RSI/69/1236/1},
+	Year = {1998}}
+
+@article{Reference2,
+	Abstract = {We present a review of the use of diode lasers in atomic physics with an extensive list of references. We discuss the relevant characteristics of diode lasers and explain how to purchase and use them. We also review the various techniques that have been used to control and narrow the spectral outputs of diode lasers. Finally we present a number of examples illustrating the use of diode lasers in atomic physics experiments. Review of Scientific Instruments is copyrighted by The American Institute of Physics.},
+	Author = {Carl E. Wieman and Leo Hollberg},
+	Journal = {Review of Scientific Instruments},
+	Keywords = {Diode Laser},
+	Month = {January},
+	Number = {1},
+	Numpages = {20},
+	Pages = {1--20},
+	Title = {Using Diode Lasers for Atomic Physics},
+	Volume = {62},
+	Url = {http://link.aip.org/link/?RSI/62/1/1},
+	Year = {1991}}
+
+@article{PhysRevE.69.026113,
+  title = {Finding and evaluating community structure in networks},
+  author = {Newman, M. E. J. and Girvan, M.},
+  journal = {Phys. Rev. E},
+  volume = {69},
+  issue = {2},
+  pages = {026113},
+  numpages = {15},
+  year = {2004},
+  month = {Feb},
+  doi = {10.1103/PhysRevE.69.026113},
+  url = {http://link.aps.org/doi/10.1103/PhysRevE.69.026113},
+  publisher = {American Physical Society}
+}
+
+
+@article{ClusteringSocialNetworks,
+year={2007},
+isbn={978-3-540-77003-9},
+booktitle={Algorithms and Models for the Web-Graph},
+volume={4863},
+series={Lecture Notes in Computer Science},
+editor={Bonato, Anthony and Chung, FanR.K.},
+doi={10.1007/978-3-540-77004-6_5},
+title={Clustering Social Networks},
+url={http://dx.doi.org/10.1007/978-3-540-77004-6_5},
+publisher={Springer Berlin Heidelberg},
+author={Mishra, Nina and Schreiber, Robert and Stanton, Isabelle and Tarjan, RobertE.},
+pages={56-67}
+}
+
+@article{jannach2009recommender,
+  title={Recommender Systems \& the Social Web},
+  author={Jannach, Dietmar and Geyer, Werner and Freyne, Jill and Anand, Sarabjot Singh and Dugan, Casey and Mobasher, Bamshad and Kobsa, Alfred},
+  booktitle={Proceedings of the 2009 ACM Conference on Recommender Systems, RecSys},
+  pages={23--25},
+  year={2009}
+}
+
+@article{kabiljosocial,
+  title={Social graph clustering},
+  author={Kabiljo, Igor}
+}
+
+@article{Malliaros2013,
+title = "Clustering and community detection in directed networks: A survey ",
+journal = "Physics Reports ",
+volume = "",
+number = "0",
+pages = " - ",
+year = "2013",
+note = "",
+issn = "0370-1573",
+doi = "http://dx.doi.org/10.1016/j.physrep.2013.08.002",
+url = "http://www.sciencedirect.com/science/article/pii/S0370157313002822",
+author = "Fragkiskos D. Malliaros and Michalis Vazirgiannis",
+keywords = "<!-- Tag Not Handled --><keyword id="k000005">Community detection",
+keywords = "<!-- Tag Not Handled --><keyword id="k000010">Graph clustering",
+keywords = "<!-- Tag Not Handled --><keyword id="k000015">Directed networks",
+keywords = "<!-- Tag Not Handled --><keyword id="k000020">Complex networks",
+keywords = "<!-- Tag Not Handled --><keyword id="k000025">Graph mining "
+}
+
+@article{NGRS,
+author={Adomavicius, G. and Tuzhilin, A.},
+journal={Knowledge and Data Engineering, IEEE Transactions on},
+title={Toward the next generation of recommender systems: a survey of the state-of-the-art and possible extensions},
+year={2005},
+volume={17},
+number={6},
+pages={734-749},
+keywords={content-based retrieval;information filtering;collaborative filtering;content-based approach;contextual information;multicriteria rating estimation methods;recommender systems;Books;Business;Cognitive science;Collaboration;Collaborative work;Context modeling;Filtering;Hybrid power systems;Motion pictures;Recommender systems;Index Terms- Recommender systems;collaborative filtering;extensions to recommender systems.;rating estimation methods},
+doi={10.1109/TKDE.2005.99},
+ISSN={1041-4347}
+}
+
+@article{SNRSWCFS,
+year={2012},
+isbn={978-1-4471-4047-4},
+journal={Computational Social Networks},
+editor={Abraham, Ajith and Hassanien, Aboul-Ella},
+doi={10.1007/978-1-4471-4048-1_18},
+title={Social Networks and Recommender Systems: A World of Current and Future Synergies},
+url={http://dx.doi.org/10.1007/978-1-4471-4048-1_18},
+publisher={Springer London},
+author={Falahi, KannaAl and Mavridis, Nikolaos and Atif, Yacine},
+pages={445-465},
+language={English}
+}
+
+
+@article{RSR,
+year={2004},
+issn={0925-9902},
+journal={Journal of Intelligent Information Systems},
+volume={23},
+number={2},
+doi={10.1023/B:JIIS.0000039532.05533.99},
+title={Recommender Systems Research: A Connection-Centric Survey},
+url={http://dx.doi.org/10.1023/B%3AJIIS.0000039532.05533.99},
+publisher={Kluwer Academic Publishers},
+keywords={recommendation; recommender systems; small-worlds; social networks; user modeling},
+author={Perugini, Saverio and Goncalves, MarcosAndre and Fox, EdwardA.},
+pages={107-143},
+language={English}
+}
+
+@article{RSwithSreg,
+ author = {Ma, Hao and Zhou, Dengyong and Liu, Chao and Lyu, Michael R. and King, Irwin},
+ title = {Recommender systems with social regularization},
+ booktitle = {Proceedings of the fourth ACM international conference on Web search and data mining},
+ series = {WSDM '11},
+ year = {2011},
+ isbn = {978-1-4503-0493-1},
+ location = {Hong Kong, China},
+ pages = {287--296},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1935826.1935877},
+ doi = {10.1145/1935826.1935877},
+ acmid = {1935877},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {collaborative filtering, matrix factorization, recommender systems, social network, social regularization},
+} 
+

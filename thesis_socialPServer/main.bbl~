@@ -1,0 +1,98 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arnold et~al.(1998)Arnold, Wilson, and Boshier]{Reference3}
+A.~S. Arnold, J.~S. Wilson, and M.~G. Boshier.
+\newblock A simple extended-cavity diode laser.
+\newblock \emph{Review of Scientific Instruments}, 69\penalty0 (3):\penalty0
+  1236--1239, March 1998.
+\newblock URL \url{http://link.aip.org/link/?RSI/69/1236/1}.
+
+\bibitem[Wieman and Hollberg(1991)]{Reference2}
+Carl~E. Wieman and Leo Hollberg.
+\newblock Using diode lasers for atomic physics.
+\newblock \emph{Review of Scientific Instruments}, 62\penalty0 (1):\penalty0
+  1--20, January 1991.
+\newblock URL \url{http://link.aip.org/link/?RSI/62/1/1}.
+
+\bibitem[Hawthorn et~al.(2001)Hawthorn, Weber, and Scholten]{Reference1}
+C.~J. Hawthorn, K.~P. Weber, and R.~E. Scholten.
+\newblock Littrow configuration tunable external cavity diode laser with fixed
+  direction output beam.
+\newblock \emph{Review of Scientific Instruments}, 72\penalty0 (12):\penalty0
+  4477--4479, December 2001.
+\newblock URL \url{http://link.aip.org/link/?RSI/72/4477/1}.
+
+\bibitem[Adomavicius and Tuzhilin(2005)]{NGRS}
+G.~Adomavicius and A.~Tuzhilin.
+\newblock Toward the next generation of recommender systems: a survey of the
+  state-of-the-art and possible extensions.
+\newblock \emph{Knowledge and Data Engineering, IEEE Transactions on},
+  17\penalty0 (6):\penalty0 734--749, 2005.
+\newblock ISSN 1041-4347.
+\newblock \doi{10.1109/TKDE.2005.99}.
+
+\bibitem[Falahi et~al.(2012)Falahi, Mavridis, and Atif]{SNRSWCFS}
+KannaAl Falahi, Nikolaos Mavridis, and Yacine Atif.
+\newblock Social networks and recommender systems: A world of current and
+  future synergies.
+\newblock \emph{Computational Social Networks}, pages 445--465, 2012.
+\newblock \doi{10.1007/978-1-4471-4048-1_18}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-1-4471-4048-1_18}.
+
+\bibitem[Ma et~al.(2011)Ma, Zhou, Liu, Lyu, and King]{RSwithSreg}
+Hao Ma, Dengyong Zhou, Chao Liu, Michael~R. Lyu, and Irwin King.
+\newblock Recommender systems with social regularization.
+\newblock pages 287--296, 2011.
+\newblock \doi{10.1145/1935826.1935877}.
+\newblock URL \url{http://doi.acm.org/10.1145/1935826.1935877}.
+
+\bibitem[Perugini et~al.(2004)Perugini, Gonçalves, and Fox]{RSR}
+Saverio Perugini, MarcosAndré Gonçalves, and EdwardA. Fox.
+\newblock Recommender systems research: A connection-centric survey.
+\newblock \emph{Journal of Intelligent Information Systems}, 23\penalty0
+  (2):\penalty0 107--143, 2004.
+\newblock ISSN 0925-9902.
+\newblock \doi{10.1023/B:JIIS.0000039532.05533.99}.
+\newblock URL \url{http://dx.doi.org/10.1023/B%3AJIIS.0000039532.05533.99}.
+
+\bibitem[Newman and Girvan(2004)]{PhysRevE.69.026113}
+M.~E.~J. Newman and M.~Girvan.
+\newblock Finding and evaluating community structure in networks.
+\newblock \emph{Phys. Rev. E}, 69:\penalty0 026113, Feb 2004.
+\newblock \doi{10.1103/PhysRevE.69.026113}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/PhysRevE.69.026113}.
+
+\bibitem[Malliaros and Vazirgiannis(2013)]{Malliaros2013}
+Fragkiskos~D. Malliaros and Michalis Vazirgiannis.
+\newblock Clustering and community detection in directed networks: A survey.
+\newblock \emph{Physics Reports}, \penalty0 (0):\penalty0 --, 2013.
+\newblock ISSN 0370-1573.
+\newblock \doi{http://dx.doi.org/10.1016/j.physrep.2013.08.002}.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0370157313002822}.
+
+\bibitem[Mishra et~al.(2007)Mishra, Schreiber, Stanton, and
+  Tarjan]{ClusteringSocialNetworks}
+Nina Mishra, Robert Schreiber, Isabelle Stanton, and RobertE. Tarjan.
+\newblock Clustering social networks.
+\newblock 4863:\penalty0 56--67, 2007.
+\newblock \doi{10.1007/978-3-540-77004-6_5}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-77004-6_5}.
+
+\bibitem[Kabiljo()]{kabiljosocial}
+Igor Kabiljo.
+\newblock Social graph clustering.
+
+\bibitem[Jannach et~al.(2009)Jannach, Geyer, Freyne, Anand, Dugan, Mobasher,
+  and Kobsa]{jannach2009recommender}
+Dietmar Jannach, Werner Geyer, Jill Freyne, Sarabjot~Singh Anand, Casey Dugan,
+  Bamshad Mobasher, and Alfred Kobsa.
+\newblock Recommender systems \& the social web.
+\newblock pages 23--25, 2009.
+
+\end{thebibliography}

@@ -1,0 +1,67 @@
+
+\chapter{Μελοντικές Επεκτάσεις - Προσωπικά Δεδομένα - Άδειες} % Main chapter title
+
+\label{Μελοντικές Επεκτάσεις - Προσωπικά Δεδομένα - Άδειες} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Κεφάλαιο 6. \emph{Μελοντικές Επεκτάσεις - Προσωπικά Δεδομένα - Άδειες}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+\section{Μελλοντικές Επεκτάσεις}
+
+\begin{description}
+\item \textbf{Βελτιστωποίηση των συστάσεων}  \hfill \\
+Στο κεφάλαιο 2 (Σχεδιασμός) όπου περιγράφεται η αρχιτεκτονική του PServer γίνεται λόγος για το \emph{Recommendation Engine}, το ενδιάμεσο επίπεδο μεταξύ αυτού και της εφαρμογής. 
+Σε αυτό το στάδιο επεξεργάζονται οι πληροφορίες που δίνει ο PServer ώστε να έχουν νόημα για την εκάστοτε υπηρεσία. 
+Είδη έχει ξεκινήσει ο σχεδιασμός ενός τέτοιου μηχανισμού ο οποίος θα μπορεί να εκμεταλλευτεί πλήρως τις δυνατότητες του PServer συνδυάζοντας τις πληροφορίες που δίνονται σε κάθε λογικό
+επίπεδό (Personal, Community, Social).
+\item \textbf{Χρήση σε άλλες επιστήμες}  \hfill \\
+Εμπνευσμένοι από το \emph{Community structure in jazz}\cite{jazz} όπου με \setlanguage{english} collaborative \setlanguage{greek} προσέγγηση από τις πληροφορίες για συνδέσεις των jazz μουσικών και σχημάτων προκύπτουν κοινοτικές
+δομές, θα θέλαμε το πρόγραμμά μας να συμβάλει σε κοινωνικές και ανθρωπιστικές επιστήμες. Η χρήση του μπορεί να αναδείξει νέες κοινωνικές ομάδες και ρεύματα, συνεπώς μπορεί να συμβάλει
+στην καλύτερη κατανόηση του κοινωνικού μας περιβάλλοντος και κατ επέκταση στην καλύτερη διαχείριση.
+\item \textbf{Επικαλυπτόμενες Κοινότητες}  \hfill \\
+Μελετώντας την σχετική βιβλιογραφία, η πιο πλούσια και ρεαλιστική προσέγγιση όσον αφορά τις κοινότητες συνδεδεμένων μελών που εγείρει το ενδιαφέρον μας και ανοίγει νέους ορίζοντες για έρευνα 
+είναι το άρθρο \emph{Uncovering the overlapping community structure of complex networks in nature and society}\cite{overlapping}.
+Οι συγγραφείς του ερμηνεύουν τα δικτυακά συστήματα στη φύση και την κοινωνία ως την συνύπαρξη των μικρότερων κοινοτήτων που τις αποτελούν. 
+Αναγνωρίζοντας πως τέτοια σύνολα εμφανίζουν επικαλυπτόμενες κοινοτικές δομές, εισάγουν μετρικές και μεθόδους για την περαιτέρω μελέτη τους, προσπαθώντας να αποκαλύψουν την πραγματική τους φύση
+και ξεπερνώντας τις μέχρι τώρα ντετερμινιστικές μεθόδους.
+Μακροπρόθεσμος στόχος μας είναι να επεκταθεί η παρούσα εργασία σε ένα σύστημα που θα εκμεταλλεύεται τις πληροφορίες που αντλούνται από ένα περίπλοκο σύστημα με επικαλυπτόμενες
+κοινότητες ώστε να εξάγει γνώσει από αυτό.
+\end{description} 
+
+
+\section{Προσωπικά Δεδομένα}
+\noindent
+Οι τεχνολογίες προσωποποίησης χρησιμοποιούνται πλέον σε πληθώρα διαδικτυακών εφαρμογών
+και υπηρεσιών. Αποτελούν ανεκτίμητο εργαλείο αλλά ταυτόχρονα έχουν φέρουν
+σημαντικές δεοντολογικές συγκρούσεις στον επιστημονικό κόσμο. 
+Αυτό συμβαίνει διότι κατά την δημιουργία των προφίλ χρηστών που προαναφέρθηκαν,
+θίγονται ευαίσθητα θέματα και εμφανίζονται ηθικά διλήμματα τα οποία σχετίζονται με την 
+\textbf{παραβίαση προσωπικών δεδομένων}.
+Η διαδικασία συλλογής των δεδομένων μπορεί να πραγματοποιηθεί \emph{άμεσα}, 
+όπως στις περιπτώσει που ο ίδιος ο χρήστης καταχωρεί τα στοιχεία για αυτόν 
+είτε \emph{έμμεσα} όπως στις περιπτώσεις που βγαίνουν συμπεράσματα από την 
+αλληλεπίδραση του χρήστη με το σύστημα. 
+Και στις δυο περιπτώσεις ο χρήστης χάνει την ανωνυμία του και γνωρίζει πως τα προσωπικά
+του δεδομένα θα καταγραφούν και θα χρησιμοποιηθούν από την υπηρεσία.
+Ακόμα και στις περιπτώσεις που ο ίδιος έχει επιτρέψει στην υπηρεσία την καταγραφή δεδομένων,
+μέσω της χρήσης Cookies, τέτοιου είδους πληροφορίες μπορούν να ανακατευθυνθούν σε 
+άλλους διαδικτυακούς τόπους ώστε να υποκλαπούν.\cite{eirinaki2003web}
+
+
+\section{Άδειες}
+\noindent Στα πλαίσια της παρούσας πτυχιακής χρησιμοποιήθηκαν τα παρακάτω εργαλεία κατασκευασμένα από 
+άλλους προγραμματιστές τα οποία έχουν εκδοθεί κάτω από άδειες ανοιχτού κώδικά.
+
+%\begin{center}
+\hspace{-8.0em}
+    \begin{tabular}{ | p{4cm} | p{6cm} | p{8cm} | }
+    \hline
+    \textbf{project} & \textbf{Licence} & \textbf{Source} \\ \hline 
+    WeakComponent & BSD open-source license & JUNG Software Library \url{http://jung.sourceforge.net/license.txt} \\ \hline  
+    EdgeBetweenness & BSD open-source license & JUNG Software Library \url{http://jung.sourceforge.net/license.txt}  \\ \hline
+    BronKerbosch & EPL (Eclipse) and LGPL  & jgrapht Java graph Library \url{https://github.com/jgrapht/jgrapht/wiki/Relicensing} \\ \hline
+    Metis & Apache License, Version 2.0 & Karypis George \url{https://www.apache.org/licenses/LICENSE-2.0} \\ \hline  
+    GPmetis & LGPL Version 3 & Grph - graph library \url{http://www.i3s.unice.fr/~hogie/grph/?page=License} \\ \hline
+    betweenness figure \ref{fig:GraphBetweenness} & GNU 1.2, CC 3.0, CC 2.5 & Claudio Rocchini(2007) - Wiki \url{https://en.wikipedia.org/wiki/File:Graph_betweenness.svg} \\ \hline
+    PServer & Apache License, Version 2.0 & Dimokritos - SciFy \url{http://pserver-project.org/en/content/pservers-source-code} \\ \hline
+    \end{tabular}
+%\end{center}

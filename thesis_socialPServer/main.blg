@@ -1,0 +1,87 @@
+This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: unsrtnat.bst
+Database file #1: Bibliography.bib
+Warning--entry type for "pServerUserGuide" isn't style-file defined
+--line 157 of file Bibliography.bib
+Warning--entry type for "pServer" isn't style-file defined
+--line 164 of file Bibliography.bib
+Warning--entry type for "MohsenJamali" isn't style-file defined
+--line 178 of file Bibliography.bib
+Warning--entry type for "flixster" isn't style-file defined
+--line 185 of file Bibliography.bib
+Warning--entry type for "LastFM" isn't style-file defined
+--line 204 of file Bibliography.bib
+Warning--entry type for "grouplens" isn't style-file defined
+--line 211 of file Bibliography.bib
+Warning--entry type for "Metis" isn't style-file defined
+--line 276 of file Bibliography.bib
+Warning--entry type for "GpMetis" isn't style-file defined
+--line 283 of file Bibliography.bib
+Warning--entry type for "BronKerbosch" isn't style-file defined
+--line 290 of file Bibliography.bib
+Warning--entry type for "GraphBetweenness" isn't style-file defined
+--line 298 of file Bibliography.bib
+Warning--entry type for "EdgeBetweenness" isn't style-file defined
+--line 307 of file Bibliography.bib
+Warning--entry type for "WeakComponent" isn't style-file defined
+--line 315 of file Bibliography.bib
+I was expecting a `,' or a `}'---line 378 of file Bibliography.bib
+ :  keywords = "<!-- Tag Not Handled --><keyword id="
+ :                                                   k000005">Community detection",
+I'm skipping whatever remains of this entry
+Warning--empty journal in RSwithSreg
+Warning--empty journal in kabiljosocial
+Warning--empty year in kabiljosocial
+Warning--empty year in kabiljosocial
+Warning--empty year in BronKerbosch
+Warning--empty year in Metis
+Warning--empty year in GpMetis
+Warning--empty year in pServer
+Warning--empty year in pServerUserGuide
+Warning--empty year in LastFM
+Warning--empty year in grouplens
+Warning--empty year in flixster
+You've used 37 entries,
+            2481 wiz_defined-function locations,
+            811 strings with 11457 characters,
+and the built_in function-call counts, 13924 in all, are:
+= -- 1259
+> -- 559
+< -- 36
++ -- 233
+- -- 158
+* -- 965
+:= -- 2118
+add.period$ -- 138
+call.type$ -- 37
+change.case$ -- 72
+chr.to.int$ -- 36
+cite$ -- 49
+duplicate$ -- 727
+empty$ -- 1342
+format.name$ -- 219
+if$ -- 3061
+int.to.chr$ -- 2
+int.to.str$ -- 38
+missing$ -- 27
+newline$ -- 214
+num.names$ -- 113
+pop$ -- 348
+preamble$ -- 1
+purify$ -- 37
+quote$ -- 0
+skip$ -- 500
+stack$ -- 0
+substring$ -- 576
+swap$ -- 152
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 253
+warning$ -- 12
+while$ -- 117
+width$ -- 0
+write$ -- 515
+(There was 1 error message)

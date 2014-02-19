@@ -1,0 +1,455 @@
+
+\chapter{Θεωρητική Ανάλυση και Αλγόριθμοι} % Main chapter title
+
+\label{Θεωριτική Ανάλυση} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Κεφάλαιο 2. \emph{Θεωρητική Ανάλυση}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+
+\section{Συστήματα Συστάσεων}
+
+
+ Ένα \emph{Σύστημα Συστάσεων (Recommender System)} είναι ουσιαστικά ένας μηχανισμός που ως πρώτο σκοπό έχει το να προβλέψει το ενδιαφέρον ενός χρήστη για αντικείμενα με τα οποία δεν έχει ακόμα επαφή. 
+ Εντοπίζοντας και εμφανίζοντας στο χρήστη αντικείμενα με μέγιστο εκτιμώμενο ενδιαφέρον, επιτυγχάνεται η προσωποποίηση μιας Web υπηρεσίας και ο χρήστης καταφέρνει να αποφύγει την υπερπληροφόρηση έχοντας πρόσβαση σε ένα υποσύνολο των αντικειμένων της υπηρεσίας το οποίο τον ενδιαφέρει περισσότερο σύμφωνα με τις μέχρι στιγμής προτιμήσεις του.
+  Σε αυτήν την παράγραφο θα επιχειρήσουμε μία εισαγωγή στα συστήματα συστάσεων και στις υπάρχουσες θεωρητικές και πρακτικές κατευθύνσεις. 
+
+
+\subsection{Εισαγωγή Στα Συστήματα Συστάσεων}
+Στη μελέτη επισκόπησης των \emph{Adomavicius} και \setlanguage{english}  \emph{Tuzhilin} \cite{NGRS} \setlanguage{greek} πραγματοποιήθηκε έρευνα σχετικά με το υπάρχον στάδιο των \setlanguage{english} Recommender systems, \setlanguage{greek} αντλήθηκαν και παρουσιάζονται τα παρακάτω στοιχεία.
+  
+Τα συστήματα συστάσεων αναδύθηκαν σαν ερευνητικό πεδίο μετά την εμφάνιση των πρώτων ερευνητικών εργασιών σε συνεργατική επιλογή (collaborative filtering) στα μέσα της δεκαετίας του 90. Τόσο στην ακαδημαϊκή κοινότητα αλλά και στον επιχειρηματικό κόσμο, την τελευταία δεκαετία, γίνονται προσπάθειες εύρεσης και υλοποίηση νέων προσεγγίσεων. 
+Το ενδιαφέρον παραμένει ακόμα υψηλό καθώς υπάρχουν πολλά ακόμα προβλήματα προς επίλυση και χώρος για την ανάπτυξη προσωποποιημένων εφαρμογών, καθώς οι χρήστες των διαδικτυακών υπηρεσιών καλούνται να αντιμετωπίσουν την ολοένα και μεγαλύτερη υπερπληροφόρηση.
+
+Σχετικές έννοιες είχαν ήδη αναφερθεί σε διαφορετικούς τομείς όπως στην ανάκτηση πληροφορίας \setlanguage{english}(information retrieval)\setlanguage{greek} αλλά και στο μάρκετινγκ, αποτέλεσε όμως ανεξάρτητο πεδίο από την στιγμή που οι ερευνητές άρχισαν να μελετούν \emph{προβλήματα βαθμονόμησης (ranking problems)} των συστάσεων. 
+Ο πυρήνας ενός Συστήματος Συστάσεων είναι ουσιαστικά μια διαδικασία πρόβλεψης αξιολογήσεων (rating) των αντικειμένων με τα οποία ο χρήστης δεν είχε ακόμα επαφή,
+και στη συνέχεια βαθμονόμησης των αντικειμένων με βάση την αξιολόγηση, ώστε τελικά να προταθούν στον χρήστη τα αντικείμενα με το υψηλότερο εκτιμώμενη αξιολόγηση.\\
+
+Αν επιχειρήσουμε μια πιο τυπική διατύπωση των παραπάνω έχουμε: 
+
+Ένα σύνολο χρηστών $C$ και ένα σύνολο αντικειμένων $S$. Επίσης έχουμε $u$ τη συνάρτηση χρησιμότητας ενός αντικειμένου $s$ για τον χρήστη $c$.
+
+ Τότε για τη συνάρτηση χρησιμότητας $u$ ισχύει ότι $u:C$x$S \rightarrow R$,  με R να είναι ένα καθορισμένο σύνολο (π.χ. μη αρνητικοί ακέραιοι ή πραγματικοί αριθμοί κάποιου εύρους).
+
+Στη συνέχεια για κάθε χρήστη $c\in C$, θέλουμε να επιλέξουμε κάποιο αντικείμενο $\acute{s}\in S$ το οποίο να μεγιστοποιεί το εκτιμώμενο ενδιαφέρον (\emph{χρησιμότητα}) του χρήστη για αυτό.
+
+Επομένως:   $\forall c\in C,  \acute{s_c}=\arg_{s\in S} \max u(c,s) $   
+
+Συνήθως στα συστήματα συστάσεων η χρησιμότητα ενός αντικειμένου εκφράζεται με μια αξιολόγηση, εναλλακτικά η χρησιμότητα μπορεί να προκύπτει από μια καθορισμένη συνάρτηση κέρδους.
+Ανάλογα με την φύση της εφαρμογής, η χρησιμότητα $u$ μπορεί είτε να δηλωθεί από τον χρήστη με την μορφή αξιολόγησης,
+είτε να υπολογιστεί από την ίδια την εφαρμογή όπως στην περίπτωση της συνάρτησης κέρδους.
+
+Κάθε μέλος του συνόλου χρηστών $C$ περιγράφεται από ένα \emph{προφίλ (userProfile)} που περιλαμβάνει προσωπικές πληροφορίες, όπως δημογραφικά στοιχεία ή προτιμήσεις.
+Στην πιο απλή περίπτωση μοναδικό στοιχείο που χρειάζεται είναι ένα userID. 
+Παρομοίως κάθε στοιχείο του συνόλου των αντικειμένων $S$ μπορεί να περιγράφεται από ένα σύνολο χαρακτηριστικών. 
+
+\cite{NGRS}
+
+\subsection{Μέθοδοι Συστάσεων}
+\iffalse        % comment start
+% uncomment by replacing \iffalse with \iftrue
+
+
+Η σύνθεση κοινώς αποδεκτών μεθόδων για την παραγωγή συστάσεων ξεκίνησε από τους:\\
+\emph{
+- Hill, W., L. Stead, M. Rosenstein, and G. Furnas στο Recommending and evaluating choices in a virtual community of use\\
+- Resnick, P., N. Iakovou, M. Sushak, P. Bergstrom, and J. Riedl στο GroupLens: An open architecture for collaborative filtering of netnews\\
+- Shardanand, U. and P. Maes. Social information filtering στο Algorithms for automating ‘word of mouth’\\
+}
+και έκτοτε το πρόβλημα έλαβε τις υπάρχουσες διαστάσεις του και άρχισε να μελετάται περαιτέρω.\\
+  
+\fi     % comment end
+
+Τα Συστήματα Συστάσεων υπάγονται στις ακόλουθες γενικές κατηγορίες ανάλογα με τον τρόπο προσέγγισης των αξιολογήσεων:
+
+\begin{description}
+\item \textbf{Content-based recommendations}  \hfill \\
+Η πρόβλεψη των αξιολογήσεων προκύπτει από τις αξιολογήσεις που έχει κάνει ο χρήσης σε άλλα αντικείμενα. 
+Επομένως τελικά προτείνονται αντικείμενα παρόμοια με αυτά που έχει αξιολογήσει θετικά στο παρελθόν.
+\item \textbf{Collaborative recommendations}  \hfill \\
+Η πρόβλεψη των αξιολογήσεων προκύπτει από τις αξιολογήσεις που έχουν κάνει άλλοι χρήστες της εφαρμογής, των οποίων τα προφίλ μοιάζουν με το προφίλ του χρήστη. 
+Επομένως τελικά προτείνονται αντικείμενα τα οποία έχουν προτιμηθεί στο παρελθόν από χρήστες με κοινές προτιμήσεις ή χαρακτηριστικά.
+\item \textbf{Hybrid approaches}  \hfill \\
+Συνδυασμός των δυο παραπάνω μεθόδων.
+\end{description} 
+
+Σε όλες τις περιπτώσεις όταν τα άγνωστα ratings έχουν πλέον υπολογιστεί συνίστανται στον χρήστη τα αντικείμενα με την υψηλότερη προβλεπόμενη αξιολόγηση.
+ 
+Στα πλαίσια αυτής της πτυχιακής επιθυμούμε να εξάγουμε συμπεράσματα εκμεταλλευόμενοι τις προτιμήσεις άλλων χρηστών δηλαδή  να δημιουργήσουμε συνεργατικές προτάσεις \setlanguage{english} (Collaborative recommendations) \setlanguage{greek} αλλά
+με διαφορετικό τρόπο σε σχέση με τις παραδοσιακές μεθόδους όπως το Collaborative Filtering. 
+Πρόκειται να πραγματοποιηθούν συστάσεις εξάγοντας γνώση όχι από την ομοιότητά των χρηστών αλλά από την κοινωνική τους διασύνδεση.
+
+\section{Κοινωνικά Συστήματα Συστάσεων}
+
+Τίθεται λοιπόν το ερώτημα: "Ποια λοιπόν η σχέση των κοινωνικών δικτύων με τα συστήματα συστάσεων και με ποιόν τρόπο μπορούν να βελτιώσουν τις υπάρχουσες μεθόδους;"
+Αυτο το ερώτημα θα καλυφθεί σε αυτό το σημείο μέσα από την ανάλυση της συνεργασίας των δύο αυτών πεδίων.
+
+\subsection{Κοινωνικά Δίκτυα και Συστήματα Συστάσεων}
+Οι ρίζες της επιστήμης των δικτύων εντοπίζονται στο 1700 όπου ο Euler 
+ Seven Bridges of Knigsberg, 
+εισήγαγε τη θεωρία των γράφων, μίλησε για κοινωνικούς γράφους και για την ανάλυση των κοινωνικών δικτύων. 
+
+Με τον όρο κοινωνικό γράφο ή δίκτυο αναφερόμαστε σε ένα δίκτυο συνδεδεμένων μελών όπου η μεταξύ τους σύνδεση αντιπροσωπεύει κάποια κοινωνική σχέση. 
+Θα μπορούσε κάποιος να φανταστεί έναν κοινωνικό γράφο στον οποίο κάθε άτομο αποτελεί ένα κόμβο και η σύνδεση μεταξύ των κόμβων εκφράζει τη μεταξύ τους συσχέτιση. 
+Τα κοινωνικά δίκτυα εκ φύσεως συνθέτονται από ομάδες ανθρώπων που μοιράζονται ενδιαφέροντα και δραστηριότητες. 
+Τα παραδοσιακά συστήματα συστάσεων αγνοούσαν τις κοινωνικές σχέσεις μεταξύ των χρηστών παρά την ύπαρξη ερευνών που αποδεικνύουν την σημαντικότητα της κοινωνικής επιρροής.
+Τελευταία παρατηρείται όλο και συχνότερη συνεργασία των δυο αυτών πεδίων κυρίως λόγο της εμφάνισης των Social Media τα οποία έχουν τεράστια απήχηση στο κοινό.\cite{SNRSWCFS}
+Στην πραγματική ζωή όταν ζητάμε από κάποιον φίλο να μας προτείνει κάποιο "αντικείμενο", ουσιαστικά ζητάμε λεκτικά \setlanguage{english} social recommendations \setlanguage{greek}. 
+
+Η καρδιά ενός επιτυχημένου Συστήματα Συστάσεων είναι η δυνατότητα να \emph{γενικεύουμε} βασιζόμενοι σε γνωστές ή υπολογισμένες αξιολογήσεις αντικειμένων.
+Σε αυτήν ακριβός την γενίκευση βοηθούν τα Κοινωνικά Δίκτυα εκμεταλλευόμενα τη συσχέτιση των χρηστών η οποία αποκαλύπτει προτιμήσεις και συμπεριφορές.
+Όταν τα Συστήματα Συστάσεων χρησιμοποιούν την πληροφορία των κοινωνικών γράφων βελτιώνεται η ακρίβεια των προβλέψεων των αξιολογήσεων.
+\cite{RSwithSreg}
+
+\subsection{Πώς θα πετύχουμε Κοινωνικές Συστάσεις}
+
+Υπάρχουν διαφορετικές αναλύσεις για το πώς μπορεί να πραγματοποιηθεί ένα σύστημα συστάσεων βασισμένο στην κοινωνική δομή των χρηστών,
+οι περισσότερες όμως από αυτές συμπίπτουν σε μία γενικευμένη μέθοδο: 
+
+\emph{Τα μέλη του κοινωνικού γράφου ομαδοποιούνται σε \textbf{κοινότητες} χρηστών και στη συνέχεια για κάθε χρήστη προβλέπονται οι πιθανές αξιολογήσεις, 
+με βάση τις αξιολογήσεις που έχουν κάνει τα άλλα μέλη της κοινότητάς του.}
+
+Τέλος προτείνονται στον χρήστη τα αντικείμενα με της υψηλότερες πιθανές αξιολογήσεις.
+Η παρούσα πτυχιακή επικεντρώνεται στο στάδιο του εντοπισμού των κοινοτήτων των χρηστών παρόλα αυτά ενσωματώνει το αποτέλεσμά της σε ένα σύστημα που παράγει συστάσεις, επεκτείνοντας έτσι τη λειτουργικότητά του.
+
+
+\subsection{Τι είναι και τι αντιπροσωπεύει μια Κοινότητα Χρηστών}
+
+Η μελέτη των κοινοτικών δομών έχει μακρά ιστορία και εμφανίζεται σε πολλούς διαφορετικούς επιστημονικούς τομείς. 
+Το τι ακριβώς αντιπροσωπεύει μια κοινότητα εξαρτάται από την εκάστοτε οπτική, αλλά συνήθως εκφράζει ένα σύνολο ανθρώπων όπου μεταξύ τους υπάρχουν ισχυρές κοινωνικές σχέσεις. 
+Σκοπός μας είναι να εντοπίζουμε τέτοιες δομές και να εξάγουμε γνώση από αυτές. 
+Για την επιστήμη των υπολογιστών το κοινωνικό σύνολο είναι ένα δίκτυο του οποίου οι κόμβοι έχουν το ρόλο των χρηστών
+και οι ακμές που τους ενώνουν αντιπροσωπεύουν την κοινωνική τους σχέση.
+Οι κοινότητες είναι ουσιαστικά το αποτέλεσμα της διαίρεσης των κόμβων σε ομάδες εντός 
+των οποίων οι συνδέσεις είναι πυκνές αλλά οι μεταξύ των ομάδων συνδέσεις αραιές. 
+Στα περισσότερα δίκτυα, όχι μόνο στα κοινωνικά, μπορούν να εντοπιστούν κοινότητες και
+η εύρεση και ανάλυση τους βοηθάει στην κατανόηση των δομών των δικτύων. 
+Ο αριθμός των κοινοτήτων που τελικά θα προκύψουν, όπως και το μέγεθος της κάθε κοινότητας στις περισσότερες των περιπτώσεων είναι άγνωστος. 
+\cite{PhysRevE.69.026113}
+
+
+
+\subsection{Συστάσεις βάση Εμπιστοσύνης και Κοινωνικές Συστάσεις} 
+
+Σε αυτό το σημείο θα αναφερθεί ένα άλλο συγγενές πεδίο που χρησιμοποιεί παρόμοια μεθόδους, για να αποφευχθούν τυχόν παρερμηνείες.
+Πρόσφατα, βασιζόμενες στην διαίσθηση ότι οι σχέσεις \emph{εμπιστοσύνης} (trust) μπορούν να χρησιμοποιηθούν για την βελτίωση των παραδοσιακών συστημάτων συστάσεων,
+προτάθηκαν κάποιες μέθοδοι συστάσεων που βασίζονται στις δηλώσεις εμπιστοσύνης μεταξύ των χρηστών (trust-aware recommendation). 
+Αυτές οι μέθοδοι επίσης χρησιμοποιούν τις σχετικές πληροφορίες διασύνδεσης των χρηστών για να βελτιώσουν τα παραδοσιακά συστήματα. 
+Τέτοιου είδους συστήματα πραγματοποιούν ένα σημαντικό βήμα στην σχετική έρευνα, χωρίς όμως να πετυχαίνουν 
+το στόχο του Social Recommendation.
+
+Σύμφωνα με την έρευνα \emph{Recommender Systems with Social Regularization}\cite{RSwithSreg} οι μέθοδοι συστάσεων
+που βασίζονται στην εκτίμηση του βαθμού εμπιστοσύνης μεταξύ χρηστών  από την εν γένει συμπεριφορά των χρηστών στο δίκτυο δεν ταυτίζονται με τις social μεθόδους αφού έχουν διαφορετική φύση.
+Για παράδειγμα όταν κάποιος χρήστης αρέσκεται στις αναρτήσεις κάποιου άλλου ή και όταν τελικά τον προσθέσει στην λίστα με τους ανθρώπους που παρακολουθεί ή εμπιστεύεται,
+δε σημαίνει απαραίτητα ότι έχει κάποια κοινωνική σχέση μαζί του. Αυτή η μονομερής διαδικασία δεν απαιτεί από τον δεύτερο χρήστη να την επιβεβαιώσει δημιουργώντας έτσι έναν κατευθυνόμενο γράφο (directed graph) μεταξύ των χρηστών. 
+Τα Social Networks είναι σχεδιασμένα ώστε οι χρήστες να αλληλεπιδρούν και να συνδέονται με μέλη της πραγματικής τους κοινωνικής ζωής.
+Μπορούμε λοιπόν να εκτιμήσουμε ότι τα Trust-aware recommender systems δεν ταυτίζονται πάντοτε με την έννοια “social” η οποία προϋποθέτει ενσωμάτωση ενός πραγματικού κοινωνικού γράφου στην εφαρμογή \cite{RSwithSreg}.
+
+Στην περίπτωση των κοινωνικών συστημάτων επικεντρωνόμαστε στην εξαγωγή γνώσης από την κοινωνική πληροφορία η οποία είναι πιο πλούσια. 
+Στην περίπτωση των δικτύων εμπιστοσύνης οι ακμές μπορεί να είναι πιο ισχυρές αν και κατευθυνόμενες και μπορεί να είμαστε πιο σίγουροι για την ομοιότητα 
+των προτιμήσεων. Αυτό μπορεί να θεωρηθεί μειονέκτημα των κοινωνικών συστημάτων, το οποίο όμως μπορεί να διορθωθεί και στις social μεθόδους αν εφαρμοστούν συνδυαστικά με Collaborative filtering.
+
+
+\section{Αλγόριθμοι για την παραγωγή Κοινοτήτων Χρηστών}
+\label{Αλγόριθμοι}
+Στο πρόγραμμά μας η ένταξη των χρηστών σε κοινότητες γίνεται με χρήση αλγορίθμων clustering και partitioning οι οποίοι ομαδοποιούν τους χρήστες
+ανάλογα με τις κοινωνικές τους συνδέσεις ο κάθε ένας με διαφορετικό τρόπο.
+\textcolor{red}{Γιατί επέλεξες clustering και partitioning; Γιατί αυτούς τους αλγορίθμους; Τι άλλες επιλογές είχες; Πως δηλαδή θα αξιοποιήσεις τα clusters ή τα partitions; Ποια η διαφορά μεταξύ clustering και partition;}
+Οι αλγόριθμοι αυτοί εντάχθηκαν στον socialPServer μέσω java βιβλιοθηκών ανοιχτού κώδικα.\\
+Ακολουθεί η ανασκόπηση και περαιτέρω περιγραφή αυτών.
+
+\textbf{
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+\item  EdgeBetweenness %\hyperref[EdgeBetweenness]{ EdgeBetweenness   \ref*{EdgeBetweenness} } 
+\item  WeakComponent %\hyperref[WeakComponent]{ WeakComponent   \ref*{WeakComponent} } 
+\item  BronKerbosch %\hyperref[BronKerbosch]{ BronKerbosch   \ref*{BronKerbosch} } 
+\item  Metis %\hyperref[Metis]{ Metis   \ref*{Metis} } 
+\end{itemize}
+}
+
+\subsection{WeakComponent}
+\label{WeakComponent}
+
+Εντοπίζει τα weakly connected components σε ένα κοινωνικό γράφο.
+Ένα weakly connected component είναι ένα σύνολο κόμβων (χρηστών) όπου ο κάθε κόμβος έχει μονοπάτι για κάθε άλλο κόμβο στο σύνολο.
+Αυτή η μορφή κοινότητας πολλές φορές αναφέρεται και ως \textbf{κλίκα}.
+Ο Scott White που πρότεινε τον αλγόριθμο ορίζει το Weak Component ως το μέγιστο υπογράφο (subgraph) στον οποίον όλα τα ζεύγη χρηστών είναι προσβάσιμα μεταξύ τους.
+
+Η πολυπλοκότητα εκτέλεσης του αλγορίθμου είναι: O(|V| + |E|) όπου |V| είναι ο αριθμός των χρηστών και |E| είναι ο αριθμός των ακμών φιλίας. 
+
+
+%licence:
+%http://jung.sourceforge.net/license.txt
+
+\cite{WeakComponent}
+
+
+\subsection{EdgeBetweenness}
+\label{EdgeBetweenness}
+
+
+Ο αλγόριθμος αυτός βασίζεται στη έννοια του '"Ενδιάμεσου" (Betweenness) η οποία εισάχθηκε σαν εργαλείο ανάλυσης κοινωνικών δικτύων
+από τον κοινωνιολόγο Linton Freeman \cite{freeman1977set} σύμφωνα με τον οποίον σε ένα κοινωνικό δίκτυο ένας κόμβος είναι σημαντικός και έχει υψηλό
+betweenness centrality όταν εμπεριέχεται σε πολλά συντομότερα μονοπάτια (sortest paths) μεταξύ των κόμβων του δικτύου.
+
+\begin{figure}[htbp]
+  \centering
+      \includegraphics{Figures/GraphBetweenness.svg}
+	\rule{35em}{0.5pt}  % UnderLine figure	
+	\caption[graphBetweenness]{Η απόχρωση (από red=0 ως blue=max)\\ δείχνει το betweenness του κάθε κόμβου στο γράφο. \cite{GraphBetweenness}}
+  \label{fig:GraphBetweenness}
+\end{figure}
+
+
+%Usage: https://en.wikipedia.org/wiki/Betweenness#Betweenness_centrality
+%license:   !!!!
+
+
+Στη συνέχεια οι Μ.Girvan και J.Newman \cite{Girvan11062002} επεκτείνουν την μεθοδολογία εισάγοντας το
+edge betweenness, που και πάλι μέτρα centrality αλλά για τις ακμές του γράφου.
+Παράλληλα εισάγουν τον αλγόριθμο Girvan–Newman ο οποίος στοχεύει στην εξαγωγή κοινοτήτων από έναν κοινωνικό γράφο
+βασιζόμενος στο betweenness των ακμών. Παραλλαγή αυτού είναι και ο αλγόριθμος που ενσωματώσαμε στον socialPServer \textcolor{Να είσαι συνεπής στο όνομα που χρησιμοποιείς για τη δική σου υλοποίηση και για το βασικό pServer, κάπου το λες socialServer κάπου socialPServer και κάπου PServer}.
+
+Όπως αναφέρουν οι συγγραφείς του, Scott White και Tom Nelson \cite{EdgeBetweenness}, ο \setlanguage{english} EdgeBetweenness \setlanguage{greek} είναι ένας αλγόριθμος clustering για την 
+εύρεση κοινοτήτων χρηστών σε γράφους που βασίζεται στο betweenness των ακμών. 
+Ως betweenness ορίζεται ο βαθμός στον οποίο μία ακμή  βρίσκεται στα shortest paths μεταξύ όλων των ζευγών κόμβων.
+ Ο αλγόριθμος αυτός λειτουργεί επαναληπτικά ακολουθώντας μια διαδικασία δύο βημάτων:\\
+- υπολογισμός του edge betweenness όλων των ακμών του γράφου\\
+- διαγραφή των ακμών με το υψηλότερο  betweenness.\\
+
+ Ο αλγόριθμος αυτός διαφοροποιείται από τον Girvan–Newman όσον αφορά τον αριθμό των ακμών που διαγράφονται σε κάθε βήμα, ο οποίος πλέον αποτελεί παράμετρο.  
+
+Η πολυπλοκότητα εκτέλεσης του αλγορίθμου είναι: $O(kmn)$ όπου \emph{k} ο αριθμός των ακμών που θα διαγραφούν, \emph{m} ο αριθμός των ακμών, και \emph{n} ο αριθμός των χρηστών (κόμβων).
+Για αραιούς γράφους το running time πλησιάζει στο $O(kn^2)$ και για πυκνούς γράφους η πολυπλοκότητα είναι ακόμα μικρότερη.\\
+Τελικά ο αλγόριθμος εντοπίζει τις ομάδες χρηστών (communities) που έχουν την υψηλότερη κοινωνική δομή.
+Όσες περισσότερες ακμές διαγραφούν τόσο μικρότερα και συνεκτικά τα clusters.
+
+\subsection{BronKerbosch}
+\label{BronKerbosch}
+
+Ο Bron-Kerbosch είναι ένας clique detection αλγόριθμος που αναπτύχθηκε από τους Bron και Kerbosch το 1973.
+Η υλοποίηση που χρησιμοποιούμε έχει βασιστεί στους Samudrala και Moult \cite{SamudralaMoult:2931890},
+οι οποίοι περιγράφουν τον αλγόριθμο να συνδυάζει μία αναδρομική backtracking διαδικασία
+με μία branch and bound τεχνική ώστε να εξαλείψει τις αναζητήσεις που δεν οδηγούν σε κλίκα.
+Η αναδρομική διαδικασία είναι αυτοαναφορική με την έννοια ότι η εύρεση μίας κλίκας μεγέθους $n$
+επιτυγχάνεται με το να βρίσκεται μια κλίκα μεγέθους $n-1$ και στη συνέχεια να εντοπίζεται κάποιος κόμβος που
+να είναι συνδεδεμένος με όλους τους κόμβους μέλη της κλίκας. Η branch and bound τεχνική κάνει δυνατή τη χρήση κανόνων
+για εκ των προτέρων καθορισμό των περιπτώσεων στις οποίες οι
+πιθανοί συνδυασμοί κόμβων και ακμών δεν θα οδηγήσουν ποτέ σε κλίκα.
+
+
+Στο πρόγραμμά μας ενσωματώθηκε η υλοποίηση του Ewgenij Proschak \cite{BronKerbosch} 
+ο οποίος αναφέρει για τον αλγόριθμο
+πως σκοπός του είναι να βρει όλες τις μέγιστες κλίκες (maximal cliques) του γράφου.
+Μια κλίκα είναι μέγιστη αν το μέγεθός της είναι αδύνατο να αυξηθεί με την πρόσθεση κάποιου ακόμα κόμβου του γράφου.
+Επισημαίνει επίσης πως μια μέγιστη κλίκα δεν είναι απαραίτητα και η μεγαλύτερη κλίκα του γράφου.
+
+    
+\subsection{Metis}
+\label{Metis}
+
+H βιβλιοθήκη METIS \cite{Metis} προσφέρει μία συλλογή προγραμμάτων γραμμένων σε C/C++ και Fortran για την κατάτμηση 
+γράφων (graph partitioning) και δικτύων πεπερασμένων στοιχείων.
+
+Συγκεκριμένα για την παραγωγή communities στον socialPServer χρησιμοποιούμε το εργαλείο GpMetis του οποίου η λειτουργία είναι η κατάτμηση γράφων σε
+$k$ ίσα μέρη, όπου το πλήθος $k$ καθορίζεται από τον χρήστη. Οι αλγόριθμοι που είναι υλοποιημένοι χρησιμοποιούν είτε multilevel recursive bisection
+είτε multilevel k-way partitioning paradigms \textcoloer{red}{τι είναι αυτά ακριβώς, εξήγησε στα Ελληνικά σε 2-3 γραμμές}. Και οι δύο αυτοί μέθοδοι είναι σε θέση να παράγουν υψηλής ποιότητας partitions, παρόλα αυτά η multilevel k-way partitioning 
+προτιμάται γιατί παρέχει κάποιες περαιτέρω δυνατότητες όπως:
+minimize the resulting subdomain connectivity graph, enforce contiguous partitions, minimize alternative objectives, κτλ.) 
+\cite{karypisΜetis}
+
+
+\begin{figure}[htbp]
+  \begin{center}
+    \hspace{-3.5em}
+      \includegraphics[scale=0.59]{Figures/metis.jpg}
+	\rule{35em}{0.6pt}  % UnderLine figure	
+    \caption[METIS-]{Οι τρεις φάσεις του multilevel k-way graph partitioning. Κατά την διάρκεια της coarsening φάσης, το μέγεθος του γράφου μειώνεται επιτυχώς.
+    Κατά την διάρκεια της initial partitioning φάσης, υπολογίζεται ένα k-way partitioning, Κατά την διάρκια της multilevel refinement (ή
+    uncoarsening) φάσης, η κατάτμηση εξευγενίζεται διαδοχικά όσο προβάλλεται σε μεγαλύτερους γράφους. G0 είναι ο input γράφος, ο οποίος είναι ο λιγότερο coarser.
+    Gi+1 είναι ο αμέσως πιο coarser γράφος από τον Gi. G4 είναι ο πιο coarser γράφος. \cite{karypisΜetis}}
+  \label{fig:metisFig}
+  \end{center}
+\end{figure}
+
+\textcolor{red}{Όλα τα παρακάτω είναι λεπτομέρειες υλοποίησης, καλύτερα να πάνε στο 4, αφού τα μεταφράσεις. Εδώ μπορείς να πεις 2-3 λόγια για το πως μπορεί ο χρήστης να παρέμβει στον αλγόριθμο. }
+
+Η ενσωμάτωση του Metis στον java κώδικα πραγματοποιείται με τη χρήση της κλάσης Gpmetis \cite{GpMetis} της βιβλιοθήκης χειρισμού γράφων Grph,
+η οποία αναλαμβάνει τη μεταγλώττιση (compile) του C κώδικα σε πραγματικό χρόνο, την εκτέλεση των διαδικασιών και τον χειρισμό του Ι/Ο.
+
+
+\vspace{1 cm}
+
+Οι \textbf{παράμετροι} με την σειρά που πρέπει να δίνονται:
+\setlanguage{english} 
+\begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+
+    \item  \textbf{g} - the graph
+    \item  \textbf{numberOfPartitions} 
+    \item  \textbf{ptype} - Specifies the scheme to be used for computing the k-way partitioning.   
+    \begin{itemize}
+      \renewcommand{\labelitemi}{$\rightarrow$}
+      \item \textbf{rb}  Multilevel recursive bisectioning. 
+      \item \textbf{kway} Multilevel k-way partitioning [default]. 
+    \end{itemize}
+    \item  \textbf{ctype} - Specifies the scheme to be used to match the vertices of the graph during the coarsening.
+    \begin{itemize}
+      \renewcommand{\labelitemi}{$\rightarrow$}
+      \item \textbf{rm} Random matching 
+      \item \textbf{shem} Sorted heavy-edge matching [default].    
+    \end{itemize}    
+    \item  \textbf{iptype} - Specifies the scheme to be used to compute the initial partitioning of the graph. applies only when ptype=rb.
+    \begin{itemize}
+      \renewcommand{\labelitemi}{$\rightarrow$}
+      \item \textbf{grow}  Grows a bisection using a greedy strategy [default].
+      \item \textbf{random} Computes a bisection at random followed by a refinement.    
+    \end{itemize}
+    \item  \textbf{objtype} - Specifies the objective that the partitioning routines will optimize. applies only when ptype=kway.
+    \begin{itemize}
+      \renewcommand{\labelitemi}{$\rightarrow$}
+      \item \textbf{cut} Edgecut minimization [default].
+      \item \textbf{vol} Total communication volume minimization  
+    \end{itemize}
+    \item  \textbf{contig} - Specifies that the partitioning routines should try to produce partitions that are contiguous. Note that if the input graph is 
+	not connected this option is ignored. Applies only when ptype=kway.       
+    \item  \textbf{minconn} - Specifies that the partitioning routines should try to minimize the maximum degree of the subdomain graph, i.e.,
+    	      the graph in which each partition is a node, and edges connect subdomains with a shared interface. Applies only when ptype=kway.
+    \item  \textbf{ufactor} - Specifies the maximum allowed load imbalance among the partitions. A value of x indicates that the allowed load imbalance is $1+x/1000$.
+    	      For ptype=rb, the load imbalance is measured as the ratio of the $2*max(left,right)/(left+right)$, where left and right are the sizes 
+    	      of the respective partitions at each bisection. For ptype=kway, the load imbalance is measured as the ratio of $max_i(pwgts[i])/avgpwgt$,
+    	      where pwgts[i] is the weight of the ith partition and avgpwgt is the sum of the total vertex weights divided by the number of partitions requested. 
+    	      For ptype=rb, the default value is 1 (i.e., load imbalance of 1.001). For ptype=kway, the default value is 30 (i.e., load imbalance of 1.03).
+    \item  \textbf{niter} - Specifies the number of iterations for the refinement algorithms at each stage of the uncoarsening process. Default is 10.
+    \item  \textbf{ncuts} - Specifies the number of different partitionings that it will compute. The final partitioning is the one that achieves the best edgecut or communication volume. Default is 1.
+    \item  \textbf{seed} - Selects the seed of the random number generator.
+    \item  \textbf{dbglvl} - Selects the dbglvl - type of progress/debugging information that will be printed to stdout. The default value is 0 (no progress/debugging information).
+\end{itemize}
+\setlanguage{greek}
+\textbf{παράδειγμα σύνταξης}:\\
+\emph{Gpmetis(g, 50, Ptype.rb, Ctype.rm, Iptype.grow, Objtype.cut, false, false, 1, 10, 1, new Random(5))}
+
+Η προσεκτική επιλογή των παραμέτρων χρειάζεται για το fine tuning του αλγορίθμου ανάλογα με την κάθε περίπτωση χρήσης\\
+αλλά κάποιος μπορεί να χρησιμοποιήσει και την προεπιλεγμένη παραμετροποίηση η οποία έχει την μορφή:\\
+
+\emph{Gpmetis(g, n, new Random(5))} η οποία ανακατευθήνεται στις default values:\\
+\emph{Gpmetis(g, n, Ptype.kway, gCtype.shem, Iptype.random, Objtype.cut, false, false, 30, 10, 1, r)}
+
+\textcolor{red}{Τι θα κάνεις με τα πιο κάτω σχολιασμένα;;;; Μπορείς να τα μαζέψεις σε 4-5 γραμμές στην αρχή που μιλάς για clustering και partitioning. 
+Να μιλήσεις για ιεραρχικό clustering να βάλεις τις clustering τεχνικές ως agglomerative και τις partitioning ως μια περίπτωση divisive τεχνικών.}
+\iffalse        % comment start
+% uncomment by replacing \iffalse with \iftrue
+
+
+\subsection{Finding and evaluating community structure in networks}
+
+We propose and study a set of algorithms for discovering community structure in networks natural divisions
+of network nodes into densely connected subgroups. Our algorithms all share two
+definitive features: first, they involve iterative removal of edges from the network to split it into
+communities, the edges removed being identified using one of a number of possible “betweenness”
+measures, and second, these measures are, crucially, recalculated after each removal. We also propose
+a measure for the strength of the community structure found by our algorithms, which gives us an
+objective metric for choosing the number of communities into which a network should be divided.\\ \\
+
+
+\textbf{hierarchical clustering:} \\
+Μια ποίο χρήσημη προσέγκηση δανεισμένη απο το πεδίο της social network analysis με ένα σύνολο τεχνικών γνωστών ως: hierarchical clustering. 
+Aυτές οι τεχνικές στοχεύουν στην ανακάλιψη φισικών διερέσεων των SN σε ομάδες, βασιζόμενες σε ποικίλες μετρικές similarity ή strength των συνδέσεων μεταξί των κόμβων. 
+Οι τεχνικές αυτές υπάγωνται σε δύο μεγάλες κατηγωρίες, agglomerative and divisive (αυτή η κατηγωριοποίηση εξαρτάται απο το αν επικέντώνονται 
+στην πρόσθεση ή στην αφέρεση κόμβων σε ή από το δύκτιο).\\\\
+
+Στις \textbf{Agglomerative} μεθόδους, οι ομοιότητες μεταξί ενός ζεύγους κόμβων υπολογίζονται 
+με κάποια μέθοδο και στην συνέχια προστήθονται σε ένα αρχικά άδιο δύκτιο (n κόμβοι χωρίς συνδέσεις), αρχίζοντας με τα ζεύγοι που έχουν τη μεγαλήτερη ομοιότητα.
+Η διαδικασία μπορεί να σταματήσει ανα πάσα στηγμή και οι κόμβοι που έχουν μπεί στο νέο δίκτιο αποτελούν τις κοινότητες. Εναλακτικά η όλη διαδικασία
+απο τον άδιο γράφο στον πλήρη γράφο μπορεί να παρουσιαστεί σε μορφή δέντρου ή dendrogram, όπου οι οριζόντιες τομές του δέντρου αντιπροσοπεύουν τις κοινότητες.\\
+Οι Agglomerative μέθοδοι βασίζονται σε μιαμεγάλη πικιλία μετρικών ομοιότητας.\\
+Οι Agglomerative μέθοδοι έχουν βεβέος και τις προβληματικές τους. Ένα πρόβλημα είναι πως συχνά αποτυνχάνουν να βρούν τις σωστές κοινότητες σε δίκτια
+όπου η κοινοτική δομή είναι ίδη γνωστή, πράγμα που σημένει πως γενικά χάνουν την επιστοσήνη τους. Άλλο πρόβλημα είναι πως έχουν την τάση να βρήσκουν μόνο
+τους πυρήνες των κοινοτήτων και να αφήνουν έξω τους περιφεριακούς κόμβους. Οι κόμβοι που αποτελούν τον πηρήνα έχουν μεγάλη ομοιότητα και ως εκ τούτου
+συνδέονται απο την αρχή της agglomerative διαδικασίας, αλλά οι περιφεριακοί κόμβοι που δεν έχουν ισχιρή ομοιότητα με άλλους παραμελούνται.\\\\
+
+\textbf{Divisive methods:} Δεν έχουν μελετιθεί πολύ στην σχετική βιβλιογραφία, αλλά είναι πολλά υποσχόμενες. 
+Σε μία Divisive method ξεκινάμε ψάχνοντας τα ζεύγη κόμβων με τις λιγότερες ομοιότητες και στη συνέχια αφερούμε την μεταξή τους σύνδεση. 
+Επαναλαμβάνοντας την διαικασία καταλήγουμε να διαιρούμε το δίκτιο όλο και πιό μικρές ομάδες και σταματόντας την διαδικασία στο επιθημητό 
+συμείο θεορούμε τις ομάδες αυτές ως τις κοινότητες του δικτείου. Και αυτή η διαδικασία μπορεί να παρουσιαστεί σε δενδρόγραμα το οποίο απεικονίζει
+τις επιτιχείς διερέσεις του δικτείου σε όλο και μικρότερες ομάδες. \\ \\
+
+\textbf{Περιεχόμενα}:\\
+Briefly then, the outline of this paper is as follows.
+In Sec. II we describe the crucial concepts behind our
+methods for finding community structure in networks and
+show how these concepts can be turned into a concrete
+prescription for performing calculations. In Sec. III we
+describe in detail the implementation of our methods. In
+Sec. IV we consider ways of determining when a particu-
+lar division of a network into communities is a good one,
+allowing us to quantify the success of our community-
+finding algorithms. And in Sec. V we give a number
+of applications of our algorithms to particular networks,
+both real and artificial. In Sec. VI we give our conclu-
+sions. A brief report of some of the work contained in
+this paper has appeared previously as Ref. 25. \\ \\
+
+
+\textbf{FINDING COMMUNITIES IN A NETWORK}\\
+
+
+
+\cite{PhysRevE.69.026113}
+
+
+\subsection{Improving Recommendation Accuracy by Clustering Social Networks with Trust}
+
+Η αυξάνουσα δημοτικότητα των Social Netwoks έχει δημιουργήσει την ανάδηση νέον πεδίων και προσεγκήσεων σχετικών με τα Recommender systems. 
+Oι Recommenders υποστηρίζουν μεταξί άλλον και την διαδικασία διαμηρασμού πληροφοριών.\\ \\ 
+
+\textbf{Βελτίωση της ακρίβιας των συστάσεων ομαδοποιόντας με βάση το Trust}\\
+Οι συσχέτηση Trust μεταξί των χρηστών στα SN αντηπροσοπεύει την ομοιότητα των απόψεών τους σε γενική αλλά και πιο λεπτομεριακή προσέγκηση. 
+Έχει χρησημοποιηθεί στο παρελθόν για συτάσεις στο WEB. Νέες μετρικές της εμπιστοσήνης εισάγουν τη χρήση trust clusters για βελτίωση των συστάσεων. 
+Τα αποτελέσματα δήχνουν πως με την χρήση Trust βελτιώνεται η ακρίβια των αποτελεσμάτων σε σχέση με την ομαδοποίηση βάση την ομοιότητα των χρηστών που γηνόταν μέχρι στιγμής.//
+Οι υπάρχουσες μέθοδοι χρησημοποιούν το Trust σαν βάρος (weight) στoυς collaborative filtering αλγορίθμους.
+Αυτό είναι αποτελεσματικό αλλά δεν είναι ο μόνος τρόπος με τον οποίο μπορεί να αξιοποιηθεί αυτή η πληροφορία. 
+Η ομαδοποίηση των χρηστών σε σύνολλα εμπιστοσήνης μπορεί να χρησημοποιηθεί σε πολλούς διαφορετικούς αλγορίθμους.\\ \\
+
+While clustering can be computationally difficult with so-
+cial networks, a new trust metric we have developed makes
+it easy to apply clustering techniques to build these groups.
+Since trust is related to similarity, we use correlation clus-
+tering to identify groups of trusted people.\\ \\
+
+\textbf{A PROBABILISTIC TRUST INFERENCE ALGORITHM.........}
+
+\cite{jannach2009recommender}
+
+
+
+\subsection{Clustering and community detection in directed networks: A survey}
+\cite{Malliaros2013}
+
+
+\subsection{Clustering Social Networks}
+
+Tα Social Nets είναι παντού. Η ανακάληψη στενά συνεδεμένων ομάδων σε τέτια δίκτια αποτελεί πρόβλημα θεμελιόδους και πρακτικού ενδιαφέροντος. 
+Τα υπάρχοντα συστήματα ομαδοποίησης υστερούν στο ότι οι ομάδες δεν επικαλύπτονται. Όλοι οι κόμβοι ομαδοποιούνται και οι εκτός ομάδας συνδέσεις αγνοούνται.\\\\
+Διεσθητικά, ένα cluster είναι μία συλλογή αντικιμένων με πικνή κοινονική συσχετιση στο εσωτερικό τους και αρεή στο εξωτερικό τους.  
+Πως αξιολογήται ένα καλό cluster σε ένα κοινονικό δίκτιο? Υπάρχουν πολλά κριτήρια που καθορίζουν τα καλά graph clusters και το κάθε ένα 
+συνοδεύεται από ένα πλήθος αλγορίθμων. Ένα διαδεδομένο κριτήριο βασίζεται στην εύρεση ομάδων με υψηλή αγωγημότητα. Η αγωγημότητα μιας σύνδεσης Α-Β
+είναι αναλογία του αρηθμού των συνδέσεων που περνούν ...........................\\........................συνέχια (επεξήγηση μεθόδων clustering k overlaping...)
+
+\textbf{ανάληση Clustering}\\
+
+
+\cite{ClusteringSocialNetworks}
+
+
+
+
+
+% uncomment by replacing \iffalse with \iftrue
+\fi     % comment end
+
