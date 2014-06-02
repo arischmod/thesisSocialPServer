@@ -25,7 +25,7 @@ public class GraphLoaderDB implements GraphLoader {
     @Override
     public Set<String[]> getGraph() {
         socialpserver.SocialPServer.socialPServerOutputLogger.info("    loading User friendship from DB...");
-        return dbAccess.DBtoGraph();
+        return userAssociations;
     }
 
     @Override
@@ -35,6 +35,15 @@ public class GraphLoaderDB implements GraphLoader {
     public void loadGraph() {
         socialpserver.SocialPServer.socialPServerOutputLogger.info("    loading User friendship from DB...");
         userAssociations = dbAccess.DBtoGraph();
+    }
+
+    @Override
+    /**
+     * Used by API
+     */
+    public void emptyGraph() {
+        socialpserver.SocialPServer.socialPServerOutputLogger.info("    removing Graph from RAM...");
+        userAssociations.clear();
     }
         
 }

@@ -18,6 +18,7 @@ public interface CommunityStorer {
      * to a given database.
      * @param communities is the a SetOfCommunities object that contains all 
      * the communities (set of users) that we want to store
+     * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
      */
     public void storeAll(SetOfCommunities communities);
    

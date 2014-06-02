@@ -10,7 +10,7 @@ import java.util.Set;
 public interface GraphLoader {
 
     /**
-     * load user Associations user-friendship links (edges)
+     * load user Associations user-friendship links (edges) and keep them in RAM
      */
     public void loadGraph();
 
@@ -18,4 +18,10 @@ public interface GraphLoader {
      * @return user Associations user-friendship links (edges)
      */
     public Set<String[]> getGraph();
+
+     /**
+      * Remove the Graph from memory (RAM)     
+     */
+    public void emptyGraph();
+
 }

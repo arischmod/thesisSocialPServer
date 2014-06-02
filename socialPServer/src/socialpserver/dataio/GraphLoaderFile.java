@@ -24,6 +24,7 @@ public class GraphLoaderFile implements GraphLoader {
 
     @Override
     public Set<String[]> getGraph() {
+        loadGraph();
         return userAssociations;
     }
 
@@ -53,5 +54,11 @@ public class GraphLoaderFile implements GraphLoader {
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
         }
+    }
+
+    @Override
+    public void emptyGraph() {
+        socialpserver.SocialPServer.socialPServerOutputLogger.info("    removing Graph from RAM...");
+        userAssociations.clear();
     }
 }

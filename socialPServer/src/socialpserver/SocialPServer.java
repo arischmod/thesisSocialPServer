@@ -32,7 +32,7 @@ import socialpserver.dataio.LoggerInit;
  */
 public class SocialPServer {
 
-    private static final String UserAssociationFile = "datasets/flixster/ratings.txt"; // "datasets/epinions/user_rating.txt"; //"datasets/hetrec2011-lastfm-2k/user_friends.dat"
+    private static final String UserAssociationFile = "datasets/hetrec2011-lastfm-2k/user_friends.dat"; //"datasets/flixster/ratings.txt"; // "datasets/epinions/user_rating.txt"; //"datasets/hetrec2011-lastfm-2k/user_friends.dat"
 
     public static final Logger algorithmOutputLogger = Logger.getLogger("algorithmOutput");  // create Loggers 
     public static final Logger socialPServerOutputLogger = Logger.getLogger("socialPServerOutput");
@@ -44,24 +44,38 @@ public class SocialPServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        LoggerInit.initLogger();
+        
         String psClient = args[0]; //  "flixster"  "LastFM"
         psClient = "LastFM";
+        
         // to antikhmeno db tha mou dhnetai apo ton pServer se run time
-        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://83.212.125.37:3306/pserver?", "root", "!8kbx78qb");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
-        PSocialDBAccess dbAccess = new PSocialDBAccess(psClient, db);
+        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "!8kbx78qb");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
+        
+        API api = new API(db, psClient, "soc", 777);
+        api.UserAssociationsFileToDB(UserAssociationFile);
+        api.produceCommunities("weak");
+        
+        //execute(psClient,db);
+        socialPServerOutputLogger.info("process finished *");
+    }
+
+    // Basic Functionality
+    private static void execute(String psClient, pserver.data.DBAccess db) {
+        PSocialDBAccess dbAccess = new PSocialDBAccess(psClient, db, "soc", 777);
         //at DB --> create index name ON up_features (FK_psclient);   // for beter performance    
 
-        LoggerInit.initLogger();
         // Insert User Associations info into DB
         //UserAssociationsToDB uadb = new UserAssociationsStorerDB(dbAccess);
         //uadb.friendshipToDB(new GraphLoaderFile(UserAssociationFile));
 
         GraphLoaderDB graphLoaderDB = new GraphLoaderDB(dbAccess);
-        //graphLoaderDB.loadGraph();
+        graphLoaderDB.loadGraph(); // load user Associations to loader (RAM) -> u can retrive them by loader.getGraph()
 
         //socialUtils(graphLoaderDB); // info about the social graph                         
-        String algorithm = args[1];
-        algorithm = "metis";
+        //String algorithm = args[1];
+        String algorithm = "weak";
         switch (algorithm) {
             case "weak":
                 ClustererAlgorithm weak = new WeakComponentCommunityDiscoverer(graphLoaderDB);
@@ -75,7 +89,7 @@ public class SocialPServer {
             case "metis":
                 ClustererAlgorithm met = new MetisCommunityDiscoverer(graphLoaderDB);
                 met.getClusters();
-                //met.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
+                met.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 //met.storeCommunities(new CommunityStorerDB(dbAccess));
                 met.clear();
                 met = null;
@@ -115,9 +129,8 @@ public class SocialPServer {
                 socialPServerOutputLogger.info("* algorithm does not exist *");
                 break;
         }
-        socialPServerOutputLogger.info("process finished *");
     }
-
+    
     /**
      * useful info about the Social Graph. an EdgeBetweenness graph will be used
      * to calculate the size of the social graph
