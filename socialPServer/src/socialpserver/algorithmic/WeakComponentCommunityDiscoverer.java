@@ -13,6 +13,7 @@ import socialpserver.dataio.GraphLoader;
 import socialpserver.dataio.CommunityStorer;
 import socialpserver.dataio.FeatureLoader;
 import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.centroidStrorerDB;
 
 /**
  * Finds all weak components in a graph as sets of vertex sets. 
@@ -83,8 +84,8 @@ public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public void storeCommunities(CommunityStorer store) {
-        store.storeAll(town);
+    public void storeCommunities(CommunityStorer storer) {
+        storer.storeAll(town);
     }
 
     @Override
@@ -96,4 +97,9 @@ public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
     public void clear() {
         town.clear();
     }    
+
+    @Override
+    public void storeCentroidFeatures(centroidStrorerDB storer) {
+        town.storeCentroidFeatures(storer);
+    }
 }

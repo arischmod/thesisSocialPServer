@@ -59,7 +59,7 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
             // socialPServer method
-            dbAccess.executeUpdate("DELETE FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '%"+sourceTag+"%';");
+            dbAccess.executeUpdate("DELETE FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+sourceTag+"%';");
             // PServer method
             dbAccess.clearUserCommunities(psClient);
         } catch (Exception ex) {
@@ -80,7 +80,7 @@ public class PSocialDBAccess {
     public void deleteAllUserCommunities() {
         try {
             dbAccess.reconnect();
-            dbAccess.executeUpdate("DELETE FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '%"+sourceTag+"%';");
+            dbAccess.executeUpdate("DELETE FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+sourceTag+"%';");
         } catch (Exception ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -181,7 +181,7 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
 
-            this.psResultSet = dbAccess.executeQuery("SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '%"+sourceTag+"%';");
+            this.psResultSet = dbAccess.executeQuery("SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+sourceTag+"%';");
             while (psResultSet.next()) {
                 communities.add(psResultSet.getRs().getString("community").toString());
             }
@@ -207,7 +207,7 @@ public class PSocialDBAccess {
 
         try {
             dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '%"+sourceTag+"%';");
+            this.psResultSet = dbAccess.executeQuery("SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+sourceTag+"%';");
             while (psResultSet.next()) {
                 String[] team = new String[2];
                 team[0] = psResultSet.getRs().getString("user");
@@ -282,8 +282,13 @@ public class PSocialDBAccess {
 
         try {
             dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + sourceID + " ;");
-
+            
+            //withOUT THershold
+            //this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + sourceID + ";");
+            
+            //with THershold
+            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + sourceID + " AND weight > 0.5 ;");
+            
             while (psResultSet.next()) {
                 String[] user = new String[2];
                 user[0] = psResultSet.getRs().getString("user_src");
@@ -304,4 +309,81 @@ public class PSocialDBAccess {
         return userAssociations;
     }
 
+    /**
+     * removes all Centroid records
+     */    
+    void deleteAllCentroids() {
+        try {
+            dbAccess.reconnect();
+            //dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "';");
+            dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "' AND id LIKE '"+sourceTag+"%';");
+        } catch (SQLException ex) {
+            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                dbAccess.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    /**
+     * Store all Centroids into DB 
+     * (Centroid->featureList->Values) 
+     * @param allCentroidFeatures the Centroids and their features-values
+    */
+    void storeCentroidsToDB(Map<Integer, Map<String, Float>> allCentroidFeatures) {
+        try {
+            dbAccess.reconnect();
+            
+            for (Integer centroid : allCentroidFeatures.keySet()) {           
+                Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
+                for( String feature : cFeatures.keySet()) {
+                    String communityName = sourceTag + centroid.toString();
+                    dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                dbAccess.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    /**
+     *  Given a User returns the Centroid Features of his Community
+     * @param user userID
+     * @return a Map containing features and their values
+     */
+    public Map<String, Float> getCentroidFeatures(String user) {
+        Map<String, Float> featureValue = new HashMap<>();
+
+        try {
+            dbAccess.reconnect();
+            this.psResultSet = dbAccess.executeQuery("SELECT community FROM user_community WHERE user = '" + user + "' AND FK_psclient = '" + psClient + "' AND community LIKE '"+sourceTag+"%';");
+            String community=null;
+            if (psResultSet.next())
+                community = psResultSet.getRs().getString("community");
+            else
+                System.out.println("Invalid User");
+            this.psResultSet = dbAccess.executeQuery("SELECT feature, value FROM centroids  WHERE id = '" + community + "'AND FK_psclient = '" + psClient + "';");
+            while (psResultSet.next()) {
+                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("value")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                dbAccess.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return featureValue;
+    }
 }

@@ -8,6 +8,7 @@ import socialpserver.SetOfCommunities;    //  Data Structure
 import socialpserver.dataio.CommunityStorer;   // Data IO
 import socialpserver.dataio.FeatureLoader;   // Data IO
 import socialpserver.dataio.UserFeatureLoader;   // Data IO
+import socialpserver.dataio.centroidStrorerDB;
 
 /**
  * An Clustering Algorithm used to cluster the social graph
@@ -32,6 +33,13 @@ public interface ClustererAlgorithm {
      * and also has the Location from where the features will be pulled
      */
     public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader);
+    
+    /**
+    * Store the the Centroids of all communities (and their features)
+    * @param store is an object that contains the methods to store 
+    * and also the Location where the centroids will be stored
+    */
+    public void storeCentroidFeatures(centroidStrorerDB store); 
     
     /**
      * Store the produced communities (into DB, File, etc)

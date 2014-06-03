@@ -6,6 +6,7 @@
 
 package socialpserver;
 
+import java.util.Map;
 import pserver.data.DBAccess;
 import static socialpserver.SocialPServer.socialPServerOutputLogger;
 import socialpserver.algorithmic.BronKerboschCliqueCommunityDiscoverer;
@@ -20,6 +21,7 @@ import socialpserver.dataio.GraphLoaderFile;
 import socialpserver.dataio.PSocialDBAccess;
 import socialpserver.dataio.UserAssociationsStorerDB;
 import socialpserver.dataio.UserFeatureLoaderDB;
+import socialpserver.dataio.centroidStrorerDB;
 
 /**
  * 
@@ -41,7 +43,7 @@ public class API {
     * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
     * @param sourceTag 1 OR 777 (loadUserAccosiations by 1='Pserver Community mode' OR 777='SocialPServer')
     */
-    API(DBAccess db, String psClient, String sourceTag, int sourceID) {
+    public API(DBAccess db, String psClient, String sourceTag, int sourceID) {
         this.db = db;
         this.pServerClient = psClient;
         this.sourceTag = sourceTag;
@@ -91,6 +93,7 @@ public class API {
                 weak.getClusters();
                 weak.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 weak.storeCommunities(new CommunityStorerDB(dbAccess));
+                weak.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
                 weak.clear();
                 weak = null;
                 System.gc();
@@ -100,6 +103,7 @@ public class API {
                 met.getClusters();
                 met.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 met.storeCommunities(new CommunityStorerDB(dbAccess));
+                met.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
                 met.clear();
                 met = null;
                 System.gc();
@@ -109,6 +113,7 @@ public class API {
                 edg.getClusters();
                 edg.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 edg.storeCommunities(new CommunityStorerDB(dbAccess));
+                edg.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
                 edg.clear();
                 edg = null;
                 System.gc();
@@ -118,6 +123,7 @@ public class API {
                 bk.getClusters();
                 bk.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 bk.storeCommunities(new CommunityStorerDB(dbAccess));
+                bk.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
                 bk.clear();
                 bk = null;
                 System.gc();
@@ -132,16 +138,15 @@ public class API {
         dbAccess = null;
     }
 
-    
     /**
     * Given the userID returns the Centroid feature list (and Weights) of his Community
     *
     * @param user the User
     * @returns MAP ... the Centroid feature list of user Community
     */ 
-    public void getCentroid(String user) {
-        
+    public Map<String, Float> getCentroid(String user) {
+        PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, db, sourceTag, sourceID);
+        return dbAccess.getCentroidFeatures(user);
     }
 
-    
 }

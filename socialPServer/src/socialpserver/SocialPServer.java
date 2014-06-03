@@ -4,6 +4,7 @@ import org.apache.commons.collections15.*;
 import edu.uci.ics.jung.graph.UndirectedGraph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import java.io.IOException;
+import java.util.Map;
 import socialpserver.algorithmic.ClustererAlgorithm;
 import socialpserver.algorithmic.BronKerboschCliqueCommunityDiscoverer;
 import socialpserver.algorithmic.EdgeBetweennessCommunityDiscoverer;
@@ -51,11 +52,33 @@ public class SocialPServer {
         psClient = "LastFM";
         
         // to antikhmeno db tha mou dhnetai apo ton pServer se run time
-        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "!8kbx78qb");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
+        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "pserver", "pserver");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
         
-        API api = new API(db, psClient, "soc", 777);
-        api.UserAssociationsFileToDB(UserAssociationFile);
-        api.produceCommunities("weak");
+        
+        API apiSocial = new API(db, psClient, "soc", 777);
+        //api.UserAssociationsFileToDB(UserAssociationFile);
+        API apiPServer = new API(db, psClient, "com", 1);
+        
+        //Map<String, Float> socUserCentroid = apiSocial.getCentroid("1047");
+        //System.out.println(socUserCentroid);
+        
+        System.out.println("*** social Metis ***");
+        apiSocial.produceCommunities("metis");
+        System.out.println("*** pserver Metis ***");
+        apiPServer.produceCommunities("metis");
+        
+        System.out.println("*** social Weak Component ***");
+        apiSocial.produceCommunities("weak");
+        System.out.println("*** pserver Weak Component ***");
+        apiPServer.produceCommunities("weak");
+
+        System.out.println("*** social Edge Betweeness ***");
+        apiSocial.produceCommunities("betw");
+        System.out.println("*** pserver Edge Betweeness ***");
+        apiPServer.produceCommunities("betw");
+        //Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("1005");
+        //System.out.println(pserUserCentroid);
+        
         
         //execute(psClient,db);
         socialPServerOutputLogger.info("process finished *");

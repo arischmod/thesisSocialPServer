@@ -13,6 +13,7 @@ import socialpserver.dataio.GraphLoader;
 import socialpserver.dataio.CommunityStorer;
 import socialpserver.dataio.FeatureLoader;
 import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.centroidStrorerDB;
 
 /**
  * An algorithm for computing clusters (community structure) in graphs based on
@@ -104,6 +105,11 @@ public class EdgeBetweennessCommunityDiscoverer implements ClustererAlgorithm {
         town.evaluate(fLoader, ufLoader);
     }
 
+    @Override
+    public void storeCentroidFeatures(centroidStrorerDB storer) {
+        town.storeCentroidFeatures(storer);
+    }
+    
     @Override
     public void clear() {
         town.clear();

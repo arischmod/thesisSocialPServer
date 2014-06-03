@@ -19,6 +19,7 @@ import socialpserver.dataio.GraphLoader;
 import socialpserver.dataio.CommunityStorer;
 import socialpserver.dataio.FeatureLoader;
 import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.centroidStrorerDB;
 import todelete.metis;
 
 /**
@@ -180,7 +181,7 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         socialpserver.SocialPServer.algorithmOutputLogger.info("\n  Metis algoritm is trying to find communities...");                
         startTime = System.currentTimeMillis();
         //List<IntSet> clusterList = clusterer.compute(g, 50, new Random(5));
-        List<IntSet> clusterList = clusterer.compute(g, 10, Gpmetis.Ptype.rb, Gpmetis.Ctype.rm, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 1, new Random(5));
+        List<IntSet> clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.rm, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 1, new Random(5));
         //List<IntSet> clusterList = clusterer.compute(g, 22, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
         endTime = System.currentTimeMillis();
         totalTime = endTime - startTime;
@@ -223,6 +224,11 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         ClassLoader.getSystemClassLoader().setDefaultAssertionStatus(true);
     }
 
+    @Override
+    public void storeCentroidFeatures(centroidStrorerDB storer) {
+        town.storeCentroidFeatures(storer);
+    }
+    
     @Override
     public void clear() {
         town.clear();

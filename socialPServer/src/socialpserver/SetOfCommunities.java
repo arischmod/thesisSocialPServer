@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import socialpserver.dataio.FeatureLoader;
 import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.centroidStrorerDB;
 
 /**
  * Is a Set of Community type objects
@@ -23,7 +24,7 @@ public class SetOfCommunities{
      * every time a Community object calculates a centroid it will store 
      * it's features here so the Inter Similarity can be calculated
      */
-    protected Map<Integer, Map<String, Float>> allCentroidFeatures = new HashMap<>();  // needs to be filed by intraSimilarity method
+    protected Map<Integer, Map<String, Float>> allCentroidFeatures = new HashMap<>();  // needs to be filed by Community.intraSimilarity() method
     
     /**
      * Constructor - Init communities Set
@@ -242,5 +243,14 @@ public class SetOfCommunities{
             }            
         }        
         return clusteredUsersSet.size();
-    }        
+    }      
+    
+    /**
+     * 
+     */
+    public void storeCentroidFeatures(centroidStrorerDB storer) {        
+        
+        storer.storeAll(allCentroidFeatures);
+        
+    }
 }

@@ -18,6 +18,7 @@ import socialpserver.dataio.GraphLoader;
 import socialpserver.dataio.CommunityStorer;
 import socialpserver.dataio.FeatureLoader;
 import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.centroidStrorerDB;
 
 /**
  * This class applies the Strong Connectivity algorithm...
@@ -84,6 +85,11 @@ public class StrongConnectivityCommunityDiscoverer implements ClustererAlgorithm
         town.evaluate(fLoader, ufLoader);
     }
 
+    @Override
+    public void storeCentroidFeatures(centroidStrorerDB storer) {
+        town.storeCentroidFeatures(storer);
+    }
+    
     @Override
     public void clear() {
         town.clear();
