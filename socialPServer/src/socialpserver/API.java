@@ -32,16 +32,16 @@ import socialpserver.dataio.centroidStrorerDB;
 public class API {
 
     private DBAccess db; // PServer Server DB Access object (DB credentials are given on its creation)
-    private String pServerClient; //PServer client name
+    private final String pServerClient; //PServer client name
     private String sourceTag; // com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
     private int sourceID;
     
     /**
      * Constructor
     * @param db PServer Server DB Access object (DB credentials are given on its creation)
-    * @param pServerClient PServer client name
+    * @param psClient PServer client name
     * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
-    * @param sourceTag 1 OR 777 (loadUserAccosiations by 1='Pserver Community mode' OR 777='SocialPServer')
+    * @param sourceID 1 OR 777 (loadUserAccosiations by 1='Pserver Community mode' OR 777='SocialPServer')
     */
     public API(DBAccess db, String psClient, String sourceTag, int sourceID) {
         this.db = db;
@@ -142,7 +142,7 @@ public class API {
     * Given the userID returns the Centroid feature list (and Weights) of his Community
     *
     * @param user the User
-    * @returns MAP ... the Centroid feature list of user Community
+    * @return MAP ... the Centroid feature list of user Community
     */ 
     public Map<String, Float> getCentroid(String user) {
         PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, db, sourceTag, sourceID);

@@ -23,7 +23,7 @@ public class PSocialDBAccess {
 
     private pserver.data.DBAccess dbAccess;
     private pserver.data.PCommunityDBAccess dbPCommunity;
-    private String psClient;
+    private final String psClient;
     private PServerResultSet psResultSet;
     private String sourceTag;
     private int sourceID;
@@ -34,8 +34,8 @@ public class PSocialDBAccess {
      * used in queries to Locate the records that has to do with the particular client
      * @param db a pServer DBAccess object used to handle queries
      * needed from socialDBAccess to execute pServer type queries 
-     * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
-     * @param sourceTag 1 OR 777 (loadUserAccosiations by 1='Pserver Community mode' OR 777='SocialPServer')
+     * @param sourceTag com OR soc (cluster by 'Pserver Community' OR 'SocialPServer')
+     * @param sourceID 1 OR 777 (loadUserAccosiations by 1='Pserver Community' OR 777='SocialPServer')
      */
     public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String sourceTag, int sourceID) {
         this.psClient = psClient;
@@ -59,9 +59,9 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
             // socialPServer method
-            dbAccess.executeUpdate("DELETE FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+sourceTag+"%';");
+            dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+sourceTag+"%' AND FK_psclient = '" + psClient + "' ;");
             // PServer method
-            dbAccess.clearUserCommunities(psClient);
+            //dbAccess.clearUserCommunities(psClient);
         } catch (Exception ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -80,7 +80,7 @@ public class PSocialDBAccess {
     public void deleteAllUserCommunities() {
         try {
             dbAccess.reconnect();
-            dbAccess.executeUpdate("DELETE FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+sourceTag+"%';");
+            dbAccess.executeUpdate("DELETE FROM user_community WHERE community LIKE '"+sourceTag+"%' AND FK_psclient = '" + psClient + "' ;");
         } catch (Exception ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -316,7 +316,7 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
             //dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "';");
-            dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "' AND id LIKE '"+sourceTag+"%';");
+            dbAccess.executeUpdate("DELETE FROM centroids WHERE id LIKE '"+sourceTag+"%' AND FK_psclient = '" + psClient + "' ;");
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

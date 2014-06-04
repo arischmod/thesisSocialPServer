@@ -57,27 +57,30 @@ public class SocialPServer {
         
         API apiSocial = new API(db, psClient, "soc", 777);
         //api.UserAssociationsFileToDB(UserAssociationFile);
-        API apiPServer = new API(db, psClient, "com", 1);
-        
-        //Map<String, Float> socUserCentroid = apiSocial.getCentroid("1047");
-        //System.out.println(socUserCentroid);
+        API apiPServer = new API(db, psClient, "com", 777);
         
         System.out.println("*** social Metis ***");
         apiSocial.produceCommunities("metis");
+        
+        Map<String, Float> socUserCentroid = apiSocial.getCentroid("10");
+        System.out.println(socUserCentroid);
+        
         System.out.println("*** pserver Metis ***");
         apiPServer.produceCommunities("metis");
         
-        System.out.println("*** social Weak Component ***");
-        apiSocial.produceCommunities("weak");
-        System.out.println("*** pserver Weak Component ***");
-        apiPServer.produceCommunities("weak");
+        //System.out.println("*** social Weak Component ***");
+        //apiSocial.produceCommunities("weak");
+        
+        //System.out.println("*** pserver Weak Component ***");
+        //apiPServer.produceCommunities("weak");
 
-        System.out.println("*** social Edge Betweeness ***");
-        apiSocial.produceCommunities("betw");
-        System.out.println("*** pserver Edge Betweeness ***");
-        apiPServer.produceCommunities("betw");
-        //Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("1005");
-        //System.out.println(pserUserCentroid);
+        //System.out.println("*** social Edge Betweeness ***");
+        //apiSocial.produceCommunities("betw");
+        //System.out.println("*** pserver Edge Betweeness ***");
+        //apiPServer.produceCommunities("betw");
+        
+        Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("1005");
+        System.out.println(pserUserCentroid);
         
         
         //execute(psClient,db);
