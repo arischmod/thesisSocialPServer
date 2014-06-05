@@ -104,7 +104,7 @@ public class PSocialDBAccess {
             for (Community community : communities.getCommunities()) {
                 String communityName = sourceTag + communityNum.toString();
                 for (String user : community.getCommunityMembers()) {
-                    dbAccess.executeUpdate("insert into user_community values (" + user + ", '" + communityName + "', '" + psClient + "');");
+                    dbAccess.executeUpdate("insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');");
                 }
                 dbAccess.executeUpdate("insert into communities values ('" + communityName + "', '" + psClient + "');");
                 communityNum++;

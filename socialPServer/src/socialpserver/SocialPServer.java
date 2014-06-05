@@ -52,12 +52,15 @@ public class SocialPServer {
         psClient = "LastFM";
         
         // to antikhmeno db tha mou dhnetai apo ton pServer se run time
-        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "pserver", "pserver");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
+        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
         
         
         API apiSocial = new API(db, psClient, "soc", 777);
         //api.UserAssociationsFileToDB(UserAssociationFile);
-        API apiPServer = new API(db, psClient, "com", 777);
+        
+        API apiPServer = new API(db, psClient, "com", 1);
+        
+        
         
         System.out.println("*** social Metis ***");
         apiSocial.produceCommunities("metis");
@@ -65,8 +68,15 @@ public class SocialPServer {
         Map<String, Float> socUserCentroid = apiSocial.getCentroid("10");
         System.out.println(socUserCentroid);
         
+        
+        
         System.out.println("*** pserver Metis ***");
         apiPServer.produceCommunities("metis");
+        
+        Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("10");
+        System.out.println(pserUserCentroid);
+        
+        
         
         //System.out.println("*** social Weak Component ***");
         //apiSocial.produceCommunities("weak");
@@ -79,8 +89,6 @@ public class SocialPServer {
         //System.out.println("*** pserver Edge Betweeness ***");
         //apiPServer.produceCommunities("betw");
         
-        Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("1005");
-        System.out.println(pserUserCentroid);
         
         
         //execute(psClient,db);
