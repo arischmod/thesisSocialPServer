@@ -52,7 +52,7 @@ public class SocialPServer {
         psClient = "LastFM";
         
         // to antikhmeno db tha mou dhnetai apo ton pServer se run time
-        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
+        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "!8kbx78qb");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
         
         
         API apiSocial = new API(db, psClient, "soc", 777);
@@ -78,11 +78,11 @@ public class SocialPServer {
         
         
         
-        //System.out.println("*** social Weak Component ***");
-        //apiSocial.produceCommunities("weak");
+//        System.out.println("*** social Weak Component ***");
+//        apiSocial.produceCommunities("weak");
         
-        //System.out.println("*** pserver Weak Component ***");
-        //apiPServer.produceCommunities("weak");
+//        System.out.println("*** pserver Weak Component ***");
+//        apiPServer.produceCommunities("weak");
 
         //System.out.println("*** social Edge Betweeness ***");
         //apiSocial.produceCommunities("betw");

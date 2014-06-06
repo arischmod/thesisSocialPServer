@@ -9,6 +9,7 @@ import com.carrotsearch.hppc.cursors.IntCursor;
 import grph.Grph;
 import grph.algo.partitionning.metis.Gpmetis;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -23,34 +24,47 @@ import socialpserver.dataio.centroidStrorerDB;
 import todelete.metis;
 
 /**
- * NAME gpmetis - manual page for gpmetis 5.1.0 SYNOPSIS gpmetis [options]
- * graphfile nparts DESCRIPTION Required parameters graphfile Stores the graph
- * to be partitioned. nparts The number of partitions to split the graph.
+ * NAME gpmetis - manual page for gpmetis 5.1.0 SYNOPSIS 
+ * gpmetis [options] graphfile nparts 
+ * DESCRIPTION: Required parameters graphfile Stores the graph
+ * to be partitioned. 
+ * nparts The number of partitions to split the graph.
  *
- * Optional parameters -ptype=string Specifies the scheme to be used for
- * computing the k-way partitioning. The possible values are: rb - Recursive
- * bisectioning kway - Direct k-way partitioning [default] -ctype=string
- * Specifies the scheme to be used to match the vertices of the graph during the
- * coarsening. The possible values are: rm - Random matching shem - Sorted
- * heavy-edge matching [default] -iptype=string [applies only when -ptype=rb]
- *
- * Specifies the scheme to be used to compute the initial partitioning of the
- * graph. The possible values are: grow - Grow a bisection using a greedy scheme
- * [default for ncon=1] random - Compute a bisection at random [default for
- * ncon>1] -objtype=string [applies only when -ptype=kway]
- *
- * Specifies the objective that the partitioning routines will optimize. The
- * possible values are: cut - Minimize the edgecut [default] vol - Minimize the
- * total communication volume -no2hop
- *
- * Specifies that the coarsening will not perform any 2-hop matchings when the
- * standard matching fails to sufficiently contract the graph.
+ * 
+ * Optional parameters:
+ * 
+ * -ptype=string 
+ *      Specifies the scheme to be used for computing the k-way partitioning. 
+ *      The possible values are:
+ *      rb - Recursive bisectioning 
+ *      kway - Direct k-way partitioning [default] 
+ 
+ * -ctype=string
+ *      Specifies the scheme to be used to match the vertices of the graph during the coarsening. 
+ *      The possible values are: 
+ *          rm - Random matching 
+ *          shem - Sorted heavy-edge matching [default] 
+ 
+ * -iptype=string [applies only when -ptype=rb]
+ *       Specifies the scheme to be used to compute the initial partitioning of the graph. 
+ *       The possible values are: 
+ *          grow - Grow a bisection using a greedy scheme [default for ncon=1]
+ *          random - Compute a bisection at random [default for ncon>1] 
+ * 
+ * -objtype=string [applies only when -ptype=kway]
+ *       Specifies the objective that the partitioning routines will optimize. 
+ *       The possible values are: 
+ *          cut - Minimize the edgecut [default] 
+ *          vol - Minimize the total communication volume 
+ * 
+ * -no2hop
+ *       Specifies that the coarsening will not perform any 2-hop matchings when the
+ *         standard matching fails to sufficiently contract the graph.
  *
  * -contig [applies only when -ptype=kway]
- *
- * Specifies that the partitioning routines should try to produce partitions
- * that are contiguous. Note that if the input graph is not connected this
- * option is ignored.
+ *       Specifies that the partitioning routines should try to produce partitions
+ *       that are contiguous. Note that if the input graph is not connected this
+ *       option is ignored.
  *
  * -minconn [applies only when -ptype=kway]
  *
@@ -177,18 +191,28 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         g  = fillGraph(g);
                 
         //metis clusterer = new metis();  // my FIXed version
-        Gpmetis clusterer = new Gpmetis();    // Original !!            
+        Gpmetis clusterer = new Gpmetis();    // Original !!         
+        
         socialpserver.SocialPServer.algorithmOutputLogger.info("\n  Metis algoritm is trying to find communities...");                
         startTime = System.currentTimeMillis();
-        //List<IntSet> clusterList = clusterer.compute(g, 50, new Random(5));
-        List<IntSet> clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.rm, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 1, new Random(5));
-        //List<IntSet> clusterList = clusterer.compute(g, 22, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
+        List<IntSet> clusterList;
+        //clusterList = clusterer.compute(g, 100, new Random(5));
+
+        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 1, new Random(4));
+//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 10000, 20, 10, new Random(5));
+        // higher niter & ncuts drasticaly incrise run time 
+//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 30000, 10, 10, new Random(5));        
+
+//      clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.rm, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
         endTime = System.currentTimeMillis();
         totalTime = endTime - startTime;
         // tranform communities.DataStructure from grph type to a Global type
         town = new SetOfCommunities();
+        
+        
         for (IntSet tempTeam : clusterList) {
             Community community = new Community();
+            //System.out.println(tempTeam.size());
             for (IntCursor member : tempTeam) {
                 community.addMember(vertexID_UserName.get(member.value));
             }            
@@ -196,6 +220,9 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         }
         socialpserver.SocialPServer.algorithmOutputLogger.info("Metis algoritm  ***found " + town.size() + " clusters***");         
         socialpserver.SocialPServer.algorithmOutputLogger.info(" discovery runTime: " + totalTime);
+        
+        
+        
         return town;
     }
 
