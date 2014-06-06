@@ -64,32 +64,32 @@ public class SocialPServer {
         
         System.out.println("*** social Metis ***");
         apiSocial.produceCommunities("metis");
-        
-        Map<String, Float> socUserCentroid = apiSocial.getCentroid("10");
-        System.out.println(socUserCentroid);
+       
+//        Map<String, Float> socUserCentroid = apiSocial.getCentroid("10");
+//        System.out.println(socUserCentroid);
         
         
         
         System.out.println("*** pserver Metis ***");
         apiPServer.produceCommunities("metis");
         
-        Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("10");
-        System.out.println(pserUserCentroid);
+//        Map<String, Float>  pserUserCentroid = apiPServer.getCentroid("10");
+//        System.out.println(pserUserCentroid);
         
         
         
 //        System.out.println("*** social Weak Component ***");
 //        apiSocial.produceCommunities("weak");
-        
+//        
 //        System.out.println("*** pserver Weak Component ***");
 //        apiPServer.produceCommunities("weak");
-
-        //System.out.println("*** social Edge Betweeness ***");
-        //apiSocial.produceCommunities("betw");
-        //System.out.println("*** pserver Edge Betweeness ***");
-        //apiPServer.produceCommunities("betw");
-        
-        
+//
+//        System.out.println("*** social Edge Betweeness ***");
+//        apiSocial.produceCommunities("betw");
+//        System.out.println("*** pserver Edge Betweeness ***");
+//        apiPServer.produceCommunities("betw");
+//        
+//        
         
         //execute(psClient,db);
         socialPServerOutputLogger.info("process finished *");

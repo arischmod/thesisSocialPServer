@@ -5,8 +5,11 @@
         <group>
             <file>file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/src/socialpserver/algorithmic/MetisCommunityDiscoverer.java</file>
             <file>file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/src/socialpserver/SetOfCommunities.java</file>
+            <file>file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/src/todelete/metis.java</file>
             <file>file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/src/socialpserver/SocialPServer.java</file>
+            <file>file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/src/todelete/mWriter.java</file>
             <file>file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/src/socialpserver/API.java</file>
+            <file>jar:file:/home/dubdub/NetBeansProjects/thesisSocialPServer/socialPServer/lib/grph-1.4.17.jar!/grph/algo/partitionning/metis/Gpmetis.java</file>
         </group>
     </open-files>
 </project-private>

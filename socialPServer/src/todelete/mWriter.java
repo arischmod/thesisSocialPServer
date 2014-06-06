@@ -1,29 +1,41 @@
-/**
- *	This file is part of Grph.
- *	
- *  Grph is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+/*
+ * (C) Copyright 2009-2013 CNRS.
  *
- *  Grph is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Lesser General Public License
+ * (LGPL) version 2.1 which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/lgpl-2.1.html
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Grph.  If not, see <http://www.gnu.org/licenses/>. *
- */
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * Contributors:
 
-package todelete;
+    Luc Hogie (CNRS, I3S laboratory, University of Nice-Sophia Antipolis) 
+    Aurelien Lancin (Coati research team, Inria)
+    Christian Glacet (LaBRi, Bordeaux)
+    David Coudert (Coati research team, Inria)
+    Fabien Crequis (Coati research team, Inria)
+    Grégory Morel (Coati research team, Inria)
+    Issam Tahiri (Coati research team, Inria)
+    Julien Fighiera (Aoste research team, Inria)
+    Laurent Viennot (Gang research-team, Inria)
+    Michel Syska (I3S, University of Nice-Sophia Antipolis)
+    Nathann Cohen (LRI, Saclay) 
+ */
+ 
+ package todelete;
 
 import grph.Grph;
 import grph.algo.labelling.Incrementlabelling;
 import grph.algo.labelling.Relabelling;
+import grph.algo.partitionning.metis.MetisWriter;
+import grph.in_memory.InMemoryGrph;
 import grph.io.AbstractGraphTextWriter;
 import grph.io.GraphBuildException;
 import grph.io.ParseException;
-
 import java.io.IOException;
 import java.io.PrintStream;
 
@@ -35,20 +47,19 @@ public class mWriter extends AbstractGraphTextWriter
 	if (!g.isUndirectedSimpleGraph())
 	    throw new IllegalArgumentException();
 
-        os.print(g.getNumberOfVertices());	
-	os.print(' ');        
-        //os.print("592860");                
+	os.print(g.getVertices().size());
+	os.print(' ');
 	os.print(g.getEdges().size());
 	os.print('\n');
-        
+
 	if (g.getVertices().contains(0))
 	    throw new IllegalArgumentException("graph has vertex 0 which is not supported by metis");
 
 	for (int v = 1; v <= g.getVertices().getGreatest(); ++v)
 	{
 	    if (g.getVertices().contains(v))
-	    {                
-		os.print(g.getNeighbours(v).toString_numbers_only()); 
+	    {
+		os.print(g.getNeighbours(v).toString_numbers_only());
 	    }
 
 	    os.print('\n');
@@ -57,12 +68,13 @@ public class mWriter extends AbstractGraphTextWriter
 
     public static void main(String[] args) throws IOException, ParseException, GraphBuildException
     {
-	Grph g = new Grph();
+	Grph g = new InMemoryGrph();
 	g.grid(3, 3);
 	Relabelling rl = new Incrementlabelling(1);
 	Grph gg = rl.compute(g);
-	String s = new mWriter().printGraph(gg);
+	String s = new MetisWriter().printGraph(gg);
 	System.out.println(s);
 	// gg.display();
+
     }
 }

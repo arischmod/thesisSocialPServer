@@ -4,24 +4,24 @@
  */
 package socialpserver.algorithmic;
 
-import cnrs.grph.set.IntSet;
 import com.carrotsearch.hppc.cursors.IntCursor;
 import grph.Grph;
 import grph.algo.partitionning.metis.Gpmetis;
+import grph.in_memory.InMemoryGrph;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import socialpserver.Community;
 import socialpserver.SetOfCommunities;
-import socialpserver.dataio.GraphLoader;
 import socialpserver.dataio.CommunityStorer;
 import socialpserver.dataio.FeatureLoader;
+import socialpserver.dataio.GraphLoader;
 import socialpserver.dataio.UserFeatureLoader;
 import socialpserver.dataio.centroidStrorerDB;
 import todelete.metis;
+import toools.set.IntSet;
 
 /**
  * NAME gpmetis - manual page for gpmetis 5.1.0 SYNOPSIS 
@@ -187,23 +187,33 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
     @Override
     public SetOfCommunities getClusters() {
         long startTime, endTime, totalTime;
-        Grph g = new Grph();
+        Grph g = new InMemoryGrph();
         g  = fillGraph(g);
                 
-        //metis clusterer = new metis();  // my FIXed version
+        metis clusterCustom = new metis();  // my FIXed version
         Gpmetis clusterer = new Gpmetis();    // Original !!         
         
         socialpserver.SocialPServer.algorithmOutputLogger.info("\n  Metis algoritm is trying to find communities...");                
         startTime = System.currentTimeMillis();
         List<IntSet> clusterList;
+
+        // * whith default values *
         //clusterList = clusterer.compute(g, 100, new Random(5));
 
-        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 1, new Random(4));
+        // * old version Metis -> metis-5.0.2 *
+            // higher niter & ncuts drasticaly incrise run time 
+//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 100, new Random(5));
 //        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 10000, 20, 10, new Random(5));
-        // higher niter & ncuts drasticaly incrise run time 
+        
 //        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 30000, 10, 10, new Random(5));        
+//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.rm, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
+        
+        // * old version Metis -> metis-5.1.0 *
+            // higher niter & ncuts drasticaly incrise run time 
+        clusterList = clusterCustom.compute(g, 100, metis.Ptype.kway, metis.Ctype.shem, metis.Iptype.grow, metis.Objtype.vol, false, true, 1000, 10, 10, new Random(5));
+//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 100, 20, 10, new Random(5));
 
-//      clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.rm, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
+        
         endTime = System.currentTimeMillis();
         totalTime = endTime - startTime;
         // tranform communities.DataStructure from grph type to a Global type
@@ -211,13 +221,17 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         
         
         for (IntSet tempTeam : clusterList) {
-            Community community = new Community();
-            //System.out.println(tempTeam.size());
-            for (IntCursor member : tempTeam) {
-                community.addMember(vertexID_UserName.get(member.value));
-            }            
-            town.addCommunity(community);          
+            // filter out zero size communities
+            if (!tempTeam.isEmpty()) {
+                Community community = new Community();
+                //System.out.println(tempTeam.size());
+                for (IntCursor member : tempTeam) {
+                    community.addMember(vertexID_UserName.get(member.value));
+                }            
+                town.addCommunity(community);          
+            }
         }
+        
         socialpserver.SocialPServer.algorithmOutputLogger.info("Metis algoritm  ***found " + town.size() + " clusters***");         
         socialpserver.SocialPServer.algorithmOutputLogger.info(" discovery runTime: " + totalTime);
         
