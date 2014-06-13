@@ -190,28 +190,31 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         Grph g = new InMemoryGrph();
         g  = fillGraph(g);
                 
-        metis clusterCustom = new metis();  // my FIXed version
-        Gpmetis clusterer = new Gpmetis();    // Original !!         
+        metis newMetis = new metis();    // new version Metis -> metis-5.1.0
+        Gpmetis oldMetis = new Gpmetis();    // old version Metis -> metis-5.0.2          
         
         socialpserver.SocialPServer.algorithmOutputLogger.info("\n  Metis algoritm is trying to find communities...");                
         startTime = System.currentTimeMillis();
         List<IntSet> clusterList;
 
         // * whith default values *
-        //clusterList = clusterer.compute(g, 100, new Random(5));
+        //clusterList = oldMetis.compute(g, 100, new Random(5));
 
-        // * old version Metis -> metis-5.0.2 *
-            // higher niter & ncuts drasticaly incrise run time 
-//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 100, new Random(5));
-//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 10000, 20, 10, new Random(5));
+        // * old version Metis -> metis-5.0.2 *    // higher niter & ncuts drasticaly incrise run time 
         
-//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 30000, 10, 10, new Random(5));        
-//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.rm, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
+//        clusterList = oldMetis.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 10, 100, new Random(5));
         
-        // * old version Metis -> metis-5.1.0 *
-            // higher niter & ncuts drasticaly incrise run time 
-        clusterList = clusterCustom.compute(g, 100, metis.Ptype.kway, metis.Ctype.shem, metis.Iptype.grow, metis.Objtype.vol, false, true, 1000, 10, 10, new Random(5));
-//        clusterList = clusterer.compute(g, 100, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 100, 20, 10, new Random(5));
+//        clusterList = oldMetis.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.rm, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
+
+        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 100, 50, 25, new Random(5));                
+//        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 50, 25, new Random(5));                
+        
+        
+        // * new version Metis -> metis-5.1.0 *   // higher niter & ncuts drasticaly incrise run time 
+
+//        clusterList = newMetis.compute(g, 100, metis.Ptype.kway, metis.Ctype.shem, metis.Iptype.grow, metis.Objtype.cut, false, true, 30, 10, 10, new Random(5));
+        
+//        clusterList = newMetis.compute(g, 100, metis.Ptype.rb, metis.Ctype.shem, metis.Iptype.grow, metis.Objtype.cut, false, false, 100, 20, 10, new Random(5));
 
         
         endTime = System.currentTimeMillis();
