@@ -62,7 +62,7 @@ public class CommunityAPI {
      * @param parameters All the needed Parameters
      */
     public void makeCommunities(String algorithm, int associationType, Map<String, String> parameters) {
-                                        
+           
         // if it is soccial or userCommunity mode
         String mode = "com";
         if (associationType == 777) {
@@ -88,7 +88,7 @@ public class CommunityAPI {
                 System.gc();
                 break;
             case "metis":
-                ClustererAlgorithm met = new MetisCommunityDiscoverer(graphLoaderDB);
+                ClustererAlgorithm met = new MetisCommunityDiscoverer(graphLoaderDB, parameters.get("nparts"), parameters.get("ptype"), parameters.get("ufactor"), parameters.get("rand"));
                 met.getClusters();
                 met.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 met.storeCommunities(new CommunityStorerDB(dbAccess));
@@ -98,7 +98,8 @@ public class CommunityAPI {
                 System.gc();
                 break;
             case "betw":
-                ClustererAlgorithm edg = new EdgeBetweennessCommunityDiscoverer(graphLoaderDB, 5);
+                Integer edgesToRemove = Integer.parseInt(parameters.get("edgesToRemove"));
+                ClustererAlgorithm edg = new EdgeBetweennessCommunityDiscoverer(graphLoaderDB, edgesToRemove);
                 edg.getClusters();
                 edg.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
                 edg.storeCommunities(new CommunityStorerDB(dbAccess));

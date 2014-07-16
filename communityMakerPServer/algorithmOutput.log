@@ -1,32 +1,11 @@
      
      Total clustering scheme compactness = 0.39119512
 
-  WeakComponent algoritm is trying to find communities...
-WeakComponent algoritm  ***found 20 clusters***
- discovery runTime: 82
-      1843 unclustered Users
-      found 19 communities
-      max comminity size = 7
-      min comminity size = 2
-      average comminity size = 2.5789473
-     
-     Total clustering scheme compactness = 0.6528569
-     Compactness of all centroids = 0.10850355
-    clusterer quality = 6.016917
-
-
-
-  WeakComponent algoritm is trying to find communities...
-WeakComponent algoritm  ***found 45 clusters***
- discovery runTime: 15
-      1261 unclustered Users
-      found 44 communities
+  BronKerboschClique algoritm is trying to find communities...
+BronKerboschClique algoritm  ***found 11636 clusters***
+ discovery runTime: 4216
+      0 unclustered Users
+      found 11636 communities
       max comminity size = 10
       min comminity size = 2
-      average comminity size = 2.8863637
-     
-     Total clustering scheme compactness = 0.7934453
-     Compactness of all centroids = 0.043207377
-    clusterer quality = 18.363653
-
-
+      average comminity size = 3.5090237

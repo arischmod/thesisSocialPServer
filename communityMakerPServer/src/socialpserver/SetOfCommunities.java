@@ -164,10 +164,12 @@ public class SetOfCommunities{
         
         Float intraSimilarity = intraSimilarityCalculator(fLoader, ufLoader);
         //socialpserver.SocialPServer.algorithmOutputLogger.info("    intraSimilarity = " + intraSimilarity + "\n\n");                        
-        Float interSimilarity = interSimilarityCalculator();
+        
+        //  Used only  in Thgesis
+//        Float interSimilarity = interSimilarityCalculator();
         //socialpserver.SocialPServer.algorithmOutputLogger.info("    interSimilarity = " + interSimilarity + "\n\n");                        
-        Float quality = intraSimilarity / interSimilarity;        
-        socialpserver.SocialPServer.algorithmOutputLogger.info("    clusterer quality = " + quality + "\n\n");                        
+//        Float quality = intraSimilarity / interSimilarity;        
+//        socialpserver.SocialPServer.algorithmOutputLogger.info("    clusterer quality = " + quality + "\n\n");                        
     }
     
     /**

@@ -138,7 +138,11 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
     private GraphLoader loader;
     private SetOfCommunities town;
     private Map<String, Integer> UserName_vertexID = new HashMap<>(); 
-    private Map<Integer, String> vertexID_UserName = new HashMap<>(); 
+    private Map<Integer, String> vertexID_UserName = new HashMap<>();
+    private Integer nparts;
+    private String ptype;
+    private Integer ufactor;
+    private Random rand;
     
     /**
      * An algorithm for computing clusters (community structure) in graphs based on
@@ -146,9 +150,18 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
      * @param glLoader loads the userAssociations available in pServer 
      * the friendship edges
      * and also has the Location from where the userAssociations will be pulled
+     * @param nparts how many communities
+     * @param ptype partission type ('kway' or 'rb')
+     * @param ufactor load Imbalance (between clusters)
+     * @param rand seed
      */
-    public MetisCommunityDiscoverer(GraphLoader glLoader) {
+    public MetisCommunityDiscoverer(GraphLoader glLoader, String nparts, String ptype, String ufactor, String rand) {
         this.loader = glLoader;
+        this.nparts = Integer.parseInt(nparts);
+        this.ptype = ptype;
+        this.ufactor = Integer.parseInt(ufactor);
+        this.rand = new Random(Integer.parseInt(rand));
+        
         enableJavaAssertions();  // Doing this makes the library more robust and slows downs it a bit
     }
 
@@ -189,7 +202,13 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         long startTime, endTime, totalTime;
         Grph g = new InMemoryGrph();
         g  = fillGraph(g);
-                
+        Gpmetis.Ptype Ptype = Gpmetis.Ptype.kway;
+        
+        if ("kway".equals(ptype))
+            Ptype = Gpmetis.Ptype.kway;
+        else if ("rb".equals(ptype))
+            Ptype = Gpmetis.Ptype.rb;
+        
         metis newMetis = new metis();    // new version Metis -> metis-5.1.0
         Gpmetis oldMetis = new Gpmetis();    // old version Metis -> metis-5.0.2          
         
@@ -206,9 +225,10 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         
 //        clusterList = oldMetis.compute(g, 100, Gpmetis.Ptype.kway, Gpmetis.Ctype.rm, Gpmetis.Iptype.random, Gpmetis.Objtype.cut, false, false, 30, 10, 1, new Random(5));        
 
-        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 100, 50, 25, new Random(5));                
+//        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 100, 50, 25, new Random(5));                
 //        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 50, 25, new Random(5));                
         
+        clusterList = oldMetis.compute(g, nparts, Ptype, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, ufactor, 50, 25, rand);                
         
         // * new version Metis -> metis-5.1.0 *   // higher niter & ncuts drasticaly incrise run time 
 
