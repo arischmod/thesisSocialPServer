@@ -79,24 +79,21 @@ public class SocialPServer {
         
         
         // test -> make Communities from Social Relation
-        parameters.put("accosThreshold", "1");
-        parameters.put("edgesToRemove", "5");
-        parameters.put("nparts", "75");
-        parameters.put("ptype", "kway");
-        parameters.put("ufactor", "100");
-        parameters.put("rand", "5");
-        communityAPI.makeCommunities("bk", 777, parameters);
+//        parameters.put("accosThreshold", "1");
+//        parameters.put("edgesToRemove", "5");
+//        parameters.put("nparts", "75");
+//        parameters.put("ptype", "kway");
+//        parameters.put("ufactor", "100");
+//        parameters.put("rand", "5");
+//        communityAPI.makeCommunities("metis", 777, parameters);
         
         //  test -> getCentroid functionality
-        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("test");
+        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test");
         System.out.println(centroidFeatureList);
         
         // test -> make Communities from cosine simmilarity
-        parameters.put("accosThreshold", "0.5");
+        parameters.put("accosThreshold", "0.75");
         communityAPI.makeCommunities("bk", 1, parameters);
-        
-        
-        
         
         
         ///////////
@@ -145,7 +142,7 @@ public class SocialPServer {
 
     // Basic Functionality
     private static void execute(String psClient, pserver.data.DBAccess db) {
-        PSocialDBAccess dbAccess = new PSocialDBAccess(psClient, db, "soc", 777);
+        PSocialDBAccess dbAccess = new PSocialDBAccess(psClient, db, 777);
         //at DB --> create index name ON up_features (FK_psclient);   // for beter performance    
 
         // Insert User Associations info into DB

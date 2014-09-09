@@ -25,9 +25,11 @@ public class PSocialDBAccess {
     private pserver.data.PCommunityDBAccess dbPCommunity;
     private final String psClient;
     private PServerResultSet psResultSet;
-    private String mode;
+//    private String mode;
     private int associationType;
     private String algorithm;
+    private String customName = null;
+    
     
     /**
      * creates a socialDBAccess object that is used to handle queries 
@@ -36,14 +38,13 @@ public class PSocialDBAccess {
      * @param db a pServer DBAccess object used to handle queries
      * needed from socialDBAccess to execute pServer type queries 
      *  without caring about the sourceTag and sourceID
-     * @param mode
      * @param associationType
      * @param algorithm
      */
-    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String mode, int associationType, String algorithm) {
+    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, int associationType, String algorithm) {
         this.psClient = psClient;
         this.dbAccess = db;
-        this.mode = mode;
+//        this.mode = mode;
         this.associationType = associationType;        
         this.algorithm = algorithm;
         try {
@@ -80,14 +81,13 @@ public class PSocialDBAccess {
      * @param psClient name of pServer Client 
      * used in queries to Locate the records that has to do with the particular client
      * @param db a pServer DBAccess object used to handle queries
-     * needed from socialDBAccess to execute pServer type queries 
-     * @param sourceTag com OR soc (cluster by 'Pserver Community' OR 'SocialPServer')
-     * @param sourceID 1 OR 777 (loadUserAccosiations by 1='Pserver Community' OR 777='SocialPServer')
+     * needed from socialDBAccess to execute pServer type queries
+     * @param associationType
      */
-    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String mode, int associationType) {
+    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, int associationType) {
         this.psClient = psClient;
         this.dbAccess = db;
-        this.mode = mode;
+//        this.mode = mode;
         this.associationType = associationType;
         try {
             this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
@@ -99,6 +99,30 @@ public class PSocialDBAccess {
     }
 
     /**
+     * Used when adding CUSTOM communities -> creates a socialDBAccess object that is used to handle queries 
+     * @param psClient name of pServer Client 
+     * used in queries to Locate the records that has to do with the particular client
+     * @param db a pServer DBAccess object used to handle queries
+     * needed from socialDBAccess to execute pServer type queries
+     * @param customName the name for the custom Community
+     */
+    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String customName) {
+        this.psClient = psClient;
+        this.dbAccess = db;
+        this.customName = customName;
+        try {
+            this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
+            dbAccess.connect();
+            dbAccess.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+    
+    
+    /**
      * delete all communities stored in pServer DB
      * (for the specific client)
      */
@@ -106,7 +130,14 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
             // socialPServer method
-            dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+mode+"_"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            if (customName == null) {
+                dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            }
+            else {
+                String communityName = "custom_0_" + customName;
+                dbAccess.executeUpdate("DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+            }
+            
             // PServer method
             //dbAccess.clearUserCommunities(psClient);
         } catch (Exception ex) {
@@ -127,7 +158,13 @@ public class PSocialDBAccess {
     public void deleteAllUserCommunities() {
         try {
             dbAccess.reconnect();
-            dbAccess.executeUpdate("DELETE FROM user_community WHERE community LIKE '"+mode+"_"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            if (customName == null) {
+                dbAccess.executeUpdate("DELETE FROM user_community WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            }
+            else {
+                String communityName = "custom_0_" + customName;
+                dbAccess.executeUpdate("DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+            }
         } catch (Exception ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -148,8 +185,14 @@ public class PSocialDBAccess {
         Integer communityNum = 1;  // Name of community               
         try {
             dbAccess.reconnect();
+            String communityName = "custom_0_" + customName;
+            
             for (Community community : communities.getCommunities()) {
-                String communityName = mode + "_" + algorithm + "_" + associationType + "_" + communityNum.toString();
+                
+                if (customName == null) {
+                    communityName = algorithm + "_" + associationType + "_" + communityNum.toString();
+                }
+                
                 for (String user : community.getCommunityMembers()) {
                     dbAccess.executeUpdate("insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');");
                 }
@@ -166,31 +209,8 @@ public class PSocialDBAccess {
             }
         }
     }
-
-    /**
-     * Store a Given Community into DB
-     * (each Community is a Set of users) 
-     * @param communityName the Community Name that will be stored
-     * @param members the community Members
-     */
-    public void storeGivenCommunityToDB(String communityName, Set<String> members) {
-        try {
-            dbAccess.reconnect();
-            
-            for (String user : members) {
-                dbAccess.executeUpdate("insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');");
-            }
-            dbAccess.executeUpdate("insert into communities values ('" + communityName + "', '" + psClient + "');");
-        } catch (SQLException ex) {
-            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+    
+    
     
     /**
      * get all Features available on PServer for the specific client
@@ -243,6 +263,8 @@ public class PSocialDBAccess {
         return featureValue;
     }
 
+    
+    
     /**
      * get all the Communities that exist in PServer 
      * for the specific Client
@@ -253,7 +275,7 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
 
-            this.psResultSet = dbAccess.executeQuery("SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+mode+"_"+algorithm+"_"+associationType+"_"+"%';");
+            this.psResultSet = dbAccess.executeQuery("SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType+"_"+"%';");
             while (psResultSet.next()) {
                 communities.add(psResultSet.getRs().getString("community").toString());
             }
@@ -279,7 +301,7 @@ public class PSocialDBAccess {
 
         try {
             dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+mode+"_"+algorithm+"_"+associationType+"_"+"%';");
+            this.psResultSet = dbAccess.executeQuery("SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+algorithm+"_"+associationType+"_"+"%';");
             while (psResultSet.next()) {
                 String[] team = new String[2];
                 team[0] = psResultSet.getRs().getString("user");
@@ -299,6 +321,8 @@ public class PSocialDBAccess {
         return communities;
     }
 
+    
+    
     /**
      * removes all user friendship records
      */
@@ -383,6 +407,8 @@ public class PSocialDBAccess {
         return userAssociations;
     }
 
+    
+    
     /**
      * removes all Centroid records
      */    
@@ -390,7 +416,13 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
             //dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "';");
-            dbAccess.executeUpdate("DELETE FROM centroids WHERE id LIKE '"+mode+"_"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            if (customName == null)
+                dbAccess.executeUpdate("DELETE FROM centroids WHERE id LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            else {
+                String communityName = "custom_0_" + customName;
+                // delete previus comunity with the same name
+                dbAccess.executeUpdate("DELETE FROM centroids WHERE id = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -410,14 +442,25 @@ public class PSocialDBAccess {
     void storeCentroidsToDB(Map<Integer, Map<String, Float>> allCentroidFeatures) {
         try {
             dbAccess.reconnect();
-            
-            for (Integer centroid : allCentroidFeatures.keySet()) {           
-                Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
-                for( String feature : cFeatures.keySet()) {
-                    String communityName = mode + "_" + algorithm + "_" + associationType + "_" + centroid.toString();
-                    dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+            if (customName == null) {
+                for (Integer centroid : allCentroidFeatures.keySet()) {           
+                    Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
+                    for( String feature : cFeatures.keySet()) {
+                        String communityName = algorithm + "_" + associationType + "_" + centroid.toString();
+                        dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                    }
                 }
             }
+            else {
+                String communityName = "custom_0_" + customName;                
+                for (Integer centroid : allCentroidFeatures.keySet()) {
+                    Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
+                    for( String feature : cFeatures.keySet()) {
+                        dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                    }
+                }
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -429,33 +472,6 @@ public class PSocialDBAccess {
         }
     }
     
-    /**
-     * Store all Centroids into DB 
-     * (Centroid->featureList->Values) 
-     * @param allCentroidFeatures the Centroids and their features-values
-    */
-    public void storeCustomCentroidToDB(String name, Map<Integer, Map<String, Float>> allCentroidFeatures) {
-        try {
-            dbAccess.reconnect();
-            
-            for (Integer centroid : allCentroidFeatures.keySet()) {           
-                Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
-                for( String feature : cFeatures.keySet()) {
-                    String communityName = name;
-                    dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
     /**
      * Given the communityName returns the Centroid feature list (and Weights) of this Community
      * @param communityName
@@ -493,7 +509,7 @@ public class PSocialDBAccess {
 
         try {
             dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT community FROM user_community WHERE user = '" + user + "' AND FK_psclient = '" + psClient + "' AND community LIKE '"+mode+"_"+algorithm+"_"+associationType+"_"+"%';");
+            this.psResultSet = dbAccess.executeQuery("SELECT community FROM user_community WHERE user = '" + user + "' AND FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType+"_"+"%';");
             String community=null;
             if (psResultSet.next())
                 community = psResultSet.getRs().getString("community");

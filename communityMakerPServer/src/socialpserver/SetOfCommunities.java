@@ -255,18 +255,4 @@ public class SetOfCommunities{
         storer.storeAll(allCentroidFeatures);
         
     }
-    
-        ////////////////
-        // pServer v2 //
-        ////////////////
-            
-    /**
-     * storeCustomCentroidToDB
-     * @param storer 
-     */
-    public void storeCustomCentroidFeatures(String name, centroidStrorerDB storer) {        
-        
-        storer.storeCustom(name, allCentroidFeatures);
-        
-    }
 }

@@ -44,21 +44,5 @@ public class centroidStrorerDB {
             throw new RuntimeException(e);
         }
     }
-    
-    /**
-     * Store custom Centroid of a custom communities
-     * to a given database.
-     * @param name of the community 
-     * @param thge features
-     */   
-    public void storeCustom(String name, Map<Integer, Map<String, Float>>  allCentroidFeatures) {
-        try {
-            socialpserver.SocialPServer.socialPServerOutputLogger.info("    inserting Centroids to DB...");
-            dbAccess.storeCustomCentroidToDB(name, allCentroidFeatures);  // insert Centroids to DB                                  
-        } catch (Exception e) {
-            System.err.println("Caught IOException: " + e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
 }
 

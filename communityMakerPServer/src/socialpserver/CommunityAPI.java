@@ -64,14 +64,15 @@ public class CommunityAPI {
     public void makeCommunities(String algorithm, int associationType, Map<String, String> parameters) {
            
         // if it is soccial or userCommunity mode
-        String mode = "com";
-        if (associationType == 777) {
-            mode = "soc";
-        }
+//        String mode = "com";
+//        if (associationType == 777) {
+//            mode = "soc";
+//        }
         
         Float accosThreshold = Float.parseFloat(parameters.get("accosThreshold"));
         
-        PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, pServerDB, mode, associationType, algorithm);
+        PSocialDBAccess dbAccess;
+        dbAccess = new PSocialDBAccess(pServerClient, pServerDB, associationType, algorithm);
         
         GraphLoaderDB graphLoaderDB = new GraphLoaderDB(dbAccess);
         graphLoaderDB.loadGraph(accosThreshold); // load user Associations to loader (RAM) -> u can retrive them by loader.getGraph()
@@ -156,13 +157,15 @@ public class CommunityAPI {
      */
     public void addCustomCommunity(String communityName, Set<String> members) {
         
-        PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, pServerDB);
+        PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, pServerDB, "test");
         
         Set<Set<String>> customTown = new HashSet<>();
         customTown.add(members);
         SetOfCommunities town = new SetOfCommunities(customTown);
+        CommunityStorerDB commStorer = new CommunityStorerDB(dbAccess);
+        commStorer.storeAll(town);
         town.intraSimilarityCalculator(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
-        town.storeCustomCentroidFeatures(communityName, new centroidStrorerDB((dbAccess)));
+        town.storeCentroidFeatures(new centroidStrorerDB((dbAccess)));
     }
     
     /**

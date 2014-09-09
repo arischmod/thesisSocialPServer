@@ -2,10 +2,12 @@
      Total clustering scheme compactness = 0.39119512
 
   BronKerboschClique algoritm is trying to find communities...
-BronKerboschClique algoritm  ***found 11636 clusters***
- discovery runTime: 4216
+BronKerboschClique algoritm  ***found 484 clusters***
+ discovery runTime: 38072
       0 unclustered Users
-      found 11636 communities
-      max comminity size = 10
+      found 484 communities
+      max comminity size = 43
       min comminity size = 2
-      average comminity size = 3.5090237
+      average comminity size = 14.200413
+     
+     Total clustering scheme compactness = 11.034725
