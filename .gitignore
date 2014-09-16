@@ -4,5 +4,4 @@
 *.war
 *.ear
 /communityMakerPServer/nbproject/private/
-/communityMakerPServer/dist/
 /communityMakerPServer/build/
