@@ -352,7 +352,7 @@ public class PSocialDBAccess {
             dbAccess.reconnect();
             // socialPServer method
             
-            dbAccess.executeUpdate("DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + Integer.toString(associationType.hashCode()) + " ;");
+            dbAccess.executeUpdate("DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType.hashCode() + " ;");
             // PServer method
             //this.dbPCommunity.deleteUserAccociations(psClient, 1);
         } catch (SQLException ex) {
@@ -380,7 +380,7 @@ public class PSocialDBAccess {
             dbAccess.reconnect();
             Set<String[]> userAssociations = glLoader.getGraph(); // get user Associations from loader 
             for (String[] friendship : userAssociations) {                
-                dbAccess.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + Integer.toString(associationType.hashCode()) + " , '" + psClient + "')");
+                dbAccess.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + associationType.hashCode() + " , '" + psClient + "')");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
@@ -414,7 +414,7 @@ public class PSocialDBAccess {
 //            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + ";");
             
             //with THershold
-            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + Integer.toString(associationType.hashCode()) + " AND weight >= " + threshold + " ;");
+            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType.hashCode() + " AND weight >= " + threshold + " ;");
             
             while (psResultSet.next()) {
                 String[] user = new String[2];

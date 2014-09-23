@@ -81,13 +81,13 @@ public class SocialPServer {
         
         
         // test -> make Communities from Social Relation
-//        parameters.put("accosThreshold", "1");
+        parameters.put("accosThreshold", "1");
 //        parameters.put("edgesToRemove", "5");
-//        parameters.put("nparts", "75");
-////        parameters.put("ptype", "kway");
-//        parameters.put("ufactor", "100");
-//        parameters.put("rand", "5");
-//        communityAPI.makeCommunities("metis", 777, parameters);
+        parameters.put("nparts", "75");
+        parameters.put("ptype", "kway");
+        parameters.put("ufactor", "100");
+        parameters.put("rand", "5");
+        communityAPI.makeCommunities("metis", "777", parameters);
         
         //  test -> getCentroid functionality
 //        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");

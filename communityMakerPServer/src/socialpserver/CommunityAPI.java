@@ -69,7 +69,11 @@ public class CommunityAPI {
 //            mode = "soc";
 //        }
         
-        Float accosThreshold = Float.parseFloat(parameters.get("accosThreshold"));
+        Float accosThreshold;
+        if (parameters.get("accosThreshold") == null)
+            accosThreshold = new Float(1);
+        else    
+            accosThreshold = Float.parseFloat(parameters.get("accosThreshold"));
         
         PSocialDBAccess dbAccess;
         dbAccess = new PSocialDBAccess(pServerClient, pServerDB, associationType, algorithm);
