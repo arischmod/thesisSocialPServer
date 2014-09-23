@@ -33,12 +33,12 @@ public class centroidStrorerDB {
      * the communities (set of users) that we want to store
      * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
      */   
-    public void storeAll(Map<Integer, Map<String, Float>>  allCentroidFeatures) {
+    public boolean storeAll(Map<Integer, Map<String, Float>>  allCentroidFeatures) {
         socialpserver.SocialPServer.socialPServerOutputLogger.info("    deleting previous Centroids from DB...");        
         try {
             dbAccess.deleteAllCentroids();
             socialpserver.SocialPServer.socialPServerOutputLogger.info("    inserting Centroids to DB...");            
-            dbAccess.storeCentroidsToDB(allCentroidFeatures);  // insert Centroids to DB                                  
+            return dbAccess.storeCentroidsToDB(allCentroidFeatures);  // insert Centroids to DB                                  
         } catch (Exception e) {
             System.err.println("Caught IOException: " + e.getMessage());
             throw new RuntimeException(e);

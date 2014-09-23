@@ -25,7 +25,7 @@ public class PSocialDBAccess {
     private pserver.data.PCommunityDBAccess dbPCommunity;
     private final String psClient;
     private PServerResultSet psResultSet;
-    private int associationType;
+    private String associationType;
     private String algorithm;
     private String customName = null;
     // private String mode;
@@ -45,7 +45,7 @@ public class PSocialDBAccess {
      * @param associationType
      * @param algorithm
      */
-    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, int associationType, String algorithm) {
+    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String associationType, String algorithm) {
         this.psClient = psClient;
         this.dbAccess = db;
 //        this.mode = mode;
@@ -88,11 +88,12 @@ public class PSocialDBAccess {
      * needed from socialDBAccess to execute pServer type queries
      * @param associationType
      */
-    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, int associationType) {
+    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String associationType) {
         this.psClient = psClient;
         this.dbAccess = db;
 //        this.mode = mode;
         this.associationType = associationType;
+        this.customName = customName;
         try {
             this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
             dbAccess.connect();
@@ -110,18 +111,18 @@ public class PSocialDBAccess {
      * needed from socialDBAccess to execute pServer type queries
      * @param customName the name for the custom Community
      */
-    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String customName) {
-        this.psClient = psClient;
-        this.dbAccess = db;
-        this.customName = customName;
-        try {
-            this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
-            dbAccess.connect();
-            dbAccess.disconnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String customName) {
+//        this.psClient = psClient;
+//        this.dbAccess = db;
+//        this.customName = customName;
+//        try {
+//            this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
+//            dbAccess.connect();
+//            dbAccess.disconnect();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     
     
@@ -350,7 +351,8 @@ public class PSocialDBAccess {
         try {
             dbAccess.reconnect();
             // socialPServer method
-            dbAccess.executeUpdate("DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + " ;");
+            
+            dbAccess.executeUpdate("DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + Integer.toString(associationType.hashCode()) + " ;");
             // PServer method
             //this.dbPCommunity.deleteUserAccociations(psClient, 1);
         } catch (SQLException ex) {
@@ -378,7 +380,7 @@ public class PSocialDBAccess {
             dbAccess.reconnect();
             Set<String[]> userAssociations = glLoader.getGraph(); // get user Associations from loader 
             for (String[] friendship : userAssociations) {                
-                dbAccess.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + associationType + " , '" + psClient + "')");
+                dbAccess.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + Integer.toString(associationType.hashCode()) + " , '" + psClient + "')");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
@@ -412,7 +414,7 @@ public class PSocialDBAccess {
 //            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + ";");
             
             //with THershold
-            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + " AND weight >= " + threshold + " ;");
+            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + Integer.toString(associationType.hashCode()) + " AND weight >= " + threshold + " ;");
             
             while (psResultSet.next()) {
                 String[] user = new String[2];

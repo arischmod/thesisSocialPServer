@@ -275,8 +275,8 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public void storeCommunities(CommunityStorer store) {
-        store.storeAll(town);
+    public boolean storeCommunities(CommunityStorer store) {
+        return store.storeAll(town);
     }
 
     @Override
@@ -300,8 +300,9 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public void storeCentroidFeatures(centroidStrorerDB storer) {
-        town.storeCentroidFeatures(storer);
+    public boolean storeCentroidFeatures(centroidStrorerDB storer) {
+        
+        return town.storeCentroidFeatures(storer);
     }
     
     @Override

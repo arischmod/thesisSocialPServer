@@ -61,7 +61,7 @@ public class CommunityAPI {
      * @param accosThreshold  Float -> min weight edge that will be taken to account
      * @param parameters All the needed Parameters
      */
-    public void makeCommunities(String algorithm, int associationType, Map<String, String> parameters) {
+    public boolean makeCommunities(String algorithm, String associationType, Map<String, String> parameters) {
            
         // if it is soccial or userCommunity mode
 //        String mode = "com";
@@ -76,14 +76,17 @@ public class CommunityAPI {
         
         GraphLoaderDB graphLoaderDB = new GraphLoaderDB(dbAccess);
         graphLoaderDB.loadGraph(accosThreshold); // load user Associations to loader (RAM) -> u can retrive them by loader.getGraph()
-
+        boolean toReturn = true;
         switch (algorithm) {
             case "weak":
                 ClustererAlgorithm weak = new WeakComponentCommunityDiscoverer(graphLoaderDB);
                 weak.getClusters();
                 weak.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
-                weak.storeCommunities(new CommunityStorerDB(dbAccess));
-                weak.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
+                if (!weak.storeCommunities(new CommunityStorerDB(dbAccess))) 
+                    toReturn = false;
+                if (!weak.storeCentroidFeatures(new centroidStrorerDB(dbAccess))) 
+                    toReturn = false;
+                        
                 weak.clear();
                 weak = null;
                 System.gc();
@@ -92,8 +95,11 @@ public class CommunityAPI {
                 ClustererAlgorithm met = new MetisCommunityDiscoverer(graphLoaderDB, parameters.get("nparts"), parameters.get("ptype"), parameters.get("ufactor"), parameters.get("rand"));
                 met.getClusters();
                 met.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
-                met.storeCommunities(new CommunityStorerDB(dbAccess));
-                met.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
+                if (!met.storeCommunities(new CommunityStorerDB(dbAccess)))
+                    toReturn = false;
+                if (!met.storeCentroidFeatures(new centroidStrorerDB(dbAccess)))
+                    toReturn = false;
+                
                 met.clear();
                 met = null;
                 System.gc();
@@ -107,8 +113,11 @@ public class CommunityAPI {
                 ClustererAlgorithm edg = new EdgeBetweennessCommunityDiscoverer(graphLoaderDB, edgesToRemove);
                 edg.getClusters();
                 edg.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
-                edg.storeCommunities(new CommunityStorerDB(dbAccess));
-                edg.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
+                if (!edg.storeCommunities(new CommunityStorerDB(dbAccess)))
+                    toReturn = false;
+                if (!edg.storeCentroidFeatures(new centroidStrorerDB(dbAccess)))
+                    toReturn = false;
+                
                 edg.clear();
                 edg = null;
                 System.gc();
@@ -117,8 +126,10 @@ public class CommunityAPI {
                 ClustererAlgorithm bk = new BronKerboschCliqueCommunityDiscoverer(graphLoaderDB);
                 bk.getClusters();
                 bk.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
-                bk.storeCommunities(new CommunityStorerDB(dbAccess));
-                bk.storeCentroidFeatures(new centroidStrorerDB(dbAccess));
+                if (!bk.storeCommunities(new CommunityStorerDB(dbAccess)))
+                    toReturn = false;
+                if (!bk.storeCentroidFeatures(new centroidStrorerDB(dbAccess)))
+                    toReturn = false;
                 bk.clear();
                 bk = null;
                 System.gc();
@@ -126,12 +137,13 @@ public class CommunityAPI {
             
             default:
                 socialPServerOutputLogger.info("* algorithm does not exist *");
+                toReturn = false;
                 break;
         }
         graphLoaderDB.emptyGraph();
         graphLoaderDB = null;
         dbAccess = null;
-        
+        return toReturn;
     }
     
     /**
@@ -140,8 +152,8 @@ public class CommunityAPI {
      * @param TypeAssociation
      * @param Properties 
      */
-    public void makeFeatureGroups(String Algorithm, String TypeAssociation, HashMap Properties) {
-        
+    public boolean makeFeatureGroups(String Algorithm, String TypeAssociation, HashMap Properties) {
+        return false;
     }
     
     /**

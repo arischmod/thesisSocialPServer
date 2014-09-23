@@ -68,7 +68,9 @@ public class SocialPServer {
         // create Object
         CommunityAPI communityAPI = new CommunityAPI(db, psClient);
         System.out.println(communityAPI.algorithmDocumentation());
-        // test -> isert custon Community functiolality
+        
+
+// test -> isert custon Community functiolality
 //        Set<String> customCom = new HashSet<>();
 //        customCom.add("10");
 //        customCom.add("100");
@@ -142,7 +144,7 @@ public class SocialPServer {
 
     // Basic Functionality
     private static void execute(String psClient, pserver.data.DBAccess db) {
-        PSocialDBAccess dbAccess = new PSocialDBAccess(psClient, db, 777);
+        PSocialDBAccess dbAccess = new PSocialDBAccess(psClient, db, "777");
         //at DB --> create index name ON up_features (FK_psclient);   // for beter performance    
 
         // Insert User Associations info into DB

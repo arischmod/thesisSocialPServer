@@ -84,8 +84,8 @@ public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public void storeCommunities(CommunityStorer storer) {
-        storer.storeAll(town);
+    public boolean storeCommunities(CommunityStorer storer) {
+        return storer.storeAll(town);
     }
 
     @Override
@@ -99,7 +99,8 @@ public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
     }    
 
     @Override
-    public void storeCentroidFeatures(centroidStrorerDB storer) {
-        town.storeCentroidFeatures(storer);
+    public boolean storeCentroidFeatures(centroidStrorerDB storer) {
+
+        return town.storeCentroidFeatures(storer);
     }
 }

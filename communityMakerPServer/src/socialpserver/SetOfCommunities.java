@@ -250,9 +250,9 @@ public class SetOfCommunities{
     /**
      * 
      */
-    public void storeCentroidFeatures(centroidStrorerDB storer) {        
+    public boolean storeCentroidFeatures(centroidStrorerDB storer) {        
         
-        storer.storeAll(allCentroidFeatures);
+        return storer.storeAll(allCentroidFeatures);
         
     }
 }

@@ -39,14 +39,14 @@ public interface ClustererAlgorithm {
     * @param store is an object that contains the methods to store 
     * and also the Location where the centroids will be stored
     */
-    public void storeCentroidFeatures(centroidStrorerDB store); 
+    public boolean storeCentroidFeatures(centroidStrorerDB store); 
     
     /**
      * Store the produced communities (into DB, File, etc)
      * @param store is an object that contains the methods to store 
      * and also the Location where the communities will be stored
      */
-    public void storeCommunities(CommunityStorer store);    
+    public boolean storeCommunities(CommunityStorer store);    
     
     /**
      * finalize, free memory. 
