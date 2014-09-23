@@ -412,9 +412,14 @@ public class PSocialDBAccess {
             
             //withOUT THershold
 //            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + ";");
+            String sql = "SELECT user_src, user_dst FROM user_associations "
+                    + "WHERE FK_psclient = '" + psClient 
+                    + "' AND type = " + associationType.hashCode() 
+                    + " AND weight <= " + threshold + " ;";
             
+
             //with THershold
-            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType.hashCode() + " AND weight >= " + threshold + " ;");
+            this.psResultSet = dbAccess.executeQuery(sql);
             
             while (psResultSet.next()) {
                 String[] user = new String[2];

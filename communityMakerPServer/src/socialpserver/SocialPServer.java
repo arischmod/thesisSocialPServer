@@ -54,7 +54,8 @@ public class SocialPServer {
         psClient = "LastFM";
         
         // to antikhmeno db tha mou dhnetai apo ton pServer se run time
-        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
+//        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
+        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserverEx?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
 
         
         
@@ -83,12 +84,12 @@ public class SocialPServer {
         // test -> make Communities from Social Relation
 
         parameters.put("edgesToRemove", "5");
-        parameters.put("accosThreshold", "1");
+        parameters.put("accosThreshold", "0.5");
         parameters.put("nparts", "75");
         parameters.put("ptype", "kway");
         parameters.put("ufactor", "100");
         parameters.put("rand", "5");
-        communityAPI.makeCommunities("metis", "777", parameters);
+        communityAPI.makeCommunities("metis", "cos", parameters);
         
         //  test -> getCentroid functionality
 //        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");
