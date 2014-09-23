@@ -225,10 +225,10 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         startTime = System.currentTimeMillis();
         List<IntSet> clusterList;
     
-//        clusterList = oldMetis.compute(g, nparts, ptype, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, ufactor, 50, 25, rand);                
+        clusterList = oldMetis.compute(g, nparts, ptype, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, ufactor, 50, 25, rand);                
         
         // * whith default values *
-        clusterList = oldMetis.compute(g, 100, new Random(5));
+//        clusterList = oldMetis.compute(g, 100, new Random(5));
 
         // * old version Metis -> metis-5.0.2 *    // higher niter & ncuts drasticaly incrise run time 
         
