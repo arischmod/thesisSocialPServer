@@ -20,6 +20,6 @@ public interface CommunityStorer {
      * the communities (set of users) that we want to store
      * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
      */
-    public void storeAll(SetOfCommunities communities);
+    public boolean storeAll(SetOfCommunities communities);
    
 }

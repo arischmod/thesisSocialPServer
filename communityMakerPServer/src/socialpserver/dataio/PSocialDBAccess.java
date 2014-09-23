@@ -25,12 +25,16 @@ public class PSocialDBAccess {
     private pserver.data.PCommunityDBAccess dbPCommunity;
     private final String psClient;
     private PServerResultSet psResultSet;
-//    private String mode;
     private int associationType;
     private String algorithm;
     private String customName = null;
+    // private String mode;
     
     
+    ////////////////////
+    // Constructors  ///
+    ////////////////////
+
     /**
      * creates a socialDBAccess object that is used to handle queries 
      * @param psClient name of pServer Client 
@@ -56,7 +60,7 @@ public class PSocialDBAccess {
         }
     }
         
-   /**
+    /**
      * creates a socialDBAccess object that is used to handle queries 
      * @param psClient name of pServer Client 
      * used in queries to Locate the records that has to do with the particular client
@@ -125,8 +129,9 @@ public class PSocialDBAccess {
     /**
      * delete all communities stored in pServer DB
      * (for the specific client)
+     * @return 
      */
-    public void deleteAllCommunities() {
+    public boolean deleteAllCommunities() {
         try {
             dbAccess.reconnect();
             // socialPServer method
@@ -137,16 +142,18 @@ public class PSocialDBAccess {
                 String communityName = "custom_0_" + customName;
                 dbAccess.executeUpdate("DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
-            
             // PServer method
             //dbAccess.clearUserCommunities(psClient);
         } catch (Exception ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
@@ -154,8 +161,9 @@ public class PSocialDBAccess {
     /**
      * delete all user-communities records stored in pServer DB
      * (for the specific client)
+     * @return 
      */
-    public void deleteAllUserCommunities() {
+    public boolean deleteAllUserCommunities() {
         try {
             dbAccess.reconnect();
             if (customName == null) {
@@ -165,13 +173,16 @@ public class PSocialDBAccess {
                 String communityName = "custom_0_" + customName;
                 dbAccess.executeUpdate("DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
@@ -180,8 +191,9 @@ public class PSocialDBAccess {
      * Store a Set of Communities into DB 
      * (each Community is a Set of users) 
      * @param communities the Communities that will be stored
+     * @return 
      */
-    public void storeCommunitiesToDB(SetOfCommunities communities) {
+    public boolean storeCommunitiesToDB(SetOfCommunities communities) {
         Integer communityNum = 1;  // Name of community               
         try {
             dbAccess.reconnect();
@@ -201,11 +213,14 @@ public class PSocialDBAccess {
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
@@ -321,12 +336,17 @@ public class PSocialDBAccess {
         return communities;
     }
 
+ 
     
+   ///////////////////////
+   //  User Association //
+   ///////////////////////
     
     /**
      * removes all user friendship records
+     * @return 
      */
-    public void deleteAllUserAssociations() {
+    public boolean deleteAllUserAssociations() {
         try {
             dbAccess.reconnect();
             // socialPServer method
@@ -335,11 +355,14 @@ public class PSocialDBAccess {
             //this.dbPCommunity.deleteUserAccociations(psClient, 1);
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
@@ -348,8 +371,9 @@ public class PSocialDBAccess {
      * Inserts UserAssociations (friendship links)
      * in DB
      * @param glLoader loads UserAssociations from a given source
+     * @return 
      */
-    public void GraphtoDB(GraphLoader glLoader) {
+    public boolean GraphtoDB(GraphLoader glLoader) {
         try {
             dbAccess.reconnect();
             Set<String[]> userAssociations = glLoader.getGraph(); // get user Associations from loader 
@@ -358,11 +382,14 @@ public class PSocialDBAccess {
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
@@ -409,27 +436,35 @@ public class PSocialDBAccess {
 
     
     
+    //////////////
+    // Centroid //
+    //////////////
+    
     /**
      * removes all Centroid records
+     * @return 
      */    
-    void deleteAllCentroids() {
+    public boolean deleteAllCentroids() {
         try {
             dbAccess.reconnect();
             //dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "';");
             if (customName == null)
-                dbAccess.executeUpdate("DELETE FROM centroids WHERE id LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+                dbAccess.executeUpdate("DELETE FROM community_profiles WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
             else {
                 String communityName = "custom_0_" + customName;
                 // delete previus comunity with the same name
-                dbAccess.executeUpdate("DELETE FROM centroids WHERE id = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+                dbAccess.executeUpdate("DELETE FROM community_profiles WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
@@ -438,8 +473,9 @@ public class PSocialDBAccess {
      * Store all Centroids into DB 
      * (Centroid->featureList->Values) 
      * @param allCentroidFeatures the Centroids and their features-values
+     * @return 
     */
-    void storeCentroidsToDB(Map<Integer, Map<String, Float>> allCentroidFeatures) {
+    public boolean storeCentroidsToDB(Map<Integer, Map<String, Float>> allCentroidFeatures) {
         try {
             dbAccess.reconnect();
             if (customName == null) {
@@ -447,7 +483,7 @@ public class PSocialDBAccess {
                     Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
                     for( String feature : cFeatures.keySet()) {
                         String communityName = algorithm + "_" + associationType + "_" + centroid.toString();
-                        dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                        dbAccess.executeUpdate("insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
                     }
                 }
             }
@@ -456,36 +492,44 @@ public class PSocialDBAccess {
                 for (Integer centroid : allCentroidFeatures.keySet()) {
                     Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
                     for( String feature : cFeatures.keySet()) {
-                        dbAccess.executeUpdate("insert into centroids values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                        dbAccess.executeUpdate("insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
                     }
                 }
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         } finally {
             try {
                 dbAccess.disconnect();
+                return true;
             } catch (SQLException ex) {
                 Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
             }
         }
     }
     
     /**
      * Given the communityName returns the Centroid feature list (and Weights) of this Community
-     * @param communityName
+     * @param communityName the name of the Community
+     * @param pattern a pattern of feature names (when * the pattern = null)
      * @return a Map containing features and their values
      */
-    public Map<String, Float> getCentroidFeaturesByCommName(String communityName) {
+    public Map<String, Float> getCentroidFeaturesByCommName(String communityName, String pattern) {
         Map<String, Float> featureValue = new HashMap<>();
 
         try {
             dbAccess.reconnect();
-
-            this.psResultSet = dbAccess.executeQuery("SELECT feature, value FROM centroids  WHERE id = '" + communityName + "'AND FK_psclient = '" + psClient + "';");
+            if (pattern==null || pattern.trim().equals("")) // if pattern = null -> bring all
+                this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "';");
+            else {
+                pattern = pattern.replace("*", "%");
+                this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "' AND feature LIKE '" +pattern+ "';");
+            }
             while (psResultSet.next()) {
-                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("value")));
+                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("feature_value")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
@@ -515,9 +559,9 @@ public class PSocialDBAccess {
                 community = psResultSet.getRs().getString("community");
             else
                 System.out.println("Invalid User");
-            this.psResultSet = dbAccess.executeQuery("SELECT feature, value FROM centroids  WHERE id = '" + community + "'AND FK_psclient = '" + psClient + "';");
+            this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + community + "'AND FK_psclient = '" + psClient + "';");
             while (psResultSet.next()) {
-                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("value")));
+                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("feature_value")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);

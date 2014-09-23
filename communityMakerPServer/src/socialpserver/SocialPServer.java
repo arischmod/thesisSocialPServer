@@ -67,14 +67,14 @@ public class SocialPServer {
         
         // create Object
         CommunityAPI communityAPI = new CommunityAPI(db, psClient);
-        
+        System.out.println(communityAPI.algorithmDocumentation());
         // test -> isert custon Community functiolality
-        Set<String> customCom = new HashSet<>();
-        customCom.add("10");
-        customCom.add("100");
-        customCom.add("1001");
-        customCom.add("1002");
-        communityAPI.addCustomCommunity("test", customCom);
+//        Set<String> customCom = new HashSet<>();
+//        customCom.add("10");
+//        customCom.add("100");
+//        customCom.add("1001");
+//        customCom.add("1002");
+//        communityAPI.addCustomCommunity("test", customCom);
         // during the proccess also the Centoid of this community is calculated and stored
         
         
@@ -82,18 +82,18 @@ public class SocialPServer {
 //        parameters.put("accosThreshold", "1");
 //        parameters.put("edgesToRemove", "5");
 //        parameters.put("nparts", "75");
-//        parameters.put("ptype", "kway");
+////        parameters.put("ptype", "kway");
 //        parameters.put("ufactor", "100");
 //        parameters.put("rand", "5");
 //        communityAPI.makeCommunities("metis", 777, parameters);
         
         //  test -> getCentroid functionality
-        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test");
-        System.out.println(centroidFeatureList);
+//        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");
+//        System.out.println(centroidFeatureList);
         
         // test -> make Communities from cosine simmilarity
-        parameters.put("accosThreshold", "0.75");
-        communityAPI.makeCommunities("bk", 1, parameters);
+//        parameters.put("accosThreshold", "0.75");
+//        communityAPI.makeCommunities("bk", 1, parameters);
         
         
         ///////////

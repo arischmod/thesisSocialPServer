@@ -99,7 +99,11 @@ public class CommunityAPI {
                 System.gc();
                 break;
             case "betw":
-                Integer edgesToRemove = Integer.parseInt(parameters.get("edgesToRemove"));
+                Integer edgesToRemove;
+                if (parameters.get("edgesToRemove") == null) // default value
+                    edgesToRemove = 5;
+                else
+                    edgesToRemove = Integer.parseInt(parameters.get("edgesToRemove"));
                 ClustererAlgorithm edg = new EdgeBetweennessCommunityDiscoverer(graphLoaderDB, edgesToRemove);
                 edg.getClusters();
                 edg.evaluate(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
@@ -143,11 +147,12 @@ public class CommunityAPI {
     /**
      * Given the communityName returns the Centroid feature list (and Weights) of this Community
      * @param communityName
+     * @param pattern a pattern of feature names (when * the pattern = null)
      * @return a Map<String, Float> -> <Feature, Value>  
      */
-    public Map<String, Float> getCentroid(String communityName) {
+    public Map<String, Float> getCentroid(String communityName, String pattern) {
         PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, pServerDB);
-        return dbAccess.getCentroidFeaturesByCommName(communityName);
+        return dbAccess.getCentroidFeaturesByCommName(communityName, pattern);
     }
     
     /**
@@ -155,7 +160,7 @@ public class CommunityAPI {
      * @param communityName
      * @param members
      */
-    public void addCustomCommunity(String communityName, Set<String> members) {
+    public boolean addCustomCommunity(String communityName, Set<String> members) {
         
         PSocialDBAccess dbAccess = new PSocialDBAccess(pServerClient, pServerDB, "test");
         
@@ -163,9 +168,12 @@ public class CommunityAPI {
         customTown.add(members);
         SetOfCommunities town = new SetOfCommunities(customTown);
         CommunityStorerDB commStorer = new CommunityStorerDB(dbAccess);
-        commStorer.storeAll(town);
-        town.intraSimilarityCalculator(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
-        town.storeCentroidFeatures(new centroidStrorerDB((dbAccess)));
+        if ( commStorer.storeAll(town) ) {
+            town.intraSimilarityCalculator(new FeatureLoaderDB(dbAccess), new UserFeatureLoaderDB(dbAccess));
+            town.storeCentroidFeatures(new centroidStrorerDB((dbAccess)));
+            return true;
+        } else 
+            return false;
     }
     
     /**
@@ -173,11 +181,22 @@ public class CommunityAPI {
      * @param FeatureGroupName
      * @param Features 
      */
-    public void addCustomFeatureGroup(String FeatureGroupName, ArrayList Features) {
-        
+    public boolean addCustomFeatureGroup(String FeatureGroupName, ArrayList Features) {
+        return false;
     }
     
-
+    /**
+     * a simple Documentation of the Algorithms and theys default values
+     */
+    public Map<String, String> algorithmDocumentation() {
+       Map<String, String> algosParams = new HashMap<>(); 
+       algosParams.put("metis", "nparts->default:100 | ptype->values:(kway OR rb)->default:kway | ufactor->default:100 | rand->default:5 ");
+       algosParams.put("bk", "empty");
+       algosParams.put("betw", "edgesToRemove->default:5");
+       algosParams.put("weak", "empty");
+       
+       return algosParams;
+    }
     
     
    /**

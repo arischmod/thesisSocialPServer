@@ -140,7 +140,7 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
     private Map<String, Integer> UserName_vertexID = new HashMap<>(); 
     private Map<Integer, String> vertexID_UserName = new HashMap<>();
     private Integer nparts;
-    private String ptype;
+    private Gpmetis.Ptype ptype;
     private Integer ufactor;
     private Random rand;
     
@@ -157,10 +157,24 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
      */
     public MetisCommunityDiscoverer(GraphLoader glLoader, String nparts, String ptype, String ufactor, String rand) {
         this.loader = glLoader;
-        this.nparts = Integer.parseInt(nparts);
-        this.ptype = ptype;
-        this.ufactor = Integer.parseInt(ufactor);
-        this.rand = new Random(Integer.parseInt(rand));
+        
+        // default values
+        if ("kway".equals(ptype) || ptype==null)
+            this.ptype = Gpmetis.Ptype.kway;
+        else if ("rb".equals(ptype))
+            this.ptype = Gpmetis.Ptype.rb;
+        if (nparts==null)
+            this.nparts = 100;
+        else 
+            this.nparts = Integer.parseInt(nparts);
+        if (ufactor==null)
+            this.ufactor = 100;
+        else
+            this.ufactor = Integer.parseInt(ufactor);
+        if (rand==null)
+            this.rand = new Random(5);
+        else 
+            this.rand = new Random(Integer.parseInt(rand));
         
         enableJavaAssertions();  // Doing this makes the library more robust and slows downs it a bit
     }
@@ -202,12 +216,7 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         long startTime, endTime, totalTime;
         Grph g = new InMemoryGrph();
         g  = fillGraph(g);
-        Gpmetis.Ptype Ptype = Gpmetis.Ptype.kway;
-        
-        if ("kway".equals(ptype))
-            Ptype = Gpmetis.Ptype.kway;
-        else if ("rb".equals(ptype))
-            Ptype = Gpmetis.Ptype.rb;
+//        Gpmetis.Ptype Ptype = Gpmetis.Ptype.kway;
         
         metis newMetis = new metis();    // new version Metis -> metis-5.1.0
         Gpmetis oldMetis = new Gpmetis();    // old version Metis -> metis-5.0.2          
@@ -215,7 +224,9 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
         socialpserver.SocialPServer.algorithmOutputLogger.info("\n  Metis algoritm is trying to find communities...");                
         startTime = System.currentTimeMillis();
         List<IntSet> clusterList;
-
+    
+        clusterList = oldMetis.compute(g, nparts, ptype, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, ufactor, 50, 25, rand);                
+        
         // * whith default values *
         //clusterList = oldMetis.compute(g, 100, new Random(5));
 
@@ -228,7 +239,7 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
 //        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.kway, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, 100, 50, 25, new Random(5));                
 //        clusterList = oldMetis.compute(g, 200, Gpmetis.Ptype.rb, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.cut, false, false, 1, 50, 25, new Random(5));                
         
-        clusterList = oldMetis.compute(g, nparts, Ptype, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, ufactor, 50, 25, rand);                
+        clusterList = oldMetis.compute(g, nparts, ptype, Gpmetis.Ctype.shem, Gpmetis.Iptype.grow, Gpmetis.Objtype.vol, false, true, ufactor, 50, 25, rand);                
         
         // * new version Metis -> metis-5.1.0 *   // higher niter & ncuts drasticaly incrise run time 
 

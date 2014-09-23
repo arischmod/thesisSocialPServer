@@ -24,13 +24,14 @@ public class CommunityStorerDB implements CommunityStorer {
     }
 
     @Override
-    public void storeAll(SetOfCommunities communities) {
+    public boolean storeAll(SetOfCommunities communities) {
         socialpserver.SocialPServer.socialPServerOutputLogger.info("    deleting previous Communities from DB...");        
         try {
             dbAccess.deleteAllCommunities();
             dbAccess.deleteAllUserCommunities();   // delete User-Communities from DB
             socialpserver.SocialPServer.socialPServerOutputLogger.info("    inserting Communities to DB...");            
-            dbAccess.storeCommunitiesToDB(communities);  // insert Communities to DB                                  
+            dbAccess.storeCommunitiesToDB(communities);  // insert Communities to DB     
+            return true;
         } catch (Exception e) {
             System.err.println("Caught IOException: " + e.getMessage());
             throw new RuntimeException(e);
