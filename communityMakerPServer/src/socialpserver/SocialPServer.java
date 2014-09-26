@@ -3,6 +3,7 @@ package socialpserver;
 import edu.uci.ics.jung.graph.UndirectedGraph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class SocialPServer {
      * @author arix
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
         LoggerInit.initLogger();
         
@@ -56,10 +57,9 @@ public class SocialPServer {
         // to antikhmeno db tha mou dhnetai apo ton pServer se run time
 //        pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserver?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
         pserver.data.DBAccess db = new pserver.data.DBAccess("jdbc:mysql://127.0.0.1:3306/pserverEx?", "root", "root");  // 83.212.125.37 okeanos DB // 127.0.0.1 local
-
+        db.connect();
         
-        
-        
+       
         ////////////////
         // pServer v2 //
         ////////////////
@@ -83,17 +83,17 @@ public class SocialPServer {
         
         // test -> make Communities from Social Relation
 
-        parameters.put("edgesToRemove", "5");
-        parameters.put("accosThreshold", "0.5");
-        parameters.put("nparts", "75");
-        parameters.put("ptype", "kway");
-        parameters.put("ufactor", "100");
-        parameters.put("rand", "5");
-        communityAPI.makeCommunities("metis", "cos", parameters);
+//        parameters.put("edgesToRemove", "5");
+//        parameters.put("accosThreshold", "0");
+//        parameters.put("nparts", "75");
+//        parameters.put("ptype", "kway");
+//        parameters.put("ufactor", "100");
+//        parameters.put("rand", "5");
+//        communityAPI.makeCommunities("metis", "cos", parameters);
         
         //  test -> getCentroid functionality
-//        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");
-//        System.out.println(centroidFeatureList);
+        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");
+        System.out.println(centroidFeatureList);
         
         // test -> make Communities from cosine simmilarity
 //        parameters.put("accosThreshold", "0.75");
@@ -141,6 +141,7 @@ public class SocialPServer {
 //        
         
         //execute(psClient,db);
+        db.disconnect();
         socialPServerOutputLogger.info("process finished *");
     }
 

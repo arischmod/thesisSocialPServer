@@ -4,7 +4,10 @@
  */
 package socialpserver.dataio;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -53,8 +56,8 @@ public class PSocialDBAccess {
         this.algorithm = algorithm;
         try {
             this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
-            dbAccess.connect();
-            dbAccess.disconnect();
+//            dbAccess.connect();
+//            dbAccess.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -73,8 +76,8 @@ public class PSocialDBAccess {
         this.dbAccess = db;
         try {
             this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
-            dbAccess.connect();
-            dbAccess.disconnect();
+//            dbAccess.connect();
+//            dbAccess.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,8 +99,8 @@ public class PSocialDBAccess {
         this.customName = customName;
         try {
             this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
-            dbAccess.connect();
-            dbAccess.disconnect();
+//            dbAccess.connect();
+//            dbAccess.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -134,29 +137,37 @@ public class PSocialDBAccess {
      */
     public boolean deleteAllCommunities() {
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
             // socialPServer method
             if (customName == null) {
-                dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+                sql = "DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
+//                dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
             }
             else {
                 String communityName = "custom_0_" + customName;
-                dbAccess.executeUpdate("DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+                sql = "DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
+//                dbAccess.executeUpdate("DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
+            int rs = stmt.executeUpdate(sql);
+            stmt.close();
             // PServer method
             //dbAccess.clearUserCommunities(psClient);
+            return true;
         } catch (Exception ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
 
     /**
@@ -166,26 +177,34 @@ public class PSocialDBAccess {
      */
     public boolean deleteAllUserCommunities() {
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
             if (customName == null) {
-                dbAccess.executeUpdate("DELETE FROM user_community WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+                sql = "DELETE FROM user_community WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
+//                dbAccess.executeUpdate("DELETE FROM user_community WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
             }
             else {
                 String communityName = "custom_0_" + customName;
-                dbAccess.executeUpdate("DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+                sql = "DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
+//                dbAccess.executeUpdate("DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
+            int rs = stmt.executeUpdate(sql);
+            stmt.close();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
 
     /**
@@ -197,33 +216,43 @@ public class PSocialDBAccess {
     public boolean storeCommunitiesToDB(SetOfCommunities communities) {
         Integer communityNum = 1;  // Name of community               
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
             String communityName = "custom_0_" + customName;
             
             for (Community community : communities.getCommunities()) {
                 
                 if (customName == null) {
-                    communityName = algorithm + "_" + associationType + "_" + communityNum.toString();
+                    communityName = algorithm + "_" + associationType.hashCode() + "_" + communityNum.toString();
                 }
                 
                 for (String user : community.getCommunityMembers()) {
-                    dbAccess.executeUpdate("insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');");
+                    sql = "insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');";
+                    int rs = stmt.executeUpdate(sql);
+//                    dbAccess.executeUpdate("insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');");
                 }
-                dbAccess.executeUpdate("insert into communities values ('" + communityName + "', '" + psClient + "');");
+                sql = "insert into communities values ('" + communityName + "', '" + psClient + "');";
+                int rs = stmt.executeUpdate(sql);
+//                dbAccess.executeUpdate("insert into communities values ('" + communityName + "', '" + psClient + "');");
                 communityNum++;
             }
+            
+            stmt.close();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
     
     
@@ -236,20 +265,30 @@ public class PSocialDBAccess {
         Map<String, Float> featureValue = new HashMap<>();
 
         try {
-            dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT uf_feature, uf_numdefvalue FROM up_features  WHERE FK_psclient = '" + psClient + "';");
-            while (psResultSet.next()) {
-                featureValue.put(psResultSet.getRs().getString("uf_feature"), Float.parseFloat(psResultSet.getRs().getString("uf_numdefvalue")));
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql = "SELECT uf_feature, uf_numdefvalue FROM up_features  WHERE FK_psclient = '" + psClient + "';";
+//            this.psResultSet = dbAccess.executeQuery("SELECT uf_feature, uf_numdefvalue FROM up_features  WHERE FK_psclient = '" + psClient + "';");        
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                featureValue.put(rs.getString("uf_feature"), Float.parseFloat(rs.getString("uf_numdefvalue")));
             }
+//            while (psResultSet.next()) {
+//                featureValue.put(psResultSet.getRs().getString("uf_feature"), Float.parseFloat(psResultSet.getRs().getString("uf_numdefvalue")));
+//            }
+            
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         return featureValue;
     }
         
@@ -262,20 +301,30 @@ public class PSocialDBAccess {
         Map<String, Float> featureValue = new HashMap<>();
 
         try {
-            dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT up_feature, up_value FROM user_profiles  WHERE up_user = '" + user + "' AND FK_psclient = '" + psClient + "';");
-            while (psResultSet.next()) {
-                featureValue.put(psResultSet.getRs().getString("up_feature"), Float.parseFloat(psResultSet.getRs().getString("up_value")));
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql = "SELECT up_feature, up_value FROM user_profiles  WHERE up_user = '" + user + "' AND FK_psclient = '" + psClient + "';";
+            
+//            this.psResultSet = dbAccess.executeQuery("SELECT up_feature, up_value FROM user_profiles  WHERE up_user = '" + user + "' AND FK_psclient = '" + psClient + "';");
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                featureValue.put(rs.getString("up_feature"), Float.parseFloat(rs.getString("up_value")));
             }
+//            while (psResultSet.next()) {
+//                featureValue.put(psResultSet.getRs().getString("up_feature"), Float.parseFloat(psResultSet.getRs().getString("up_value")));
+//            }
+            
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         return featureValue;
     }
 
@@ -289,21 +338,31 @@ public class PSocialDBAccess {
     public Set<String> getAllCommunities() {
         Set<String> communities = new HashSet<>();
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql = "SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%';";
 
-            this.psResultSet = dbAccess.executeQuery("SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType+"_"+"%';");
-            while (psResultSet.next()) {
-                communities.add(psResultSet.getRs().getString("community").toString());
+//            this.psResultSet = dbAccess.executeQuery("SELECT community FROM communities WHERE FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%';");
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                communities.add(rs.getString("community").toString());
             }
+//            while (psResultSet.next()) {
+//                communities.add(psResultSet.getRs().getString("community").toString());
+//            }
+            
+            stmt.close();
+            
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         return communities;
     }
 
@@ -316,24 +375,38 @@ public class PSocialDBAccess {
         Set<String[]> communities = new HashSet<>();
 
         try {
-            dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+algorithm+"_"+associationType+"_"+"%';");
-            while (psResultSet.next()) {
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql = "SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%';";
+            
+//            this.psResultSet = dbAccess.executeQuery("SELECT user, community FROM user_community WHERE FK_psclient = '" + psClient + "'AND community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%';");
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
                 String[] team = new String[2];
-                team[0] = psResultSet.getRs().getString("user");
-                team[1] = psResultSet.getRs().getString("community");
+                team[0] = rs.getString("user");
+                team[1] = rs.getString("community");
 
                 communities.add(team);
             }
+//            while (psResultSet.next()) {
+//                String[] team = new String[2];
+//                team[0] = psResultSet.getRs().getString("user");
+//                team[1] = psResultSet.getRs().getString("community");
+//
+//                communities.add(team);
+//            }
+            
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         return communities;
     }
 
@@ -349,24 +422,31 @@ public class PSocialDBAccess {
      */
     public boolean deleteAllUserAssociations() {
         try {
-            dbAccess.reconnect();
-            // socialPServer method
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql = "DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType.hashCode() + " ;";
             
-            dbAccess.executeUpdate("DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType.hashCode() + " ;");
+            // socialPServer method
+//            dbAccess.executeUpdate("DELETE FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType.hashCode() + " ;");
             // PServer method
             //this.dbPCommunity.deleteUserAccociations(psClient, 1);
+            
+            int rs = stmt.executeUpdate(sql);
+            stmt.close();
+           
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
 
     /**
@@ -377,23 +457,30 @@ public class PSocialDBAccess {
      */
     public boolean GraphtoDB(GraphLoader glLoader) {
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
             Set<String[]> userAssociations = glLoader.getGraph(); // get user Associations from loader 
             for (String[] friendship : userAssociations) {                
-                dbAccess.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + associationType.hashCode() + " , '" + psClient + "')");
+//                dbAccess.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + associationType.hashCode() + " , '" + psClient + "')");
+                int rs = stmt.executeUpdate("insert into user_associations values (" + friendship[0] + "," + friendship[1] + ", 1 , " + associationType.hashCode() + " , '" + psClient + "')");
             }
+            
+            stmt.close();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
 
     /**
@@ -408,36 +495,47 @@ public class PSocialDBAccess {
         Set<String[]> userAssociations = new HashSet<>();
 
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
             
             //withOUT THershold
 //            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + ";");
             String sql = "SELECT user_src, user_dst FROM user_associations "
                     + "WHERE FK_psclient = '" + psClient 
                     + "' AND type = " + associationType.hashCode() 
-                    + " AND weight <= " + threshold + " ;";
+                    + " AND weight >= " + threshold + " ;";
             
 
             //with THershold
-            this.psResultSet = dbAccess.executeQuery(sql);
-            
-            while (psResultSet.next()) {
+//            this.psResultSet = dbAccess.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
                 String[] user = new String[2];
-                user[0] = psResultSet.getRs().getString("user_src");
-                user[1] = psResultSet.getRs().getString("user_dst");
+                user[0] = rs.getString("user_src");
+                user[1] = rs.getString("user_dst");
 
                 userAssociations.add(user);
             }
+//            while (psResultSet.next()) {
+//                String[] user = new String[2];
+//                user[0] = psResultSet.getRs().getString("user_src");
+//                user[1] = psResultSet.getRs().getString("user_dst");
+//
+//                userAssociations.add(user);
+//            }
+            
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-                psResultSet.close();                
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }                
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//                psResultSet.close();                
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }                
         return userAssociations;
     }
 
@@ -453,27 +551,36 @@ public class PSocialDBAccess {
      */    
     public boolean deleteAllCentroids() {
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
             //dbAccess.executeUpdate("DELETE FROM centroids WHERE FK_psclient = '" + psClient + "';");
-            if (customName == null)
-                dbAccess.executeUpdate("DELETE FROM community_profiles WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+            if (customName == null) {
+//                dbAccess.executeUpdate("DELETE FROM community_profiles WHERE community LIKE '"+algorithm+"_"+associationType+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
+                sql = "DELETE FROM community_profiles WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
+            }
             else {
                 String communityName = "custom_0_" + customName;
                 // delete previus comunity with the same name
-                dbAccess.executeUpdate("DELETE FROM community_profiles WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+//                dbAccess.executeUpdate("DELETE FROM community_profiles WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
+                sql = "DELETE FROM community_profiles WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
             }
+            int rs = stmt.executeUpdate(sql);
+            stmt.close();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
 
     /**
@@ -484,13 +591,18 @@ public class PSocialDBAccess {
     */
     public boolean storeCentroidsToDB(Map<Integer, Map<String, Float>> allCentroidFeatures) {
         try {
-            dbAccess.reconnect();
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
             if (customName == null) {
                 for (Integer centroid : allCentroidFeatures.keySet()) {           
                     Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
                     for( String feature : cFeatures.keySet()) {
-                        String communityName = algorithm + "_" + associationType + "_" + centroid.toString();
-                        dbAccess.executeUpdate("insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                        String communityName = algorithm + "_" + associationType.hashCode() + "_" + centroid.toString();
+                        sql = "insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')";
+                        int rs = stmt.executeUpdate(sql);
+//                        dbAccess.executeUpdate("insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
                     }
                 }
             }
@@ -499,23 +611,27 @@ public class PSocialDBAccess {
                 for (Integer centroid : allCentroidFeatures.keySet()) {
                     Map<String,Float> cFeatures= allCentroidFeatures.get(centroid);
                     for( String feature : cFeatures.keySet()) {
-                        dbAccess.executeUpdate("insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
+                        sql = "insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')";
+                        int rs = stmt.executeUpdate(sql);
+//                        dbAccess.executeUpdate("insert into community_profiles values ('" + communityName + "', '" + feature + "'," + cFeatures.get(feature) + ", '" + psClient + "')");
                     }
                 }
             }
             
+            stmt.close();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } finally {
-            try {
-                dbAccess.disconnect();
-                return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
         }
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//                return false;
+//            }
+//        }
     }
     
     /**
@@ -528,25 +644,38 @@ public class PSocialDBAccess {
         Map<String, Float> featureValue = new HashMap<>();
 
         try {
-            dbAccess.reconnect();
-            if (pattern==null || pattern.trim().equals("")) // if pattern = null -> bring all
-                this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "';");
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql;
+            
+            if (pattern==null || pattern.trim().equals("")) { // if pattern = null -> bring all 
+//                this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "';");
+                sql = "SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "';";
+            }
             else {
                 pattern = pattern.replace("*", "%");
-                this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "' AND feature LIKE '" +pattern+ "';");
+//                this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "' AND feature LIKE '" +pattern+ "';");
+                sql = "SELECT feature, feature_value FROM community_profiles  WHERE community = '" + communityName + "'AND FK_psclient = '" + psClient + "' AND feature LIKE '" +pattern+ "';";
             }
-            while (psResultSet.next()) {
-                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("feature_value")));
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                featureValue.put(rs.getString("feature"), Float.parseFloat(rs.getString("feature_value")));
             }
+//            while (psResultSet.next()) {
+//                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("feature_value")));
+//            }
+            
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         return featureValue;
     }
     
@@ -559,26 +688,38 @@ public class PSocialDBAccess {
         Map<String, Float> featureValue = new HashMap<>();
 
         try {
-            dbAccess.reconnect();
-            this.psResultSet = dbAccess.executeQuery("SELECT community FROM user_community WHERE user = '" + user + "' AND FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType+"_"+"%';");
+//            dbAccess.reconnect();
+            Statement stmt = dbAccess.getConnection().createStatement();
+            String sql = "SELECT community FROM user_community WHERE user = '" + user + "' AND FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%';";
+            ResultSet rs = stmt.executeQuery(sql);
+//            this.psResultSet = dbAccess.executeQuery("SELECT community FROM user_community WHERE user = '" + user + "' AND FK_psclient = '" + psClient + "' AND community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%';");
+            
             String community=null;
-            if (psResultSet.next())
-                community = psResultSet.getRs().getString("community");
+            if (rs.next())
+                community = rs.getString("community");
             else
                 System.out.println("Invalid User");
-            this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + community + "'AND FK_psclient = '" + psClient + "';");
-            while (psResultSet.next()) {
-                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("feature_value")));
+//            this.psResultSet = dbAccess.executeQuery("SELECT feature, feature_value FROM community_profiles  WHERE community = '" + community + "'AND FK_psclient = '" + psClient + "';");
+            sql = "SELECT feature, feature_value FROM community_profiles  WHERE community = '" + community + "'AND FK_psclient = '" + psClient + "';";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                featureValue.put(rs.getString("feature"), Float.parseFloat(rs.getString("feature_value")));
             }
+//            while (psResultSet.next()) {
+//                featureValue.put(psResultSet.getRs().getString("feature"), Float.parseFloat(psResultSet.getRs().getString("feature_value")));
+//            }
+            
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                dbAccess.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        } 
+//        finally {
+//            try {
+//                dbAccess.disconnect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         return featureValue;
     }
 }

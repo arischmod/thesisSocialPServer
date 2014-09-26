@@ -249,6 +249,8 @@ public class SetOfCommunities{
     
     /**
      * 
+     * @param storer
+     * @return 
      */
     public boolean storeCentroidFeatures(centroidStrorerDB storer) {        
         

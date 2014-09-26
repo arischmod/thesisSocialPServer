@@ -71,7 +71,7 @@ public class CommunityAPI {
         
         Float accosThreshold;
         if (parameters.get("accosThreshold") == null)
-            accosThreshold = new Float(1);
+            accosThreshold = new Float(0);
         else    
             accosThreshold = Float.parseFloat(parameters.get("accosThreshold"));
         
@@ -103,7 +103,6 @@ public class CommunityAPI {
                     toReturn = false;
                 if (!met.storeCentroidFeatures(new centroidStrorerDB(dbAccess)))
                     toReturn = false;
-                
                 met.clear();
                 met = null;
                 System.gc();
