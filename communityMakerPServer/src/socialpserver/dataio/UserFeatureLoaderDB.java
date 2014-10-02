@@ -10,7 +10,7 @@ import java.util.Map;
  * Loads all features that are rated by the users from a given database.
  * @author arix
  */
-public class UserFeatureLoaderDB implements UserFeatureLoader{
+public class UserFeatureLoaderDB implements IUserFeatureLoader{
     private PSocialDBAccess dbAccess;
   
     /**

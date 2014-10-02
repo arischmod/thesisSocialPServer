@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author arix
  */
-public class GraphLoaderFile implements GraphLoader {
+public class GraphLoaderFile implements IGraphLoader {
 
     private String UserAssociationFile;
     private Set<String[]> userAssociations = new HashSet<>();
@@ -28,7 +28,7 @@ public class GraphLoaderFile implements GraphLoader {
     }
 
     @Override
-    public void loadGraph(Float threshold) {
+    public void loadGraph(Float threshold, String type) {
         try {
             // threshold - not used at the moment
             socialpserver.SocialPServer.socialPServerOutputLogger.info("    loading User friendship from File...");

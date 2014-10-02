@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import socialpserver.dataio.FeatureLoader;
-import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.IUserFeatureLoader;
 
 /**
  * Represents a Community of users it is a set of Users that belong in the same
@@ -94,7 +94,7 @@ public class Community {
      * Inter similarity can be calculated
      * @return clusters intraSimilarity
      */
-    protected Float intraSimilarity(FeatureLoader fLoader, UserFeatureLoader ufLoader, int communityID, SetOfCommunities clusteringScheme) {
+    protected Float intraSimilarity(FeatureLoader fLoader, IUserFeatureLoader ufLoader, int communityID, SetOfCommunities clusteringScheme) {
         Float communitySimilarity;
 
         Map<String, Map<String, Float>> communityUserFeatures = loadCommunityUserFeatures(ufLoader);
@@ -155,7 +155,7 @@ public class Community {
      * has the Location from where the features will be pulled
      * @return a Map with user features and their values
      */
-    private Map<String, Map<String, Float>> loadCommunityUserFeatures(UserFeatureLoader ufLoader) {
+    private Map<String, Map<String, Float>> loadCommunityUserFeatures(IUserFeatureLoader ufLoader) {
         Map<String, Map<String, Float>> communityUserFeatures = new HashMap<>();
         for (String user : community) {
             communityUserFeatures.put(user, ufLoader.getUserFeatures(user));

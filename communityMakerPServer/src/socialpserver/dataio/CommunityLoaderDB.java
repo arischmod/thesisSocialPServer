@@ -14,7 +14,7 @@ import socialpserver.SetOfCommunities;
  * from a given database.
  * @author arix
  */
-public class CommunityLoaderDB implements CommunityLoader{
+public class CommunityLoaderDB implements ICommunityLoader{
     private PSocialDBAccess dbAccess;
     
     /**

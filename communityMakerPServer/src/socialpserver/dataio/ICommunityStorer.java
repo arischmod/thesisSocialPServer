@@ -11,14 +11,13 @@ import socialpserver.SetOfCommunities;
  * each Community is a Set of users
  * @author arix
  */
-public interface CommunityStorer {
+public interface ICommunityStorer {
     
     /**
      * Store all communities (clusters of users) produced from the algorithms 
      * to a given database.
      * @param communities is the a SetOfCommunities object that contains all 
      * the communities (set of users) that we want to store
-     * @param sourceTag com OR soc (cluster by 'Pserver Community mode' OR 'SocialPServer')
      */
     public boolean storeAll(SetOfCommunities communities);
    

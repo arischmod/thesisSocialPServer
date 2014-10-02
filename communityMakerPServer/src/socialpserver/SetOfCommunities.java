@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import socialpserver.dataio.FeatureLoader;
-import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.IUserFeatureLoader;
 import socialpserver.dataio.centroidStrorerDB;
 
 /**
@@ -159,7 +159,7 @@ public class SetOfCommunities{
      * @param ufLoader loads the features that are rated by the users
      * and also has the Location from where the features will be pulled
      */
-    public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader) {        
+    public void evaluate(FeatureLoader fLoader, IUserFeatureLoader ufLoader) {        
         communitiesInfo();  // Info about the communities     
         
         Float intraSimilarity = intraSimilarityCalculator(fLoader, ufLoader);
@@ -181,7 +181,7 @@ public class SetOfCommunities{
      * and also has the Location from where the features will be pulled
      * @return the totalCompactness (all clusters intraSimilarity)
      */
-    public Float intraSimilarityCalculator(FeatureLoader fLoader, UserFeatureLoader ufLoader) {        
+    public Float intraSimilarityCalculator(FeatureLoader fLoader, IUserFeatureLoader ufLoader) {        
         Float communityCompactness, compactnessTotal = 0.0f, clusterSizeRatio;    
         int communityID=0;
 //        fLoader.loadFeatures();

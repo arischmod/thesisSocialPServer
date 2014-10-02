@@ -11,7 +11,7 @@ import socialpserver.SetOfCommunities;
  * each Community is a Set of users
  * @author arix
  */
-public interface CommunityLoader {
+public interface ICommunityLoader {
     
     /**
      * Loads all communities (clusters) produced from the algorithms 

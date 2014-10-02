@@ -9,10 +9,10 @@ import edu.uci.ics.jung.graph.UndirectedGraph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import java.util.Set;
 import socialpserver.SetOfCommunities;
-import socialpserver.dataio.GraphLoader;
-import socialpserver.dataio.CommunityStorer;
+import socialpserver.dataio.IGraphLoader;
+import socialpserver.dataio.ICommunityStorer;
 import socialpserver.dataio.FeatureLoader;
-import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.IUserFeatureLoader;
 import socialpserver.dataio.centroidStrorerDB;
 
 /**
@@ -40,7 +40,7 @@ import socialpserver.dataio.centroidStrorerDB;
  */
 public class EdgeBetweennessCommunityDiscoverer implements ClustererAlgorithm {
 
-    protected GraphLoader loader;
+    protected IGraphLoader loader;
     private SetOfCommunities town;
     int numEdgesToRemove; //numEdgesToRemove: is the number of edges to be progressively removed from the graph
 
@@ -54,7 +54,7 @@ public class EdgeBetweennessCommunityDiscoverer implements ClustererAlgorithm {
      * from the graph The more edges removed the smaller and more cohesive the
      * clusters.
      */
-    public EdgeBetweennessCommunityDiscoverer(GraphLoader glLoader, int numEdgesToRemove) {
+    public EdgeBetweennessCommunityDiscoverer(IGraphLoader glLoader, int numEdgesToRemove) {
         this.loader = glLoader;
         this.numEdgesToRemove = numEdgesToRemove;
     }
@@ -96,12 +96,12 @@ public class EdgeBetweennessCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public boolean storeCommunities(CommunityStorer store) {
+    public boolean storeCommunities(ICommunityStorer store) {
         return store.storeAll(town);
     }
 
     @Override
-    public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader) {
+    public void evaluate(FeatureLoader fLoader, IUserFeatureLoader ufLoader) {
         town.evaluate(fLoader, ufLoader);
     }
 

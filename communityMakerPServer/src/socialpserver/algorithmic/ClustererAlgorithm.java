@@ -5,9 +5,9 @@
 package socialpserver.algorithmic;
 
 import socialpserver.SetOfCommunities;    //  Data Structure
-import socialpserver.dataio.CommunityStorer;   // Data IO
+import socialpserver.dataio.ICommunityStorer;   // Data IO
 import socialpserver.dataio.FeatureLoader;   // Data IO
-import socialpserver.dataio.UserFeatureLoader;   // Data IO
+import socialpserver.dataio.IUserFeatureLoader;   // Data IO
 import socialpserver.dataio.centroidStrorerDB;
 
 /**
@@ -32,7 +32,7 @@ public interface ClustererAlgorithm {
      * @param ufLoader loads the features that are rated by the users
      * and also has the Location from where the features will be pulled
      */
-    public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader);
+    public void evaluate(FeatureLoader fLoader, IUserFeatureLoader ufLoader);
     
     /**
     * Store the the Centroids of all communities (and their features)
@@ -46,7 +46,7 @@ public interface ClustererAlgorithm {
      * @param store is an object that contains the methods to store 
      * and also the Location where the communities will be stored
      */
-    public boolean storeCommunities(CommunityStorer store);    
+    public boolean storeCommunities(ICommunityStorer store);    
     
     /**
      * finalize, free memory. 

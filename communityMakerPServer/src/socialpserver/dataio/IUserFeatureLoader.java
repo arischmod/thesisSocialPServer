@@ -10,7 +10,7 @@ import java.util.Map;
  * Loads all features that are rated by the users
  * @author arix
  */
-public interface UserFeatureLoader {
+public interface IUserFeatureLoader {
     
     /**
      * Get the rated features of the specific user

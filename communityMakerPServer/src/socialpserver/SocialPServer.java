@@ -17,7 +17,7 @@ import socialpserver.algorithmic.MetisCommunityDiscoverer;
 import socialpserver.algorithmic.WeakComponentCommunityDiscoverer;
 import socialpserver.dataio.CommunityStorerDB;
 import socialpserver.dataio.FeatureLoaderDB;
-import socialpserver.dataio.GraphLoader;
+import socialpserver.dataio.IGraphLoader;
 import socialpserver.dataio.GraphLoaderDB;
 import socialpserver.dataio.GraphLoaderFile;
 import socialpserver.dataio.LoggerInit;
@@ -80,9 +80,18 @@ public class SocialPServer {
 //        communityAPI.addCustomCommunity("test", customCom);
         // during the proccess also the Centoid of this community is calculated and stored
         
+        // feature groups test
+        parameters.put("edgesToRemove", "5");
+        parameters.put("accosThreshold", "0.9");
+        parameters.put("nparts", "75");
+        parameters.put("ptype", "kway");
+        parameters.put("ufactor", "100");
+        parameters.put("rand", "5");
+        communityAPI.makeFeatureGroups("metis", "cos", parameters);
+//        
         
         // test -> make Communities from Social Relation
-
+//
 //        parameters.put("edgesToRemove", "5");
 //        parameters.put("accosThreshold", "0");
 //        parameters.put("nparts", "75");
@@ -90,11 +99,11 @@ public class SocialPServer {
 //        parameters.put("ufactor", "100");
 //        parameters.put("rand", "5");
 //        communityAPI.makeCommunities("metis", "cos", parameters);
-        
+//        
         //  test -> getCentroid functionality
-        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");
-        System.out.println(centroidFeatureList);
-        
+//        Map<String, Float> centroidFeatureList = communityAPI.getCentroid("custom_0_test", "t*");
+//        System.out.println(centroidFeatureList);
+//        
         // test -> make Communities from cosine simmilarity
 //        parameters.put("accosThreshold", "0.75");
 //        communityAPI.makeCommunities("bk", 1, parameters);
@@ -155,7 +164,7 @@ public class SocialPServer {
         //uadb.friendshipToDB(new GraphLoaderFile(UserAssociationFile));
 
         GraphLoaderDB graphLoaderDB = new GraphLoaderDB(dbAccess);
-        graphLoaderDB.loadGraph(new Float(0.5)); // load user Associations to loader (RAM) -> u can retrive them by loader.getGraph()
+        graphLoaderDB.loadGraph(new Float(0.5), "user"); // load user Associations to loader (RAM) -> u can retrive them by loader.getGraph()
 
         //socialUtils(graphLoaderDB); // info about the social graph                         
         //String algorithm = args[1];
@@ -221,7 +230,7 @@ public class SocialPServer {
      *
      * @return #Vertex and #Edge
      */
-    private static void socialUtils(GraphLoader glLoader) {
+    private static void socialUtils(IGraphLoader glLoader) {
         algorithmOutputLogger.info("an EdgeBetweenness graph will be used to calculate the size of the social graph");
         EdgeBetweennessCommunityDiscoverer temp = new EdgeBetweennessCommunityDiscoverer(glLoader, 0);
         UndirectedGraph<String, String> g = new UndirectedSparseGraph<>();

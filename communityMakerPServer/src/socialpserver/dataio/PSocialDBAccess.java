@@ -94,61 +94,59 @@ public class PSocialDBAccess {
     public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String associationType) {
         this.psClient = psClient;
         this.dbAccess = db;
-//        this.mode = mode;
         this.associationType = associationType;
-        this.customName = customName;
         try {
             this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
-//            dbAccess.connect();
-//            dbAccess.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /**
-     * Used when adding CUSTOM communities -> creates a socialDBAccess object that is used to handle queries 
-     * @param psClient name of pServer Client 
-     * used in queries to Locate the records that has to do with the particular client
-     * @param db a pServer DBAccess object used to handle queries
-     * needed from socialDBAccess to execute pServer type queries
-     * @param customName the name for the custom Community
-     */
-//    public PSocialDBAccess(String psClient, pserver.data.DBAccess db, String customName) {
-//        this.psClient = psClient;
-//        this.dbAccess = db;
-//        this.customName = customName;
-//        try {
-//            this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
-//            dbAccess.connect();
-//            dbAccess.disconnect();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    public PSocialDBAccess(String psClient, pserver.data.DBAccess db,
+            String associationType,
+            String algorithm, String customName) {
+        this.psClient = psClient;
+        this.dbAccess = db;
+        this.associationType = associationType;       
+        this.algorithm = algorithm;
+        this.customName = customName;
+        try {
+            this.dbPCommunity = new pserver.data.PCommunityDBAccess(db);
+        } catch (SQLException ex) {
+            Logger.getLogger(PSocialDBAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     
     
     
     /**
      * delete all communities stored in pServer DB
+     * @param type UserCommunity OR FeatureCommunity
      * (for the specific client)
      * @return 
      */
-    public boolean deleteAllCommunities() {
+    public boolean deleteAllCommunities(String type) {
         try {
 //            dbAccess.reconnect();
             Statement stmt = dbAccess.getConnection().createStatement();
             String sql;
+            String table;
+            if (type.equals("feature")) {
+                table = "ftrgroups";
+            }
+            else {
+                table = "communities";
+            }
             
             // socialPServer method
             if (customName == null) {
-                sql = "DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
+                sql = "DELETE FROM " + table + " WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
 //                dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
             }
             else {
                 String communityName = "custom_0_" + customName;
-                sql = "DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
+                sql = "DELETE FROM " + table + " WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
 //                dbAccess.executeUpdate("DELETE FROM communities WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
             int rs = stmt.executeUpdate(sql);
@@ -175,19 +173,29 @@ public class PSocialDBAccess {
      * (for the specific client)
      * @return 
      */
-    public boolean deleteAllUserCommunities() {
+    public boolean deleteAllUserCommunities(String type) {
         try {
 //            dbAccess.reconnect();
             Statement stmt = dbAccess.getConnection().createStatement();
             String sql;
+            String table, column;
+            if (type.equals("feature")) {
+                table = "ftrgroup_features";
+                column = "feature_group";
+            }
+            else {
+                table = "user_community";
+                column = "community";
+
+            }
             
             if (customName == null) {
-                sql = "DELETE FROM user_community WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
+                sql = "DELETE FROM " + table + " WHERE " + column + " LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
 //                dbAccess.executeUpdate("DELETE FROM user_community WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
             }
             else {
                 String communityName = "custom_0_" + customName;
-                sql = "DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
+                sql = "DELETE FROM " + table + " WHERE " + column + " = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;";
 //                dbAccess.executeUpdate("DELETE FROM user_community WHERE community = '"+communityName+"' AND FK_psclient = '" + psClient + "' ;");
             }
             int rs = stmt.executeUpdate(sql);
@@ -213,7 +221,7 @@ public class PSocialDBAccess {
      * @param communities the Communities that will be stored
      * @return 
      */
-    public boolean storeCommunitiesToDB(SetOfCommunities communities) {
+    public boolean storeCommunitiesToDB(SetOfCommunities communities, String type) {
         Integer communityNum = 1;  // Name of community               
         try {
 //            dbAccess.reconnect();
@@ -229,11 +237,23 @@ public class PSocialDBAccess {
                 }
                 
                 for (String user : community.getCommunityMembers()) {
-                    sql = "insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');";
+                    if (type.equals("feature")) {
+                        sql = "insert into ftrgroup_features values ('" + user + "', '" + communityName + "', 0'" + psClient + "');";
+                    }
+                    else {
+                        sql = "insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');";
+                    }
+                    
                     int rs = stmt.executeUpdate(sql);
 //                    dbAccess.executeUpdate("insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');");
                 }
-                sql = "insert into communities values ('" + communityName + "', '" + psClient + "');";
+                if (type.equals("feature")) {
+                    sql = "insert into ftrgroups values ('" + communityName + "', '" + psClient + "');";
+                }
+                else {
+                    sql = "insert into communities values ('" + communityName + "', '" + psClient + "');";
+                }
+                
                 int rs = stmt.executeUpdate(sql);
 //                dbAccess.executeUpdate("insert into communities values ('" + communityName + "', '" + psClient + "');");
                 communityNum++;
@@ -410,7 +430,6 @@ public class PSocialDBAccess {
         return communities;
     }
 
- 
     
    ///////////////////////
    //  User Association //
@@ -455,7 +474,7 @@ public class PSocialDBAccess {
      * @param glLoader loads UserAssociations from a given source
      * @return 
      */
-    public boolean GraphtoDB(GraphLoader glLoader) {
+    public boolean GraphtoDB(IGraphLoader glLoader) {
         try {
 //            dbAccess.reconnect();
             Statement stmt = dbAccess.getConnection().createStatement();
@@ -487,21 +506,32 @@ public class PSocialDBAccess {
      * Get all UserAssociations (friendship links) from DB 
      * for the specific client 
      * @param threshold
-     * @param accosThreshold  Float -> min weight edge that will be taken to account
+     * @param type UserCommunity OR FeatureCommunity
      * @return a Set of String[] array
      * [0]=user1ID & [1]=user2ID
      */
-    public Set<String[]> DBtoGraph(Float threshold) {
+    public Set<String[]> DBtoGraph(Float threshold, String type ) {
         Set<String[]> userAssociations = new HashSet<>();
-
+        String src, dst, table;
+        if (type.equals("feature")) {
+            src = "ftr_src";
+            dst = "ftr_dst";
+            table = "user_feature_associations";
+        }
+        else {
+            src = "user_src";
+            dst = "user_dst";
+            table = "user_associations";
+        }
+            
+        
         try {
 //            dbAccess.reconnect();
             Statement stmt = dbAccess.getConnection().createStatement();
             
             //withOUT THershold
 //            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + ";");
-            String sql = "SELECT user_src, user_dst FROM user_associations "
-                    + "WHERE FK_psclient = '" + psClient 
+            String sql = "SELECT " + src + ", " + dst + " FROM " + table + " WHERE FK_psclient = '" + psClient 
                     + "' AND type = " + associationType.hashCode() 
                     + " AND weight >= " + threshold + " ;";
             
@@ -511,8 +541,8 @@ public class PSocialDBAccess {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 String[] user = new String[2];
-                user[0] = rs.getString("user_src");
-                user[1] = rs.getString("user_dst");
+                user[0] = rs.getString(src);
+                user[1] = rs.getString(dst);
 
                 userAssociations.add(user);
             }
@@ -539,7 +569,6 @@ public class PSocialDBAccess {
         return userAssociations;
     }
 
-    
     
     //////////////
     // Centroid //

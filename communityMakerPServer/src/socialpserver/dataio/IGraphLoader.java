@@ -7,13 +7,14 @@ import java.util.Set;
  *
  * @author arix
  */
-public interface GraphLoader {
+public interface IGraphLoader {
 
     /**
      * load user Associations user-friendship links (edges) and keep them in RAM
      * @param threshold -> min weight edge that will be taken to account
+     * @param type UserCommunity OR FeatureCommunity
      */
-    public void loadGraph(Float threshold);
+    public void loadGraph(Float threshold, String type);
 
     /**
      * @return user Associations user-friendship links (edges)

@@ -11,10 +11,10 @@ import org.jgrapht.alg.BronKerboschCliqueFinder;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 import socialpserver.SetOfCommunities;
-import socialpserver.dataio.GraphLoader;
-import socialpserver.dataio.CommunityStorer;
+import socialpserver.dataio.IGraphLoader;
+import socialpserver.dataio.ICommunityStorer;
 import socialpserver.dataio.FeatureLoader;
-import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.IUserFeatureLoader;
 import socialpserver.dataio.centroidStrorerDB;
 
 /**
@@ -22,7 +22,7 @@ import socialpserver.dataio.centroidStrorerDB;
  * @author arix
  */
 public class BronKerboschCliqueCommunityDiscoverer implements ClustererAlgorithm {
-    protected GraphLoader loader;    
+    protected IGraphLoader loader;    
     private SetOfCommunities town;
     
     /**
@@ -32,7 +32,7 @@ public class BronKerboschCliqueCommunityDiscoverer implements ClustererAlgorithm
      * the friendship edges
      * and also has the Location from where the userAssociations will be pulled
      */
-    public BronKerboschCliqueCommunityDiscoverer(GraphLoader glLoader) {
+    public BronKerboschCliqueCommunityDiscoverer(IGraphLoader glLoader) {
         this.loader = glLoader;
     }
           
@@ -74,12 +74,12 @@ public class BronKerboschCliqueCommunityDiscoverer implements ClustererAlgorithm
     }
 
     @Override
-    public boolean storeCommunities(CommunityStorer store) {
+    public boolean storeCommunities(ICommunityStorer store) {
         return store.storeAll(town);
     }
 
     @Override
-    public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader) {
+    public void evaluate(FeatureLoader fLoader, IUserFeatureLoader ufLoader) {
         town.evaluate(fLoader, ufLoader);
     }    
     

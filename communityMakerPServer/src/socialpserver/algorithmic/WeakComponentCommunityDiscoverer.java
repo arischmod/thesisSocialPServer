@@ -9,10 +9,10 @@ import edu.uci.ics.jung.graph.UndirectedGraph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import java.util.Set;
 import socialpserver.SetOfCommunities;
-import socialpserver.dataio.GraphLoader;
-import socialpserver.dataio.CommunityStorer;
+import socialpserver.dataio.IGraphLoader;
+import socialpserver.dataio.ICommunityStorer;
 import socialpserver.dataio.FeatureLoader;
-import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.IUserFeatureLoader;
 import socialpserver.dataio.centroidStrorerDB;
 
 /**
@@ -33,7 +33,7 @@ import socialpserver.dataio.centroidStrorerDB;
  */
 public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
     private SetOfCommunities town;
-    protected GraphLoader loader;
+    protected IGraphLoader loader;
         
     /**
      * An algorithm for computing clusters (community structure) in graphs based on
@@ -42,7 +42,7 @@ public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
      * the friendship edges
      * and also has the Location from where the userAssociations will be pulled
      */
-    public WeakComponentCommunityDiscoverer(GraphLoader glLoader) {
+    public WeakComponentCommunityDiscoverer(IGraphLoader glLoader) {
         this.loader = glLoader;
     }
 
@@ -84,12 +84,12 @@ public class WeakComponentCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public boolean storeCommunities(CommunityStorer storer) {
+    public boolean storeCommunities(ICommunityStorer storer) {
         return storer.storeAll(town);
     }
 
     @Override
-    public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader) {
+    public void evaluate(FeatureLoader fLoader, IUserFeatureLoader ufLoader) {
         town.evaluate(fLoader, ufLoader);
     }
 

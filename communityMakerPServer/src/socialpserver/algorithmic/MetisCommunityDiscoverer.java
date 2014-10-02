@@ -15,10 +15,10 @@ import java.util.Random;
 import java.util.Set;
 import socialpserver.Community;
 import socialpserver.SetOfCommunities;
-import socialpserver.dataio.CommunityStorer;
+import socialpserver.dataio.ICommunityStorer;
 import socialpserver.dataio.FeatureLoader;
-import socialpserver.dataio.GraphLoader;
-import socialpserver.dataio.UserFeatureLoader;
+import socialpserver.dataio.IGraphLoader;
+import socialpserver.dataio.IUserFeatureLoader;
 import socialpserver.dataio.centroidStrorerDB;
 import todelete.metis;
 import toools.set.IntSet;
@@ -135,7 +135,7 @@ import toools.set.IntSet;
  */
 public class MetisCommunityDiscoverer implements ClustererAlgorithm {
 
-    private GraphLoader loader;
+    private IGraphLoader loader;
     private SetOfCommunities town;
     private Map<String, Integer> UserName_vertexID = new HashMap<>(); 
     private Map<Integer, String> vertexID_UserName = new HashMap<>();
@@ -155,7 +155,7 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
      * @param ufactor load Imbalance (between clusters)
      * @param rand seed
      */
-    public MetisCommunityDiscoverer(GraphLoader glLoader, String nparts, String ptype, String ufactor, String rand) {
+    public MetisCommunityDiscoverer(IGraphLoader glLoader, String nparts, String ptype, String ufactor, String rand) {
         this.loader = glLoader;
         
         // default values
@@ -275,12 +275,12 @@ public class MetisCommunityDiscoverer implements ClustererAlgorithm {
     }
 
     @Override
-    public boolean storeCommunities(CommunityStorer store) {
+    public boolean storeCommunities(ICommunityStorer store) {
         return store.storeAll(town);
     }
 
     @Override
-    public void evaluate(FeatureLoader fLoader, UserFeatureLoader ufLoader) {
+    public void evaluate(FeatureLoader fLoader, IUserFeatureLoader ufLoader) {
         town.evaluate(fLoader, ufLoader);
     }   
     

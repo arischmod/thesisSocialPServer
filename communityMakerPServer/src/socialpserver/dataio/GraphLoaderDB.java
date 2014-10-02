@@ -7,7 +7,7 @@ import java.util.Set;
  *
  * @author arix
  */
-public class GraphLoaderDB implements GraphLoader {
+public class GraphLoaderDB implements IGraphLoader {
 
     private PSocialDBAccess dbAccess;
     private Set<String[]> userAssociations;
@@ -31,10 +31,11 @@ public class GraphLoaderDB implements GraphLoader {
     @Override
     /**
      * NOT USED - too expensive in RAM
+     * @param type UserCommunity OR FeatureCommunity
      */
-    public void loadGraph(Float threshold) {
+    public void loadGraph(Float threshold, String type) {
         socialpserver.SocialPServer.socialPServerOutputLogger.info("    loading User friendship from DB...");
-        userAssociations = dbAccess.DBtoGraph(threshold);
+        userAssociations = dbAccess.DBtoGraph(threshold, type);
     }
 
     @Override

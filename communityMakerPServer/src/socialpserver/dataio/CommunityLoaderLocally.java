@@ -12,7 +12,7 @@ import socialpserver.SetOfCommunities;
  * it is used when we want to load communities that are created at real time 
  * @author arix
  */
-public class CommunityLoaderLocally implements CommunityLoader{
+public class CommunityLoaderLocally implements ICommunityLoader{
     private SetOfCommunities communities;
     
     /**
