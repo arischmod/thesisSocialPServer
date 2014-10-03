@@ -36,10 +36,13 @@ import todelete.StrongConnectivityCommunityDiscoverer;
  */
 public class SocialPServer {
 
-    private static final String UserAssociationFile = "datasets/hetrec2011-lastfm-2k/user_friends.dat"; //"datasets/flixster/ratings.txt"; // "datasets/epinions/user_rating.txt"; //"datasets/hetrec2011-lastfm-2k/user_friends.dat"
+    private static final String UserAssociationFile 
+                        = "datasets/hetrec2011-lastfm-2k/user_friends.dat"; //"datasets/flixster/ratings.txt"; // "datasets/epinions/user_rating.txt"; //"datasets/hetrec2011-lastfm-2k/user_friends.dat"
 
-    public static final Logger algorithmOutputLogger = Logger.getLogger("algorithmOutput");  // create Loggers 
-    public static final Logger socialPServerOutputLogger = Logger.getLogger("socialPServerOutput");
+    public static final Logger algorithmOutputLogger
+                        = Logger.getLogger("algorithmOutput");  // create Loggers 
+    public static final Logger socialPServerOutputLogger
+                        = Logger.getLogger("socialPServerOutput");
 
     /**
      * main method of SocialPServer project
@@ -72,22 +75,23 @@ public class SocialPServer {
         
 
 // test -> isert custon Community functiolality
-//        Set<String> customCom = new HashSet<>();
-//        customCom.add("10");
-//        customCom.add("100");
-//        customCom.add("1001");
-//        customCom.add("1002");
+        Set<String> customCom = new HashSet<>();
+        customCom.add("testFeature1");
+        customCom.add("testFeature2");
+        customCom.add("testFeature3");
+        customCom.add("testFeature4");
 //        communityAPI.addCustomCommunity("test", customCom);
+        communityAPI.addCustomFeatureGroup("test", customCom);
         // during the proccess also the Centoid of this community is calculated and stored
         
         // feature groups test
         parameters.put("edgesToRemove", "5");
-        parameters.put("accosThreshold", "0.9");
+        parameters.put("accosThreshold", "0.95");
         parameters.put("nparts", "75");
         parameters.put("ptype", "kway");
         parameters.put("ufactor", "100");
         parameters.put("rand", "5");
-        communityAPI.makeFeatureGroups("metis", "cos", parameters);
+//        communityAPI.makeFeatureGroups("metis", "cos", parameters);
 //        
         
         // test -> make Communities from Social Relation

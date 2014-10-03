@@ -131,17 +131,19 @@ public class PSocialDBAccess {
 //            dbAccess.reconnect();
             Statement stmt = dbAccess.getConnection().createStatement();
             String sql;
-            String table;
+            String table, column;
             if (type.equals("feature")) {
                 table = "ftrgroups";
+                column = "ftrgroup";
             }
             else {
                 table = "communities";
+                column = "community";
             }
             
             // socialPServer method
             if (customName == null) {
-                sql = "DELETE FROM " + table + " WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
+                sql = "DELETE FROM " + table + " WHERE " + column + " LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;";
 //                dbAccess.executeUpdate("DELETE FROM communities WHERE community LIKE '"+algorithm+"_"+associationType.hashCode()+"_"+"%' AND FK_psclient = '" + psClient + "' ;");
             }
             else {
@@ -238,7 +240,7 @@ public class PSocialDBAccess {
                 
                 for (String user : community.getCommunityMembers()) {
                     if (type.equals("feature")) {
-                        sql = "insert into ftrgroup_features values ('" + user + "', '" + communityName + "', 0'" + psClient + "');";
+                        sql = "insert into ftrgroup_features values ('" + communityName + "', '" + user + "', 0,'" + psClient + "');";
                     }
                     else {
                         sql = "insert into user_community values ('" + user + "', '" + communityName + "', '" + psClient + "');";
@@ -531,7 +533,8 @@ public class PSocialDBAccess {
             
             //withOUT THershold
 //            this.psResultSet = dbAccess.executeQuery("SELECT user_src, user_dst FROM user_associations WHERE FK_psclient = '" + psClient + "' AND type = " + associationType + ";");
-            String sql = "SELECT " + src + ", " + dst + " FROM " + table + " WHERE FK_psclient = '" + psClient 
+            String sql = "SELECT " + src + ", " + dst + " FROM " + table 
+                    + " WHERE FK_psclient = '" + psClient 
                     + "' AND type = " + associationType.hashCode() 
                     + " AND weight >= " + threshold + " ;";
             
