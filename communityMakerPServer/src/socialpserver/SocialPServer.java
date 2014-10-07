@@ -86,7 +86,7 @@ public class SocialPServer {
         
         // feature groups test
         parameters.put("edgesToRemove", "5");
-        parameters.put("accosThreshold", "0.95");
+        parameters.put("accosThreshold", "0.99");
         parameters.put("nparts", "75");
         parameters.put("ptype", "kway");
         parameters.put("ufactor", "100");
