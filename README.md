@@ -1,8 +1,8 @@
 thesisSocialPServer
 ===================
 
-Improving Recommender Systems by utilization of User Communities
-
+Improving Social Recommender Systems by utilization of User Communities
+presentation:  http://prezi.com/9b9g0ao-k2ys/?utm_campaign=share&utm_medium=copy&rc=ex0share
 
 This research includes the study of theory and methods needed to create a
 Recommender System which exploits the information derived from a social
